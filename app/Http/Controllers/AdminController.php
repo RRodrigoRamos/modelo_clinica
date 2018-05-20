@@ -45,7 +45,7 @@ class AdminController extends Controller
     public function listaAgendas()
     {
         $agendamentos = Agendamento::paginate(15);
-        return view('admin.agendamentos',['agendamentos' => $agendamentos, 'bairros' => self::bairros()]);
+        return view('admin.paciente.agendamentos',['agendamentos' => $agendamentos, 'bairros' => self::bairros()]);
     }
     public function listaMedicos()
     {
@@ -142,35 +142,35 @@ class AdminController extends Controller
     {
         $value=User::select('*')->join('medicos','medicos.user_id', '=', 'users.id')->join('enderecos','users.id', '=', 'enderecos.id')->where('medicos.id', '=', $id)->get();
         $value = $value[0];
-        return view('admin.medico.editar',['value' => $value,'bairros' => self::bairros(),'especialidades' => self::especialidade()]);
+        return view('admin.medico.editar',['value' => $value,'bairros' => self::bairros(),'especialidades' => self::especialidade(), 'id'=>$id]);
     }
-    public function editarmedico($id,Request $request)
+    public function editarmedico(Request $request)
     {   
-            $user = new User();
+            $user = User::find($request->id);
             $user->name = $request->name;
             $user->email = $request->email;
             $user->cpf = $request->cpf;
             $user->password = bcrypt($request->password);
-            $user->role = 'paciente';
-            $user->save();
-            $endereco = new Endereco();
-            $endereco->user_id = $user->id;
+            $user->role = 'medico';
+            if($user->save()){
+            $endereco = Endereco::where('user_id',$id);
             $endereco->cep = $request->cep;
             $endereco->tipo_local = $request->tipo_local;
             $endereco->endereco = $request->endereco;
             $endereco->numero = $request->numero;
             $endereco->complement = $request->complement;
             $endereco->bairro_id = $request->bairro_id;
-            $user->endereco()->save($endereco);
-            $medico = new Medico();
-            $medico->user_id = $user->id;
-            $medico->foto = $request->foto;
-            $medico->crm = $request->crm;
-            $medico->sexo = $request->sexo;
-            $medico->data_nasc = $request->data_nasc;
-            $medico->telefone = $request->telefone;
-            $medico->especialidade_id= $request->especialidade_id;
-            $medico->save();
+            if($user->endereco()->save($endereco)){
+                $medico = Medico::where('user_id',$id);
+                $medico->foto = $request->foto;
+                $medico->crm = $request->crm;
+                $medico->sexo = $request->sexo;
+                $medico->data_nasc = $request->data_nasc;
+                $medico->telefone = $request->telefone;
+                $medico->especialidade_id= $request->especialidade_id;
+                $medico->save();
+            }
+        }
     }
 
 }

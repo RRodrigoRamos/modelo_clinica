@@ -44,7 +44,7 @@ Route::middleware(['admin'])->group (function() {
 	Route::get('/admin/medicos', 'AdminController@listaMedicos');
 	Route::post('/admin/medicos/medicosalvar', 'AdminController@medicosalvar');
 	Route::get('/admin/medicos/{id}', 'AdminController@show');
-	Route::put('/admin/medicos/{id}', 'AdminController@editarmedico');
+	Route::put('/admin/medicos/', 'AdminController@editarmedico');
 	
 	Route::get('/admin/pacientes', 'AdminController@listaPacientes');
 	Route::post('/admin/pacientesalvar', 'AdminController@pacientesalvar');

@@ -15,8 +15,10 @@
         </div>
     </div>    
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-   <form class="form"  method="post" action="{{url('admin/medico/editar/') }}">
+   <form class="form"  method="post" action="{{url('admin/medicos/') }}">
         @csrf
+        <input type="hidden" name="_method" value="PUT">
+        <input type="hidden" value="{{$id}}" name="id">
 	<fieldset>
           <legend>Dados de Medico</legend>
             <div class="row">
