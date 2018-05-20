@@ -68,7 +68,7 @@ Route::middleware(['web'])->group (function() {
 	Route::get('/areaCliente/pacienteContat','UserController@pacienteContat');
 	Route::post('/areaCliente/pacienteContat','UserController@pacienteContat');
 
-// 	Route::get('lista-usuarios', 'UsuariosController@listaUsuario');
+// Route::get('lista-usuarios', 'UsuariosController@listaUsuario');
 // Route::get('cria-usuario', 'UsuariosController@formularioUsuario');
 // Route::post('salva-usuario', 'UsuariosController@salvarUsuario');
 // Route::put('altera-usuario/{id}', 'UsuariosController@alteraUsuario');

@@ -99,6 +99,7 @@ class RegisterController extends Controller
 
     protected function register(Request $request)
     {       
+           
 
             $user = new User();
             $user->name = $request->name;
