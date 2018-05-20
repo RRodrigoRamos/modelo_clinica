@@ -80,8 +80,7 @@
           <div class="form-group col-sm-12 col-md-12 col-lg-3">
                 <label for="telefone" class="control-label">Telefone: <span class="obr">*</span></label><input type="tel" value="{{$value->telefone}}" class="form-control" id="telefone" name="telefone" maxlength="15" placeholder="(96) 00000 - 0000">
           </div>
-      </div>
-          <div class="form-group col-sm-12 col-md-12 col-lg-3">
+                <div class="form-group col-sm-12 col-md-12 col-lg-3">
                 <label for="crm" class="control-label">CRM: <span class="obr">*</span></label><input type="tel" value="{{$value->crm}}" class="form-control" id="crm" name="crm" maxlength="15" placeholder="(96) 00000 - 0000">
           </div>
           <div class="form-group col-sm-6 col-md-6 col-lg-3">
@@ -100,7 +99,6 @@
       </div>
     </fieldset>
     <br>
-    
     <br>
     <fieldset>
         <legend>Dados de Endereço</legend>

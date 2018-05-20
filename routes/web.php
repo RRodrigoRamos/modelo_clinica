@@ -41,13 +41,21 @@ Route::middleware(['admin'])->group (function() {
 	Route::get('/admin/agendamentos', 'AdminController@listaAgendas');
 	Route::post('/admin/agendamentosalvar', 'AdminController@CadastrarAgendas');
 	
+	#salvar
 	Route::get('/admin/medicos', 'AdminController@listaMedicos');
 	Route::post('/admin/medicos/medicosalvar', 'AdminController@medicosalvar');
-	Route::get('/admin/medicos/{id}', 'AdminController@show');
+	#editar
+	Route::get('/admin/medicos/{id}', 'AdminController@showmedico');
 	Route::put('/admin/medicos/', 'AdminController@editarmedico');
-	
+
+
+
+	#salvar
 	Route::get('/admin/pacientes', 'AdminController@listaPacientes');
 	Route::post('/admin/pacientesalvar', 'AdminController@pacientesalvar');
+	#editar
+	Route::get('/admin/pacientes/{id}', 'AdminController@showpaciente');
+	Route::put('/admin/pacientes/', 'AdminController@editarpaciente');
 
 
 

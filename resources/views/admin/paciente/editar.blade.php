@@ -1,114 +1,114 @@
 @extends('layout.template_login')
-
-
 @section('ConteudoPrincipal')
-
-<table border="1px" >
-<tr>
-<td>Nome:</td>
-<td>Cpf:</td>
-<td>Convenio:</td>
-@foreach($pacientes as $value)
-<tr>
-		<td>
-		</td>
-		<td>
-        {{$value->name}}
-		</td>
-		</td>
-		<td>
-        {{$value->cpf}}
-		</td>
-		<td>
-		{{$value->convenio_id}}
-		</td>
-            <td>
-            
-            <a href="{{url('admin/pacientes/'.$value->id)}}">Editar</a>
-            </td>
-</tr>
-@endforeach
-</table>
-{{$pacientes->links()}}
 @endsection
-
 @section('ConteudoSecundario')
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Cadastrar Paciente</button>
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+<div class="container main">
 
-@component('admin.components.modal')
-@slot('form')
-@component('admin.components.formulario')
-	@slot('url')
-	pacientesalvar
-	@endslot
-	@slot('formulario')
-   <fieldset>
-          <legend>Dados de Paciente</legend>
+    <br>
+    <div class="col-lg-1">
+    </div>
+  <div class="col-lg-10">
+<div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+      <div class="alert alert-info">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <div class="text"><i class="fa fa-info-circle fa-2x "></i> &nbsp; Preencha os campos necessário para o CADASTRO ! <span class="obr"> obs: ( * ) Campos obrigatórios<span></div> 
+        </div>
+    </div>    
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+   <form class="form"  method="post" action="{{url('admin/pacientes/') }}">
+        @csrf
+        <input type="hidden" name="_method" value="PUT">
+        <input type="hidden" value="{{$id}}" name="id">
+	<fieldset>
+          <legend>Dados de Medico</legend>
             <div class="row">
               <div class="form-group col-sm-6 col-md-6 col-lg-6"">
                     <label for="name" class="control-label">Nome <span class="obr">*</span></label>
-                    <input type="txt" class="form-control" name="name" id="name" placeholder="Nome Completo" required autofocus>
+                    <input type="txt" class="form-control" name="name" id="name" placeholder="Nome Completo" value="{{$value->name}}" required autofocus>
               </div>
 
+            <div class="form-group col-sm-6 col-md-6 col-lg-6"">
+                <label for="name_social" class="control-label">Foto:</label>
+                <input type="file" class="form-control" name="foto" id="foto" value="{{$value->foto}}" placeholder="{{$value->foto}}">
+                <span class="verd">* Como deseja ser chamado</span>
+          </div>
         </div>
 
         <div class="row">
           <div class="form-group col-sm-6 col-md-6 col-lg-6"">
                 <label for="email" class="control-label">Email <span class="obr">*</span></label>
-                <input type="email" class="form-control" name="email" id="email" placeholder="exemplo_email@gmail.com" required>
+                <input type="email" class="form-control" name="email" id="email" value="{{$value->email}}" placeholder="exemplo_email@gmail.com" required>
           </div>
           <div class="form-group col-sm-6 col-md-6 col-lg-3">
-                <label for="password" class="control-label">Senha <span class="obr">*</span></label><input type="password" class="form-control" name="password" placeholder="***Senha***" required> <span class="verd">* Minino 6 digitos</span>
+                <label for="password" class="control-label">Senha <span class="obr">*</span></label><input type="password" class="form-control" name="password" placeholder="***Senha***" value="{{$value->password}}" required> <span class="verd">* Minino 6 digitos</span>
           </div>
           <div class="form-group col-sm-12 col-md-12 col-lg-3">
-                <label for="password_confirmation" class="control-label">Confirme Senha <span class="obr">*</span></label><input type="password" class="form-control" name="password_confirmation" placeholder="***Senha***"required> <span class="verd">* Confirme Senha </span>
+                <label for="password_confirmation" class="control-label">Confirme Senha <span class="obr">*</span></label><input type="password" class="form-control" name="password_confirmation" value="{{$value->password}}" placeholder="***Senha***"required> <span class="verd">* Confirme Senha </span>
           </div>
       </div>
       <div class="row">
         <div class="form-group col-sm-6 col-md-6 col-lg-3">
                <label for="sexo" class="control-label">Sexo <span class="obr">*</span></label>
-              <select id="sexo" name="sexo" class="form-control" data-live-search="true">
+              <select id="sexo" name="sexo" class="form-control" data-live-search="true" value="{{$value->password}}">
                 <option value="" disabled="disabled" selected>Selecione</option>
-                            <option value="Masc">Masculino</option>
+                            @if($value->sexo == 'Masc')
+                            <option value="Masc" selected>Masculino</option>
                             <option value="Feminino">Feminino</option>
-            </select>
-        </div>
-        <div class="form-group col-sm-6 col-md-6 col-lg-3">
-               <label for="convenio" class="control-label">Convenio: <span class="obr">*</span></label>
-              <select id="convenio" name="convenio_id" class="form-control" data-live-search="true">
-                                   <option value="" disabled="disabled" selected>Selecione</option>
-                            @foreach($convenios as $convenio)
-                            <option value="{{ $convenio->id }}"> {{ $convenio->nome_convenio }}
-                   			 </option>
-                            @endforeach
+                            
+                            @else
+                            <option value="Masc">Masculino</option>
+                            <option value="Feminino" selected>Feminino</option>
+                            @endif
             </select>
         </div>
         <div class="form-group col-sm-12 col-md-12 col-lg-3"">
                 <label for="cpf" class="control-label">CPF: <span class="obr">*</span> </label>
-                <input type="text" class="form-control" name="cpf" id="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" placeholder="000.000.000-00" required>
+                <input type="text" value="{{$value->cpf}}" class="form-control" name="cpf" id="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" placeholder="000.000.000-00" required>
           </div>
           <div class="form-group col-sm-12 col-md-12 col-lg-3">
-                <label for="data_nasc" class="control-label">Data Nascimento: <span class="obr">*</span></label><input type="date" class="form-control" id="data_nasc" name="data_nasc" required>
+                <label for="data_nasc" class="control-label">Data Nascimento: <span class="obr">*</span></label><input type="date" value="{{$value->data_nasc}}" class="form-control" id="data_nasc" name="data_nasc" required>
           </div>
           <div class="form-group col-sm-12 col-md-12 col-lg-3">
-                <label for="telefone" class="control-label">Telefone: <span class="obr">*</span></label><input type="tel" class="form-control" id="telefone" name="telefone" maxlength="15" placeholder="(96) 00000 - 0000">
+                <label for="telefone" class="control-label">Telefone: <span class="obr">*</span></label><input type="tel" value="{{$value->telefone}}" class="form-control" id="telefone" name="telefone" maxlength="15" placeholder="(96) 00000 - 0000">
           </div>
+            <div class="form-group col-sm-6 col-md-6 col-lg-3">
+               <label for="convenio" class="control-label">Convenio: <span class="obr">*</span></label>
+              <select id="convenio" name="convenio_id" class="form-control" data-live-search="true">
+                                   <option value="" disabled="disabled" selected>Selecione</option>
+                            @foreach($convenios as $convenio)
+                            <option value="{{ $convenio->id }}" @if($convenio->id==$value->convenio_id) selected @endif > {{ $convenio->nome_convenio }}
+                   			 </option>
+                            @endforeach
+            </select>
+        </div>
+      </div>
+
       </div>
     </fieldset>
     <br>
-     <fieldset>
+    
+         <fieldset>
           <legend> Dados de Triagem </legend>
         <div class="row">
               <div class="form-group col-sm-12 col-md-4 col-lg-3">
                     <label for="altura" class="control-label"> Altura Atual: <span class="obr">*</span></label>
-                    <input type="txt" class="form-control" name="altura" id="altura" maxlength="4" OnKeyPress="formatar('#.##', this)" placeholder="Ex.: 1.70" required>
+                    <input type="txt"  value="{{$value->altura}}" class="form-control" name="altura" id="altura" maxlength="4" OnKeyPress="formatar('#.##', this)" placeholder="Ex.: 1.70" required>
               </div>
               <div class="form-group col-sm-12 col-md-4 col-lg-3">
                     <label for="peso" class="control-label"> Peso Atual: <span class="obr">*</span></label>
-                    <input type="txt" class="form-control" name="peso" id="n_registro" maxlength="4" OnKeyPress="formatar('##.#', this)" placeholder="Ex.: 80.0" required>
+                    <input type="txt"  value="{{$value->peso}}" class="form-control" name="peso" id="n_registro" maxlength="4" OnKeyPress="formatar('##.#', this)" placeholder="Ex.: 80.0" required>
               </div>
               <div class="form-group col-sm-12 col-md-4 col-lg-6">
-                    <label for="obs" class="control-label">Observação</label>
+                    <label for="obs"  value="{{$value->obs}}" class="control-label">Observação</label>
                     <input type="txtarea" class="form-control" name="obs" id="obs" placeholder="Ex.: Pressão Alta, Alergias, etc..." >
               </div>
             </div>
@@ -119,33 +119,30 @@
           <div class="row">
               <div class="form-group col-sm-12 col-md-12 col-lg-9">
                     <label for="endereco" class="control-label">Endereço: </label>
-                    <input type="txt" class="form-control" name="endereco" id="endereco" placeholder="Ex.: Rua.: Av.: Travessa, Etc...">
+                    <input type="txt" value="{{$value->endereco}}" class="form-control" name="endereco" id="endereco" placeholder="Ex.: Rua.: Av.: Travessa, Etc...">
               </div>
               <div class="form-group col-sm-12 col-md-12 col-lg-3">
                     <label for="numero" class="control-label">Número: </label>
-                    <input type="txt" class="form-control" name="numero" id="numero"  placeholder="Ex.: 1313A, Apt14... " maxlength="10">
+                    <input type="txt" value="{{$value->numero}}"class="form-control" name="numero" id="numero"  placeholder="Ex.: 1313A, Apt14... " maxlength="10">
               </div>            
-              <div class="form-group col-sm-12 col-md-12 col-lg-3">
-                    <label for="numero" class="control-label">Cep: </label>
-                    <input type="txt" class="form-control" name="numero" id="cep"  placeholder="Ex.: 68932-000... " maxlength="10">
-              </div>            
-             <div class="form-group col-sm-12 col-md-12 col-lg-3">
+             <!--  <div class="form-group col-sm-12 col-md-12 col-lg-3">
                     <label for="tipo_local" class="control-label">Tipo Local: </label>
-                    <input type="txt" class="form-control" name="tipo_local" id="tipo_local" placeholder="Prédio, Casa Própria, KitNet...">
-              </div>
-             <div class="form-group col-sm-12 col-md-12 col-lg-3">
-                    <label for="complement" class="control-label">Complemento: </label>
-                    <input type="txt" class="form-control" name="complement" id="complement" placeholder="Prédio, Casa Própria, KitNet...">
-              </div>
+                    <input type="txt" value="{{$value->tipo_local}}" class="form-control" name="tipo_local" id="tipo_local" placeholder="Prédio, Casa Própria, KitNet...">
+              </div> -->
         </div>
         <div class="row">
+               <div class="form-group col-sm-12 col-md-12 col-lg-3">
+                <label for="cep" class="control-label">CEP:</label>
+                    <input type="text" value="{{$value->cep}}" class="form-control" name="cep" id="cep" OnKeyPress="formatar('##.###-###', this)" maxlength="10" placeholder="68.900-00">
+            </div>
             <div class="form-group col-sm-12 col-md-12 col-lg-6">
                     <label for="bairro_id" class="control-label">Bairro: </label>
                     <div class="form-group">
               <select id="bairro_id" name="bairro_id" class="form-control" data-live-search="true">
                     <option value="" disabled="disabled" selected>Selecione</option>
                             @foreach($bairros as $bairro)
-                            <option value="{{ $bairro->id }}"> {{ $bairro->nome }}
+                            <option value="{{ $bairro->id }}" @if($bairro->id==$value->bairro_id) selected @endif >
+                            {{ $bairro->nome }}
                     </option>
                             @endforeach
                 </select>
@@ -176,7 +173,7 @@
                 </div>
            </div>
             <div class="form-group col-sm-12 col-md-12 col-lg-3">
-                  <label for="estado" class="control-label">Estado</label>
+                  <label for="nome_convenio" class="control-label">Estado</label>
                 <div class="form-group">
               <select id="estado" name="estado" class="form-control" data-live-search="true">
                             <option value="AC">Acre</option>
@@ -210,8 +207,17 @@
               </div>
           </div>
     </fieldset>
-	@endslot
-@endcomponent
-@endslot
-@endcomponent
+        <br>
+    <div class="col-lg-4">
+    </div>
+  <div class="form-group col-sm-6 col-md-6 col-lg-6 col-lg-6">
+            <button type="submit" class="btn btn-primary form-control agendar"> 
+            Cadastrar</button>
+        
+      </div>
+  <br>
+  </form>
+</div>
+</div>
+
 @endsection

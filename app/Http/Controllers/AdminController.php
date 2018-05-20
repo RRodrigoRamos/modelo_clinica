@@ -138,9 +138,10 @@ class AdminController extends Controller
         $paciente = User::where('role','paciente')->paginate(15);
         return view('admin.pacientes',['pacientes' => $paciente]);
     }
-    public function show($id)
+    #MEDICO EDITAR
+    public function showmedico($id)
     {
-        $value=Medico::select('*')->join('users','users.id', '=', 'medicos.id')->join('enderecos','users.id', '=', 'enderecos.id')->where('medicos.id', '=', $id)->get();
+        $value=Medico::select('*')->join('users','users.id', '=', 'medicos.user_id')->join('enderecos','users.id', '=', 'enderecos.id')->where('medicos.id', '=', $id)->get();
         $value = $value[0];
         return view('admin.medico.editar',['value' => $value,'bairros' => self::bairros(),'especialidades' => self::especialidade(), 'id'=>$id]);
     }
@@ -150,15 +151,15 @@ class AdminController extends Controller
         'email' => 'required|unique:medicos|max:255',
         'cpf' => 'required|unique:users|max:255',
     ]);
-                $medico = Medico::find($request->id);
-                $medico->foto = $request->foto;
-                $medico->crm = $request->crm;
-                $medico->email = $request->email;
-                $medico->sexo = $request->sexo;
-                $medico->data_nasc = $request->data_nasc;
-                $medico->telefone = $request->telefone;
-                $medico->especialidade_id= $request->especialidade_id;
-                $medico->update();
+            $medico = Medico::find($request->id);
+            $medico->foto = $request->foto;
+            $medico->crm = $request->crm;
+            $medico->email = $request->email;
+            $medico->sexo = $request->sexo;
+            $medico->data_nasc = $request->data_nasc;
+            $medico->telefone = $request->telefone;
+            $medico->especialidade_id= $request->especialidade_id;
+            $medico->update();
             $user = User::find($medico->user_id);
             $user->name = $request->name;
             $user->email = $request->email;
@@ -172,7 +173,46 @@ class AdminController extends Controller
             'numero' => $request->numero,
             'complement' => $request->complement,
             'bairro_id' => $request->bairro_id]);
-            
+            return redirect('/admin/medicos');
+        
+    }
+
+
+    #PACIENTE EDITAR
+    public function showpaciente($id)
+    {
+        $value=Paciente::select('*')->join('users','users.id', '=', 'pacientes.user_id')->join('triagens','triagens.paciente_id', '=', 'users.id')->join('enderecos','users.id', '=', 'enderecos.id')->where('pacientes.id', '=', $id)->get();
+        $value = $value[0];
+        return view('admin.paciente.editar',['value' => $value,'bairros' => self::bairros(),'especialidades' => self::especialidade(), 'id'=>$id,'convenios'=> self::convenios()]);
+    }
+    public function editarpaciente(Request $request)
+    {   
+       $request->validate([
+        'email' => 'required|unique:medicos|max:255',
+        'cpf' => 'required|unique:users|max:255',
+    ]);
+
+            $paciente = Paciente::find($request->id);
+            $paciente->convenio_id = $request->convenio_id;
+            $paciente->sexo = $request->sexo;
+            $paciente->data_nasc = $request->data_nasc;
+            $paciente->telefone = $request->telefone;
+            $paciente->update();
+
+            $user = User::find($paciente->user_id);
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->cpf = $request->cpf;
+            $user->password = bcrypt($request->password);
+            $user->update();
+
+            $endereco = Endereco::where('id',$user->endereco_id)->update(['cep' => $request->cep,
+            'tipo_local' => $request->tipo_local,
+            'endereco' => $request->endereco,
+            'numero' => $request->numero,
+            'complement' => $request->complement,
+            'bairro_id' => $request->bairro_id]);
+            return redirect('admin/pacientes');
         
     }
 

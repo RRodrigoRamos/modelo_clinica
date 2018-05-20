@@ -57,6 +57,12 @@
 						<!-- Navbar Collapse Starts -->
 							<div class="navbar-collapse collapse">					
 								<ul class="nav navbar-nav navbar-right">
+								                                <li>
+                                    <a href="/inicio">
+                                        <i class="fa fa-angle-right"></i> 
+                                        Voltar a Pagina Inicial
+                                    </a> 
+                                </li>
 									<li>
 										<a href="/admin/agendamentos">Lista de Agendamentos</a>
 									</li>
@@ -69,15 +75,27 @@
 									<li>
 										<a href="/admin/pacientes"> Pacientes Cadastrados </a>
 									</li>
+                                <li> <a  href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('SAIR') }} <i class="fa fa-sign-out fa-1x" aria-hidden="true"></i>
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                        </li>
+                        </div>
 								</ul>
 							</div>
-						<!-- Navbar Collapse Ends -->
+							</li>
 					</div>
 		</nav>
 			<!-- Navbar Menu Fim -->
 			</div>
 		<!-- Conteudo Inicial Fim -->
 		</header>
+		 
 	<!-- Topo Fim -->
 	@yield('ConteudoPrincipal')
 	@yield('ConteudoSecundario')
