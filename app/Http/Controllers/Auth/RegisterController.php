@@ -130,7 +130,11 @@ class RegisterController extends Controller
             $triagen->peso = $request->peso;
             $triagen->obs = $request->obs;
             $triagen->save();
+
+            \Auth::login($user);
+
             return redirect('/areaCliente');
+
            
     }
         
