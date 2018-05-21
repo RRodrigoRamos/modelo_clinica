@@ -108,6 +108,7 @@
                <th>Sexo</th>
                <th>Convênio</th>
                <th>Telefone</th>
+               <th>Acão</th>
               </tr>
              </thead>
              <tbody>
@@ -118,6 +119,7 @@
                   <td>{{ $dados_paciente->sexo }}</td>
                   <td>{{ $dados_paciente->convenio_id }}</td>
                   <td>{{ $dados_paciente->telefone }}</td>
+                   <td><a href="{{url('admin/pacientes/'.$dados_paciente->id)}}"> <i class="fa fa-pencil" aria-hidden="true"></i> Editar</a></td>
               </tr>
             @endforeach
              </tbody>

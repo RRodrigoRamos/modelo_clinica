@@ -44,7 +44,6 @@ Route::middleware(['admin'])->group (function() {
 	#salvar
 	Route::get('/admin/medicos', 'AdminController@listaMedicos');
 	Route::post('/admin/medicos/medicosalvar', 'AdminController@medicosalvar');
-<<<<<<< HEAD
 	#editar
 	Route::get('/admin/medicos/{id}', 'AdminController@showmedico');
 	Route::put('/admin/medicos/', 'AdminController@editarmedico');
@@ -57,14 +56,6 @@ Route::middleware(['admin'])->group (function() {
 	#editar
 	Route::get('/admin/pacientes/{id}', 'AdminController@showpaciente');
 	Route::put('/admin/pacientes/', 'AdminController@editarpaciente');
-=======
-	Route::get('/admin/medicos/{id}', 'AdminController@show');
-	Route::put('/admin/medicos/{id}', 'AdminController@editarmedico');
-	
-	Route::get('/admin/pacientes', 'AdminController@listaPacientes');
-	Route::post('/admin/pacientesalvar', 'AdminController@pacientesalvar');
-	Route::get('/admin/pacientesalvar', 'AdminController@pacientesalvar');
->>>>>>> 71dbbd10321138f454e0b59a91490dbce707837d
 
 
 
