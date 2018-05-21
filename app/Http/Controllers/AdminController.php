@@ -76,7 +76,7 @@ class AdminController extends Controller
             $user->email = $request->email;
             $user->cpf = $request->cpf;
             $user->password = bcrypt($request->password);
-            $user->role = 'paciente';
+            $user->role = 'medico';
             $user->save();
             $endereco = new Endereco();
             $endereco->user_id = $user->id;
@@ -159,19 +159,19 @@ class AdminController extends Controller
                 $medico->telefone = $request->telefone;
                 $medico->especialidade_id= $request->especialidade_id;
                 $medico->update();
-            $user = User::find($medico->user_id);
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->cpf = $request->cpf;
-            $user->password = bcrypt($request->password);
-            $user->update();
+                $user = User::find($medico->user_id);
+                $user->name = $request->name;
+                $user->email = $request->email;
+                $user->cpf = $request->cpf;
+                $user->password = bcrypt($request->password);
+                $user->update();
 
             $endereco = Endereco::where('id',$user->endereco_id)->update(['cep' => $request->cep,
-            'tipo_local' => $request->tipo_local,
-            'endereco' => $request->endereco,
-            'numero' => $request->numero,
-            'complement' => $request->complement,
-            'bairro_id' => $request->bairro_id]);
+                'tipo_local' => $request->tipo_local,
+                'endereco' => $request->endereco,
+                'numero' => $request->numero,
+                'complement' => $request->complement,
+                'bairro_id' => $request->bairro_id]);
             
         
     }

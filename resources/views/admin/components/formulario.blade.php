@@ -2,9 +2,7 @@
 <div class="container main">
 
     <br>
-    <div class="col-lg-1">
-    </div>
-  <div class="col-lg-10">
+  <div class="col-lg-9">
 <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
       <div class="alert alert-info">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -28,3 +26,4 @@
 </div>
 </div>
 </div>
+<br>

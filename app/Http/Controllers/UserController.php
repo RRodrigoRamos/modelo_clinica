@@ -92,6 +92,7 @@ class UserController extends Controller
             ->join('clinicas','clinica_medicos.clinica_id','=','clinicas.id') 
             ->join('status_agendas','agendamentos.status_id','=','status_agendas.id')
             ->where('users.id', '=', $usuario)
+            ->where('status_agendas.descricao', '=', 'Finalizado')
             ->orderBy('agendamentos.data_agenda', 'asc')
             ->get();
 

@@ -28,14 +28,14 @@ Event::listen('404', function()
 });
 
 Route::get('/admin/login',['as' => 'admin.login','uses' => 'AdminAuth\LoginController@showLoginForm']);
-Route::post('/admin/login',['uses' => 'AdminAuth\LoginController@Login']);
+Route::post('/admin/login',['as' => 'admin.login','uses' => 'AdminAuth\LoginController@Login']);
 Route::post('/admin/logout',['as' => 'admin.logout','uses' => 'AdminAuth\LoginController@Logout']);
 Route::get('/admin/password/reset',['as' => 'admin.password.reset','uses' => 'AdminAuth\ForgotPasswordController@showLinkRequestForm']);
 Route::post('/admin/password/email',['as' => 'admin.password.email','uses' => 'AdminAuth\ForgotPasswordController@sendResetLinkEmail']);
 Route::get('/admin/password/reset/{token}',['as' => 'admin.password.reset.token','uses' => 'AdminAuth\ResetPasswordController@showResetForm']);
 Route::post('/admin/password/reset',['as'=>'admin.password.request','uses' => 'AdminAuth\ResetPasswordController@reset']);
-// Rotas de registro Admin...
 
+// Rotas de registro Admin...
 Route::middleware(['admin'])->group (function() {
 	Route::get('/areaAdmin', 'AdminController@index');
 	Route::get('/admin/agendamentos', 'AdminController@listaAgendas');
@@ -44,10 +44,11 @@ Route::middleware(['admin'])->group (function() {
 	Route::get('/admin/medicos', 'AdminController@listaMedicos');
 	Route::post('/admin/medicos/medicosalvar', 'AdminController@medicosalvar');
 	Route::get('/admin/medicos/{id}', 'AdminController@show');
-	Route::put('/admin/medicos/', 'AdminController@editarmedico');
+	Route::put('/admin/medicos/{id}', 'AdminController@editarmedico');
 	
 	Route::get('/admin/pacientes', 'AdminController@listaPacientes');
 	Route::post('/admin/pacientesalvar', 'AdminController@pacientesalvar');
+	Route::get('/admin/pacientesalvar', 'AdminController@pacientesalvar');
 
 
 

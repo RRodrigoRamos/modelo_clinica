@@ -1,46 +1,159 @@
-@extends('layout.template_login')
+@extends('layout.templateAdmin')
+@section('title', 'Administração')
+@section('topoInfor')
+      <!-- Informações do Topo site -->
+        <div class="top-bar hidden-sm hidden-xs">
+          <div class="row">
+            <div class="col-sm-6 col-xs-12">
+                Bem vindo a sua pagina de Administração !
+            </div>
+          </div>
+        </div>
+    <!-- Informações do Topo site Fim -->
+@endsection
+@section('Menu')
+      <!-- Navbar Menu -Inicio -->
+        <nav id="nav" class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <!-- Navbar Header Starts -->
+          <div class="navbar-header">
+            <!-- Collapse Button Menu Mobile -->
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Navegação</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            <!-- Collapse Button Menu Mobile Fim -->
+              <!-- Logo  -->
+              <a href="/areaAdmin" class="navbar-brand">
+                <img src="../images/fav/logo.png" alt="ACClinic - Agendamentos de Consultas Clinicas e Exames" class="imgLogo">
+              </a>
+            <!-- Logo Fim -->
+          </div>
+          
+          <!-- Menu Infor Fim -->
+            <!-- Navbar Header Ends -->
+            <!-- Navbar Collapse Starts -->
+              <div class="navbar-collapse collapse">          
+                <ul class="nav navbar-nav navbar-right">
+                  <li>
+                    <a href="/areaAdmin">Início</a>
+                  </li>
+                  <li>
+                      <a href="/admin/agendamentos">
+                        Lista Agendamentos
+                      </a>
+                  </li>
+                  <li class="active">
+                      <a href="/admin/medicos">
+                        Médicos Cad.
+                      </a>
+                  </li>
+                  <li>
+                      <a href="/admin/atendentes">
+                        Atendentes Cad.
+                      </a>
+                  </li>
+                  <li>
+                      <a href="/admin/pacientes">
+                         Pacientes Cad.   
+                      </a>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                    <li> <a class="dropdown-item" href="{{ route('admin.logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Sair') }} <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <!-- Navbar Collapse Ends -->
+        </div>
+    </nav>
+      <!-- Navbar Menu Fim -->
+      </div>
+    <!-- Conteudo Inicial Fim -->
+    </header>
+  <!-- Topo Fim -->
+
+@endsection
 @section('ConteudoPrincipal')
-
-
-<table border="1px" >
-<tr>
-<td>
-foto
-</td>
-<td>
-nome
-</td>
-<td>
-açao
-</td>
-</tr>
-@foreach($medicos as $value)
-<tr>
-		<td>
-        {{$value->foto}}
-		</td>
-		<td>
-		{{$value->name}}
-		</td>
-            
-            <td>
-            <a href="{{url('admin/medicos/'.$value->id)}}">Editar</a>
-      	</td>
-</tr>
-@endforeach
-</table>
-{{$medicos->links()}}
+<!-- Banner Cliente -->
+    <div class="main-banner index_1">
+      <div class="container">
+        <h2><span>Médicos Clinica</span></h2>
+      </div>
+    </div>
+<!-- Banner Cliente Fim-->
+<div class="container main">
+<br>
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <div class="text"><i class="fa fa-info-circle fa-2x "></i> &nbsp; Lista de Médicos Cadastrados da Clínica. </div>
+        </div>
+  </div>
+<br>
+<div class="row">
+<div class="col-lg-1">
+</div>
+<div class="form-group col-sm-12 col-md-12 col-lg-10 col-xs-12">
+ <fieldset>
+          <legend>Medicos - Clinica</legend>
+              <table class="table table-striped table-bordered table-condensed table-hover table-responsive">
+             <thead>
+              <tr>
+               <th>Nome</th>
+               <th>Especialidade</th>
+               <th>CRM</th>
+               <th>Telefone</th>
+               <th>::Ação::</th>
+              </tr>
+             </thead>
+             <tbody>
+            @foreach($medicos as $medico_p)
+              <tr>
+                <td>{{ $medico_p->name}}</td>
+                <td>{{ $medico_p->especialidade_id}}</td>
+                <td>{{ $medico_p->crm}}</td>
+                <td>{{ $medico_p->telefone}}</td>
+                <td><a href="{{url('admin/medicos/'.$medico_p->id)}}"> <i class="fa fa-pencil" aria-hidden="true"></i> Editar</a></td>
+              </tr>
+             @endforeach
+             </tbody>
+            </table>
+            {{$medicos->links()}}
+    </fieldset>
+    </div>
+</div>
+</div>
 @endsection
 @section('ConteudoSecundario')
+<div class="col-lg-2">
+  </div>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Cadastrar Medico</button>
-
-@component('admin.components.modal')
+@component('admin.components.modal') 
 @slot('form')
 @component('admin.components.formulario')
 	@slot('url')
 	medicosalvar
 	@endslot
 	@slot('formulario')
+
 	<fieldset>
           <legend>Dados de Medico</legend>
             <div class="row">
@@ -51,7 +164,7 @@ açao
 
             <div class="form-group col-sm-6 col-md-6 col-lg-6"">
                 <label for="name_social" class="control-label">Foto:</label>
-                <input type="file" class="form-control" name="foto" id="foto" placeholder="Fulano(a) de Tal">
+                <input type="file" class="form-control" name="foto" id="foto" placeholder="Dr. Fulano(a) de Tal">
                 <span class="verd">* Como deseja ser chamado</span>
           </div>
         </div>
@@ -89,7 +202,7 @@ açao
           </div>
       </div>
           <div class="form-group col-sm-12 col-md-12 col-lg-3">
-                <label for="crm" class="control-label">CRM: <span class="obr">*</span></label><input type="tel" class="form-control" id="crm" name="crm" maxlength="15" placeholder="(96) 00000 - 0000">
+                <label for="crm" class="control-label">CRM: <span class="obr">*</span></label><input type="tel" class="form-control" id="crm" name="crm" maxlength="15" placeholder="00000 - AP">
           </div>
           <div class="form-group col-sm-6 col-md-6 col-lg-3">
              <div class="form-group">
@@ -103,7 +216,6 @@ açao
                 </select>
                 </div>
                 </div>
-      </div>
     </fieldset>
     <br>
     
