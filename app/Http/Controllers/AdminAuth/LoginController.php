@@ -34,17 +34,11 @@ class LoginController extends Controller
      * @return void
      */
     // para não conflitar com o outro usuario
-<<<<<<< HEAD
-    public function __construct()
-    {
-    }
-=======
     // public function __construct()
     // {
     //     $this->middleware('admin')->except('logout');
     // } 
 
->>>>>>> 71dbbd10321138f454e0b59a91490dbce707837d
     
     protected function guard()
     {
