@@ -76,7 +76,7 @@ class AdminController extends Controller
             $user->email = $request->email;
             $user->cpf = $request->cpf;
             $user->password = bcrypt($request->password);
-            $user->role = 'paciente';
+            $user->role = 'medico';
             $user->save();
             $endereco = new Endereco();
             $endereco->user_id = $user->id;

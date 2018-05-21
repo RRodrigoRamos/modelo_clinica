@@ -538,7 +538,16 @@ h6 { font-size: 16px; }
 		background: url(../images/banners/registros.png) center right;
 	}	
 	.main-banner.paginaLogin{
+		background: url(../images/banners/privacidade.jpg) center right;
+	}
+	.main-banner.admins{
 		background: url(../images/banners/admin_login.png) center top;
+	}	
+	.main-banner.indexAdm{
+		background: url(../images/banners/financeiro.png) center top;
+	}
+	.main-banner.index_1{
+		background: url(../images/banners/agendamentos.png) center top;
 	}	
 	.main-banner h2 {
 		margin-top: 0;

@@ -1,37 +1,133 @@
-@extends('layout.template_login')
-
-
-@section('ConteudoPrincipal')
-
-<table border="1px" >
-<tr>
-<td>Nome:</td>
-<td>Cpf:</td>
-<td>Convenio:</td>
-@foreach($pacientes as $value)
-<tr>
-		<td>
-		</td>
-		<td>
-        {{$value->name}}
-		</td>
-		</td>
-		<td>
-        {{$value->cpf}}
-		</td>
-		<td>
-		{{$value->convenio_id}}
-		</td>
-            <td>
-            
-            <a href="{{url('admin/pacientes/'.$value->id)}}">Editar</a>
-            </td>
-</tr>
-@endforeach
-</table>
-{{$pacientes->links()}}
+@extends('layout.templateAdmin')
+@section('title', 'Administração')
+@section('topoInfor')
+      <!-- Informações do Topo site -->
+        <div class="top-bar hidden-sm hidden-xs">
+          <div class="row">
+            <div class="col-sm-6 col-xs-12">
+                Bem vindo a sua pagina de Administração !
+            </div>
+          </div>
+        </div>
+    <!-- Informações do Topo site Fim -->
 @endsection
+@section('Menu')
+      <!-- Navbar Menu -Inicio -->
+        <nav id="nav" class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <!-- Navbar Header Starts -->
+          <div class="navbar-header">
+            <!-- Collapse Button Menu Mobile -->
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Navegação</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            <!-- Collapse Button Menu Mobile Fim -->
+              <!-- Logo  -->
+              <a href="/areaAdmin" class="navbar-brand">
+                <img src="../images/fav/logo.png" alt="ACClinic - Agendamentos de Consultas Clinicas e Exames" class="imgLogo">
+              </a>
+            <!-- Logo Fim -->
+          </div>
+          
+          <!-- Menu Infor Fim -->
+            <!-- Navbar Header Ends -->
+            <!-- Navbar Collapse Starts -->
+              <div class="navbar-collapse collapse">          
+                <ul class="nav navbar-nav navbar-right">
+                  <li>
+                    <a href="/areaAdmin">Início</a>
+                  </li>
+                  <li>
+                      <a href="/admin/agendamentos">
+                        Lista Agendamentos
+                      </a>
+                  </li>
+                  <li>
+                      <a href="/admin/medicos">
+                        Médicos Cad.
+                      </a>
+                  </li>
+                  <li>
+                      <a href="/admin/atendentes">
+                        Atendentes Cad.
+                      </a>
+                  </li>
+                  <li class="active">
+                      <a href="/admin/pacientes">
+                         Pacientes Cad.   
+                      </a>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                    <li> <a class="dropdown-item" href="{{ route('admin.logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Sair') }} <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                    </a>
 
+                                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <!-- Navbar Collapse Ends -->
+        </div>
+    </nav>
+      <!-- Navbar Menu Fim -->
+      </div>
+    <!-- Conteudo Inicial Fim -->
+    </header>
+  <!-- Topo Fim -->
+
+@endsection
+@section('ConteudoPrincipal')
+<div class="container">
+
+<div class="row">
+<div class="col-lg-1">
+</div>
+<div class="form-group col-sm-12 col-md-12 col-lg-10 col-xs-12">
+ <fieldset>
+          <legend>Pacientes - Clinica </legend>
+              <table class="table table-striped table-bordered table-condensed table-hover table-responsive">
+             <thead>
+              <tr>
+               <th>Nome</th>
+               <th>::CPF::</th>
+               <th>Sexo</th>
+               <th>Convênio</th>
+               <th>Telefone</th>
+              </tr>
+             </thead>
+             <tbody>
+            @foreach($pacientes as $dados_paciente)
+              <tr>
+                  <td>{{ $dados_paciente->name }}</td>
+                  <td>{{ $dados_paciente->cpf }}</td>
+                  <td>{{ $dados_paciente->sexo }}</td>
+                  <td>{{ $dados_paciente->convenio_id }}</td>
+                  <td>{{ $dados_paciente->telefone }}</td>
+              </tr>
+            @endforeach
+             </tbody>
+            </table>
+    </fieldset>
+        {{$pacientes->links()}}
+    </div>
+  </div>
+</div>
+@endsection
 @section('ConteudoSecundario')
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Cadastrar Paciente</button>
 
