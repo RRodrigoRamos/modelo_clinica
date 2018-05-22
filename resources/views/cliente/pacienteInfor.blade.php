@@ -5,7 +5,7 @@
 				<div class="top-bar hidden-sm hidden-xs">
 					<div class="row">
 						<div class="col-sm-6 col-xs-12">
-							  Bem vindo {{ Auth::user()->name }} a sua pagina de Area do Cliente.
+							Seja bem vindo, {{ Auth::user()->name }}. Aqui, sua saúde está em boas mãos.
 						</div>
 					</div>
 				</div>
@@ -41,18 +41,18 @@
 									<li>
 										<a href="/areaCliente">Início</a>
 									</li>
-									<li>
-										<a href="/areaCliente/pacienteContat"><i class="fa fa-comments"> </i> Fale Conosco</a>
+									<li class="active">
+										<a href="/areaCliente/infor"><i class="fa fa-info-circle" aria-hidden="true"></i> Dúvidas Frequentes</a>
 									</li>
-									<li class="dropdown active">
+									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-											{{ Auth::user()->name }} 
+											<i class="fa fa-user"></i> &nbsp;{{ Auth::user()->name }} 
 											<i class="fa fa-caret-down"></i>
 										</a>
 										<ul class="dropdown-menu" role="menu">
 										<li>
 											<a href="/areaCliente/agendamento">
-												<i class="fa fa-plus-square" aria-hidden="true"></i> Agendamento
+												<i class="fa fa-plus-square" aria-hidden="true"></i> Agendar
 											</a>
 										</li>
 										<li>
@@ -60,26 +60,9 @@
 												Minha Agenda
 											</a>
 										</li>
-										<li>
-											<a href="/areaCliente/pacienteConv">
-												Meus Convenios
-											</a>
-										</li>
-										<li>
-											<a href="/areaCliente/meus_dados">
-												 Meus Dados <i class="fa fa-user" aria-hidden="true"></i>	
-											</a>
-										</li>
-										<li>
-											<a href="/areaCliente/altera_senha">
-												 Alterar Senha <i class="fa fa-cogs" aria-hidden="true"></i>
-											</a>
-										</li>
-										<li class="active">
-											<a href="/areaCliente/infor">
-												 Informativo <i class="fa fa-info-circle" aria-hidden="true"></i>
-											</a>
-										</li>
+										
+										
+										
 										<li> <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -127,7 +110,7 @@
 			<br>
 			<h3 class="main-heading2 nomargin-top">Dúvidas Frequentas</h3>
 			<p>
-				Dúvidas sobre a usabilidade do sistema, questões relacioadas a agendamento, exames ou consultas online.
+				Dúvidas sobre a usabilidade do sistema, questões relacionadas ao agendamento de consultas clinicas.
 			</p>
 		<!-- FAQ's Accordions Starts -->
 			<div class="panel-group" id="accordion-faqs">
@@ -197,28 +180,6 @@
 				<!-- Panel Body Ends -->						
 				</div>
 			<!-- Accordion #3 Ends -->
-			<!-- Accordion #4 Starts -->
-				<div class="panel">
-				<!-- Panel Heading Starts -->
-					<div class="panel-heading">
-						<h5 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion-faqs" href="#collapse4">
-								Preciso imprimir e levar os dados de meu exame para o dia do exame?
-							</a>
-						</h5>
-					</div>
-				<!-- Panel Heading Ends -->
-				<!-- Panel Body Starts -->
-					<div id="collapse4" class="panel-collapse collapse">
-						<div class="panel-body">
-							<p>
-								Não é necessário levar um documento com os dados para o dia do exame mas, recomendamos que o faça para ter todos os dados em mãos, como a data, horário e as instruções de preparo. (opção de imprimir na confirmação do agendamento).
-							</p>
-						</div>
-					</div>
-				<!-- Panel Body Ends -->						
-				</div>
-			<!-- Accordion #4 Ends -->
 			<!-- Accordion #5 Starts -->
 				<div class="panel">
 				<!-- Panel Heading Starts -->
@@ -241,28 +202,6 @@
 				<!-- Panel Body Ends -->						
 				</div>
 			<!-- Accordion #5 Ends -->
-			<!-- Accordion #6 Starts -->
-				<div class="panel">
-				<!-- Panel Heading Starts -->
-					<div class="panel-heading">
-						<h5 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion-faqs" href="#collapse6">
-								 Onde altero meu(s) convênio(s) cadastrado(s)?
-							</a>
-						</h5>
-					</div>
-				<!-- Panel Heading Ends -->
-				<!-- Panel Body Starts -->
-					<div id="collapse6" class="panel-collapse collapse">
-						<div class="panel-body">
-							<p>
-								Você poderá alterar seu convênio em Minha área » Meus Convênios
-							</p>
-						</div>
-					</div>
-				<!-- Panel Body Ends -->						
-				</div>
-			<!-- Accordion #6 Ends -->
 			<!-- Accordion #7 Starts -->
 				<div class="panel">
 				<!-- Panel Heading Starts -->

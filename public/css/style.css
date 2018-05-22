@@ -549,6 +549,9 @@ h6 { font-size: 16px; }
 	.main-banner.index_1{
 		background: url(../images/banners/agendamentos.png) center top;
 	}	
+	.main-banner.pgAgenda{
+		background: url(../images/banners/preventivo.jpg) center top;
+	}	
 	.main-banner h2 {
 		margin-top: 0;
 		margin-bottom: 0;

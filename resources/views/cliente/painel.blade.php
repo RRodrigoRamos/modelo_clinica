@@ -5,7 +5,7 @@
 				<div class="top-bar hidden-sm hidden-xs">
 					<div class="row">
 						<div class="col-sm-6 col-xs-12">
-							  Bem vindo {{ Auth::user()->name }} a sua pagina de Area do Cliente.
+							Seja bem vindo, {{ Auth::user()->name }}. Aqui, sua saúde está em boas mãos.
 						</div>
 					</div>
 				</div>
@@ -42,17 +42,17 @@
 										<a href="/areaCliente">Início</a>
 									</li>
 									<li>
-										<a href="/areaCliente/pacienteContat"><i class="fa fa-comments"> </i> Fale Conosco</a>
+										<a href="/areaCliente/infor"><i class="fa fa-info-circle" aria-hidden="true"></i> Dúvidas Frequentes</a>
 									</li>
 									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-											{{ Auth::user()->name }} 
+											<i class="fa fa-user"></i> &nbsp;{{ Auth::user()->name }} 
 											<i class="fa fa-caret-down"></i>
 										</a>
 										<ul class="dropdown-menu" role="menu">
 										<li>
 											<a href="/areaCliente/agendamento">
-												<i class="fa fa-plus-square" aria-hidden="true"></i> Agendamento
+												<i class="fa fa-plus-square" aria-hidden="true"></i> Agendar
 											</a>
 										</li>
 										<li>
@@ -60,26 +60,9 @@
 												Minha Agenda
 											</a>
 										</li>
-										<li>
-											<a href="/areaCliente/pacienteConv">
-												Meus Convenios
-											</a>
-										</li>
-										<li>
-											<a href="/areaCliente/meus_dados">
-												 Meus Dados <i class="fa fa-user" aria-hidden="true"></i>	
-											</a>
-										</li>
-										<li>
-											<a href="/areaCliente/altera_senha">
-												 Alterar Senha <i class="fa fa-cogs" aria-hidden="true"></i>
-											</a>
-										</li>
-										<li>
-											<a href="/areaCliente/infor">
-												 Informativo <i class="fa fa-info-circle" aria-hidden="true"></i>
-											</a>
-										</li>
+										
+										
+										
 										<li> <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -122,7 +105,7 @@
 						<i class="fa fa-calendar-plus-o"></i>
 						<h4> Novo Agendamento </h4>
 						<p>
-							Consulta e Exame. 
+							Marcação de uma Nova Consulta Clinica 
 						</p>
 						<a href="/areaCliente/agendamento" class="btn btn-transparent">Agendar...</a>
 					</div>
@@ -132,29 +115,27 @@
 				<div class="col-md-3 col-sm-6 col-xs-12">
 					<div class="box">
 						<i class="fa fa-calendar-check-o"></i>
-						<h4>Agendamentos</h4>
+						<h4>Lista de Agendamentos </h4>
 						<p>
-							Minha Lista de Consultas e Exames
+							Minha Lista de Histórico Consultas Clinicas.
 						</p>
-						<a href="/areaCliente/listaAgenda" class="btn btn-transparent">Vê Registro...</a>
+						<a href="/areaCliente/listaAgenda" class="btn btn-transparent">Ver Histórico...</a>
 					</div>
 				</div>
 			<!-- Box #2 Ends -->
 			<!-- Box #3 Starts -->
-				<div class="col-md-3 col-sm-6 col-xs-12">
-					<div class="box">
-						<i class="fa fa-credit-card" aria-hidden="true"></i>
-						<h4>Meus Convênios</h4>
-							<p>
-								Registro de Convênios
-							</p>
-						<a href="/areaCliente/pacienteConv" class="btn btn-transparent">Vê registro...</a>
-					</div>
+				 <div class="col-md-6 col-sm-6 col-xs-12">
+					<div class="" >
+						
+						
+							<iframe width="100%" height="290px" src="https://www.youtube.com/embed/LdWPLMZeNUc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+						
+					</div> 
 				</div>
 			<!-- Box #3 Ends -->
 			<!-- Box #4 Starts -->
-				<div class="col-md-3 col-sm-6 col-xs-12">
-					<div class="box">
+				<!-- <div class="col-md-3 col-sm-6 col-xs-12"> -->
+					<!-- <div class="box">
 						<i class="fa fa-user" aria-hidden="true"></i>
 						<h4> Meus Dados </h4>
 						<p>
@@ -162,8 +143,8 @@
 						</p>
 						<a href="/areaCliente/meus_dados" class="btn btn-transparent">Vê registro...</a>
 					</div>
-				</div>
-			<!-- Box #4 Ends -->
+				</div> -->
+ 			<!-- Box #4 Ends -->
 			</div>
 		<!-- Conteudo inBox Fim -->
 		<!-- Conteudo Section -->

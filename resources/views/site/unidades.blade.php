@@ -69,28 +69,8 @@
 										</ul>
 									</li>
 									<li>
-										<a href="/pagina/especialidades">Especialidades</a>
-									</li>
-									<li>
 										<a href="/pagina/convenios">Convênios</a>
 									</li>		
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-											Serviços 
-											<i class="fa fa-caret-down"></i>
-										</a>
-										<ul class="dropdown-menu" role="menu">
-											<li>
-												<a href="/servico/consultas">Consultas</a>
-											</li>
-											<li>
-												<a href="/servico/exames">Exames</a>
-											</li>
-											<li>
-												<a href="/servico/agendamentos">Agendamentos</a>
-											</li>
-										</ul>
-									</li>
 									<li>
 										<a href="/pagina/contato"><i class="fa fa-comments"> </i> Fale Conosco</a>
 									</li>

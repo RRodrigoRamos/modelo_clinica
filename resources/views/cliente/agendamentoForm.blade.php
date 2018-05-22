@@ -5,7 +5,7 @@
 				<div class="top-bar hidden-sm hidden-xs">
 					<div class="row">
 						<div class="col-sm-6 col-xs-12">
-							  Bem vindo {{ Auth::user()->name }} a sua pagina de Area do Cliente.
+							Seja bem vindo, {{ Auth::user()->name }}. Aqui, sua saúde está em boas mãos.
 						</div>
 					</div>
 				</div>
@@ -42,17 +42,17 @@
 										<a href="/areaCliente">Início</a>
 									</li>
 									<li>
-										<a href="/areaCliente/pacienteContat"><i class="fa fa-comments"> </i> Fale Conosco</a>
+										<a href="/areaCliente/infor"><i class="fa fa-info-circle" aria-hidden="true"></i> Dúvidas Frequentes</a>
 									</li>
 									<li class="dropdown active">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-											{{ Auth::user()->name }} 
+											<i class="fa fa-user"></i> &nbsp;{{ Auth::user()->name }} 
 											<i class="fa fa-caret-down"></i>
 										</a>
 										<ul class="dropdown-menu" role="menu">
-										<li class="active">
+										<li  class="active">
 											<a href="/areaCliente/agendamento">
-												<i class="fa fa-plus-square" aria-hidden="true"></i> Agendamento
+												<i class="fa fa-plus-square" aria-hidden="true"></i> Agendar
 											</a>
 										</li>
 										<li>
@@ -60,26 +60,9 @@
 												Minha Agenda
 											</a>
 										</li>
-										<li>
-											<a href="/areaCliente/pacienteConv">
-												Meus Convenios
-											</a>
-										</li>
-										<li>
-											<a href="/areaCliente/meus_dados">
-												 Meus Dados <i class="fa fa-user" aria-hidden="true"></i>	
-											</a>
-										</li>
-										<li>
-											<a href="/areaCliente/altera_senha">
-												 Alterar Senha <i class="fa fa-cogs" aria-hidden="true"></i>
-											</a>
-										</li>
-										<li>
-											<a href="/areaCliente/infor">
-												 Informativo <i class="fa fa-info-circle" aria-hidden="true"></i>
-											</a>
-										</li>
+										
+										
+										
 										<li> <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -102,6 +85,7 @@
 		<!-- Conteudo Inicial Fim -->
 		</header>
 	<!-- Topo Fim -->
+
 @endsection
 @section('ConteudoPrincipal')
 <!-- Banner Cliente -->
@@ -162,6 +146,12 @@
 	          <div class="form-group col-sm-6 col-md-6 col-lg-3">
 	            <label for="hora_agenda" class="control-label">Hora do Agendamento  <span class="obr">*</span></label>
 	            <input type="text" class="form-control" name="hora_agenda" OnKeyPress="formatar('##:##h', this)" placeholder="7:00h às 18:00h" autocomplete="off" maxlength="6" required>
+	            <select id="tipo_agenda" name="tipo_agenda" class="form-control" data-live-search="true" required>
+	                  <option value="" disabled="disabled">Selecione</option>
+	                  <option value="Convênio">Convênio</option>
+	                  <option value="Particular" selected="selected">Particular</option>
+	                  <option value="Retorno">Retorno</option>
+	              </select>
 	            <span class="obr"> Exeto aos Sábado 7:00h as 12:00h !</span>
 	          </div>
 	      </div>

@@ -77,42 +77,10 @@
 									</ul>
 								</li>
 								<li>
-									<a href="/pagina/especialidades">
-										<i class="fa fa-angle-right"></i> 
-									Especialidades
-									</a>
-								</li>
-								<li>
 									<a href="/pagina/convenios">
 										<i class="fa fa-angle-right"></i> 
 									Convênios
 									</a>
-								</li>
-								<li>
-									<a href="/servico">
-									<i class="fa fa-angle-right"></i> 
-										Serviços
-									</a>
-									<ul>
-										<li>
-										<a href="/servico/consultas">
-											<i class="fa fa-angle-right"></i> 
-										Consultas 
-										</a>
-										</li>
-										<li>
-										<a href="/servico/exames">
-											<i class="fa fa-angle-right"></i> 
-										Equipe
-										</a>
-										</li>										
-										<li>
-										<a href="/servico/agendamentos">
-											<i class="fa fa-angle-right"></i> 
-										Médicos
-										</a>
-										</li>
-									</ul>
 								</li>
 								<li>
 									<a href="/pagina/contato">

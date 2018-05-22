@@ -47,6 +47,7 @@
 									<li class="dropdown active">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 											{{ Auth::user()->name }} 
+											<i class="fa fa-user"></i>
 											<i class="fa fa-caret-down"></i>
 										</a>
 										<ul class="dropdown-menu" role="menu">
@@ -60,19 +61,9 @@
 												Minha Agenda
 											</a>
 										</li>
-										<li>
-											<a href="/areaCliente/pacienteConv">
-												Meus Convenios
-											</a>
-										</li>
 										<li class="active">
 											<a href="/areaCliente/meus_dados">
 												 Meus Dados <i class="fa fa-user" aria-hidden="true"></i>	
-											</a>
-										</li>
-										<li>
-											<a href="/areaCliente/altera_senha">
-												 Alterar Senha <i class="fa fa-cogs" aria-hidden="true"></i>
 											</a>
 										</li>
 										<li>

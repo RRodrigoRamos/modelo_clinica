@@ -70,28 +70,8 @@
 										</ul>
 									</li>
 									<li>
-										<a href="/pagina/especialidades">Especialidades</a>
-									</li>
-									<li>
 										<a href="/pagina/convenios">Convênios</a>
 									</li>		
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-											Serviços 
-											<i class="fa fa-caret-down"></i>
-										</a>
-										<ul class="dropdown-menu" role="menu">
-											<li>
-												<a href="/servico/consultas">Consultas</a>
-											</li>
-											<li>
-												<a href="/servicos/exames">Exames</a>
-											</li>
-											<li>
-												<a href="/servico/agendamentos">Agendamentos</a>
-											</li>
-										</ul>
-									</li>
 									<li>
 										<a href="/pagina/contato"><i class="fa fa-comments"> </i> Fale Conosco</a>
 									</li>
@@ -159,14 +139,6 @@
 									<li><a href="/pagina/medicos">Médicos</a></li>
 									<li><a href="/pagina/unidades">Unidades</a></li>
 									<li><a href="/pagina/convenios">Convênios</a></li>
-								</ul>
-							</div>
-							<div class="col-sm-6 col-xs-12">
-								<ul class="list-unstyled list-style-3">
-									<li><a href="/servico/especialidades">Especialidades</a></li>
-									<li><a href="/servico/consultas">Consultas</a></li>
-									<li><a href="/servico/exames">Exames</a></li>
-									<li><a href="/servico/agendamentos">Agendamentos</a></li>
 								</ul>
 							</div>
 						</div>
@@ -237,7 +209,7 @@
 					</li>
 
 
-				<p class="text-center"><a href="/servico/agendamentos" class="btn btn-transparent text-uppercase">Agende<i class="fa fa-chevron-right"></i></a></p>
+				<p class="text-center"><a href="/areaCliente" class="btn btn-transparent text-uppercase">Agende<i class="fa fa-chevron-right"></i></a></p>
 			</div>
 		</section>
 	<!-- About Featured Section Ends -->

@@ -29,7 +29,7 @@
         <input type="hidden" name="_method" value="PUT">
         <input type="hidden" value="{{$id}}" name="id">
 	<fieldset>
-          <legend>Dados de Medico</legend>
+          <legend>Dados Paciente</legend>
             <div class="row">
               <div class="form-group col-sm-6 col-md-6 col-lg-6"">
                     <label for="name" class="control-label">Nome <span class="obr">*</span></label>
@@ -49,10 +49,10 @@
                 <input type="email" class="form-control" name="email" id="email" value="{{$value->email}}" placeholder="exemplo_email@gmail.com" required>
           </div>
           <div class="form-group col-sm-6 col-md-6 col-lg-3">
-                <label for="password" class="control-label">Senha <span class="obr">*</span></label><input type="password" class="form-control" name="password" placeholder="***Senha***" value="{{$value->password}}" required> <span class="verd">* Minino 6 digitos</span>
+                <label for="password" class="control-label">Senha <span class="obr">*</span></label><input type="password" class="form-control" name="password" placeholder="***Senha***"  required> <span class="verd">* Minino 6 digitos</span>
           </div>
           <div class="form-group col-sm-12 col-md-12 col-lg-3">
-                <label for="password_confirmation" class="control-label">Confirme Senha <span class="obr">*</span></label><input type="password" class="form-control" name="password_confirmation" value="{{$value->password}}" placeholder="***Senha***"required> <span class="verd">* Confirme Senha </span>
+                <label for="password_confirmation" class="control-label">Confirme Senha <span class="obr">*</span></label><input type="password" class="form-control" name="password_confirmation" placeholder="***Senha***" required> <span class="verd">* Confirme Senha </span>
           </div>
       </div>
       <div class="row">

@@ -134,7 +134,7 @@
 						   <td>{{ $agendamentosPs->clinica_medicos_id}}</td>
 						   <td>{{ $agendamentosPs->clinica_medica}}</td>
 						   <td>{{ $agendamentosPs->users_id}}</td>
-						   <td>{{ $agendamentosPs->data_agenda}} / {{ $agendamentosPs->hora_agenda}}</td>
+						   <td> {{ date( 'd/m/Y' , strtotime($agendamentosPs->data_agenda))}} às {{ $agendamentosPs->hora_agenda}} </td>
 						   <td>{{ $agendamentosPs->status_agenda}}</td>
 						  </tr>
                     	@endforeach
