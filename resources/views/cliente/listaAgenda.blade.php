@@ -83,7 +83,6 @@
 			<!-- Navbar Menu Fim -->
 			</div>
 		<!-- Conteudo Inicial Fim -->
-		</header>
 	<!-- Topo Fim -->
 
 @endsection
@@ -106,7 +105,7 @@
 		</div>
 <!-- Banner Cliente Fim-->
 <!-- Conteudo Agenda -->
-<div class="container main">
+<div class="container">
 <br>
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="alert alert-success">
@@ -119,7 +118,7 @@
 <form class="form"  method="post" action="/areaCliente/agendaSalva">
     <fieldset>
           <legend>AGENDADAS</legend>
-	            <table class="table table-striped table-bordered table-condensed table-hover table-responsive">
+	            <table class="table table-striped table-bordered table-hover table-responsive col-xs-4">
 						 <thead>
 						  <tr>
 						   <th>Tipo</th>
@@ -136,7 +135,7 @@
      					   <td>{{ $agendamentosPs->tipo_agenda}}</td>
 						   <td>{{ $agendamentosPs->especialidade}}</td>
 						   <td>{{ $agendamentosPs->nome_medico}}</td>
-						   <td>{{ $agendamentosPs->tipo_clinic}}</td>
+						   <td>{{ $agendamentosPs->clinica_medica}}</td>
 						   <td>{{ date( 'd/m/Y' , strtotime($agendamentosPs->data_agenda))}} às {{ $agendamentosPs->hora_agenda}}</td>
 						   <td>{{ $agendamentosPs->status_agenda}}</td>
 						  </tr>
@@ -151,7 +150,6 @@
 </div>
 <div class="row">
 <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xs-12">
-<form class="form"  method="post" action="/areaCliente/agendaSalva">
     <fieldset>
           <legend>Histórico de Consultas</legend>
 	            <table class="table table-striped table-bordered table-condensed table-hover table-responsive">
@@ -182,8 +180,12 @@
 						</table>
 	</fieldset>
 <br>
-  		</form>
+	<div class="col-lg-4">
 	</div>
+
+	<a href="/areaCliente/agendamento"> NOVO AGENDAMENTO </a>
+	</div>
+
 <br>
 </div>
 </div>

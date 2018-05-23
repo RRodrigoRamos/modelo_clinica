@@ -13,10 +13,8 @@
         <title>::ACClinic:: @yield('title') </title>
         <!-- Bootstrap -->
         <link href="../css/bootstrap.min.css" rel="stylesheet">
-        <!-- <link href="../css/bootstrap-responsive.min" rel="stylesheet"> -->
         <!-- Template CSS Files  -->
         <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <!-- <link href="../font-awesome/css/font-awesome.css" rel="stylesheet"> -->
         <link href="../js/plugins/camera/css/camera.css" rel="stylesheet">
         <link href="../css/style.css" rel="stylesheet">
         <link href="../css/responsive.css" rel="stylesheet">

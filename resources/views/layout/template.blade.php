@@ -36,15 +36,15 @@
 	@section('principal')
 	@show 
 		<!-- Topo -->
-		<header class="main-header">
+<header class="main-header">
 		<!-- Conteudo inicial  -->
-			<div class="container">
+<div class="container main">
 	@yield('topoInfor')
 	@yield('localizacaoSite')
 	@yield('Menu')
 	@yield('ConteudoPrincipal')
 	@yield('ConteudoSecundario')
-
+</div>
 	<!-- Footer Starts -->
 	<footer class="main-footer">
 			<div class="footer-area">
@@ -159,7 +159,7 @@
 			<div class="copyright">
 				<div class="container clearfix">
 					<p class="pull-left">
-						<i class="fa fa-copyright fa-2x" aria-hidden="true"></i> equipe de Desenvolvimento - <a href="http://www.meta.edu.br/faculdade/"> Faculdade Meta </a></span>
+						<i class="fa fa-copyright fa-2x" aria-hidden="true"></i> equipe de Desenvolvimento - <a href="http://www.meta.edu.br/faculdade/"> Faculdade Meta </a>
 					</p>
 					<ul class="list-unstyled list-inline pull-right">
 						<li><a href="https://github.com/RRodrigoRamos/acclinic"> <i class="fa fa-github fa-2x" aria-hidden="true"></i> Repositório Github.com</a></li>

@@ -128,34 +128,6 @@
 
           <legend>Dados da Consulta</legend>
           <div class="row">
-	          <div class="form-group col-sm-12 col-md-12 col-lg-6">
-	            <label for="tipo_agenda" class="control-label">Tipo de Atendimento <span class="obr">*</span></label>
-	                <div class="form-group">
-	              <select id="tipo_agenda" name="tipo_agenda" class="form-control" data-live-search="true" required>
-	                  <option value="" disabled="disabled">Selecione</option>
-	                  <option value="Convênio">Convênio</option>
-	                  <option value="Particular" selected="selected">Particular</option>
-	                  <option value="Retorno">Retorno</option>
-	              </select>
-	            </div>
-	          </div>
-	          <div class="form-group col-sm-6 col-md-6 col-lg-3"">
-	            <label for="data_agenda" class="control-label">Data do Agendamento <span class="obr">*</span></label>
-	            <input type="date" class="form-control" OnKeyPress="formatar('##/##/####', this)" name="data_agenda" required>
-	          </div>
-	          <div class="form-group col-sm-6 col-md-6 col-lg-3">
-	            <label for="hora_agenda" class="control-label">Hora do Agendamento  <span class="obr">*</span></label>
-	            <input type="text" class="form-control" name="hora_agenda" OnKeyPress="formatar('##:##h', this)" placeholder="7:00h às 18:00h" autocomplete="off" maxlength="6" required>
-	            <select id="tipo_agenda" name="tipo_agenda" class="form-control" data-live-search="true" required>
-	                  <option value="" disabled="disabled">Selecione</option>
-	                  <option value="Convênio">Convênio</option>
-	                  <option value="Particular" selected="selected">Particular</option>
-	                  <option value="Retorno">Retorno</option>
-	              </select>
-	            <span class="obr"> Exeto aos Sábado 7:00h as 12:00h !</span>
-	          </div>
-	      </div>
-	      <div class="row">
           <div class="form-group col-sm-12 col-md-12 col-lg-6">
             <label for="medicos_id" class="control-label">Escolhar o Médico / Especialidade <span class="obr">*</span></label>
                 <div class="form-group">
@@ -180,6 +152,55 @@
             </div>
             </div>
           </div>
+          <div class="row">
+	          <div class="form-group col-sm-12 col-md-12 col-lg-4">
+	            <label for="tipo_agenda" class="control-label">Tipo de Atendimento <span class="obr">*</span></label>
+	                <div class="form-group">
+	              <select id="tipo_agenda" name="tipo_agenda" class="form-control" data-live-search="true" required>
+	                  <option value="" disabled="disabled">Selecione</option>
+	                  <option value="Convênio">Convênio</option>
+	                  <option value="Particular" selected="selected">Particular</option>
+	                  <option value="Retorno">Retorno</option>
+	              </select>
+	            </div>
+	          </div>
+	          <div class="form-group col-sm-6 col-md-6 col-lg-4"">
+	            <label for="data_agenda" class="control-label">Data do Agendamento <span class="obr">*</span></label>
+	            <input type="date" class="form-control" OnKeyPress="formatar('##/##/####', this)" name="data_agenda" required>
+	          </div>
+	          <div class="form-group col-sm-6 col-md-6 col-lg-4">
+	            <label for="hora_agenda" class="control-label">Hora do Agendamento  <span class="obr">*</span></label>
+	            <select name="hora_agenda" class="form-control" required>
+                  <option value="" disabled="disabled" selected>Segunda à Sexta de 7:00h às 18:00h</option>
+                  <option value="" disabled="disabled">Manhã</option>
+                  <option value="7:00h">7:00h</option>
+                  <option value="7:30h">7:30h</option>
+                  <option value="8:00h">8:00h</option>
+                  <option value="8:30h">8:30h</option>
+                  <option value="9:00h">9:00h</option>
+                  <option value="9:30h">9:30h</option>
+                  <option value="10:00h">10:00h</option>
+                  <option value="10:30h">10:30h</option>
+                  <option value="11:00h">11:00h</option>
+                  <option value="11:30h">11:30h</option>
+                  <option value="12:00h">12:00h</option>
+                  <option value="" disabled="disabled">Tarde</option>
+                  <option value="12:30h">12:30h</option>
+                  <option value="13:00h">13:00h</option>
+                  <option value="13:30h">13:30h</option>
+                  <option value="14:00h">14:00h</option>
+                  <option value="14:30h">14:30h</option>
+                  <option value="15:00h">15:00h</option>
+                  <option value="15:30h">15:30h</option>
+                  <option value="16:00h">16:00h</option>
+                  <option value="16:30h">16:30h</option>
+                  <option value="17:00h">17:00h</option>
+                  <option value="17:30h">17:30h</option>
+                  <option value="18:00h">18:00h</option>
+              </select>
+	            <span class="obr"> Exeto aos Sábado 7:00h as 12:00h !</span>
+	          </div>
+	      </div>
         <div class="row">
         <br>
       		<div class="form-group col-sm-6 col-md-6 col-lg-6 col-lg-6">
