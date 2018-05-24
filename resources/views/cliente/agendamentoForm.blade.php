@@ -126,6 +126,7 @@
       <input type="hidden" name="status_id" value="1">
       <input type="hidden" name="users_id" value="{{ Auth::user()->id }}">
 
+
           <legend>Dados da Consulta</legend>
           <div class="row">
           <div class="form-group col-sm-12 col-md-12 col-lg-6">
@@ -134,7 +135,7 @@
               <select name="medicos_id" class="form-control" required>
                   <option value="" disabled="disabled">Selecione</option>
                   	@foreach($especialidades as $especialidade)
-                    <option value="{{ $especialidade->id }}"> {{ $especialidade->name }} / {{ $especialidade->campo}}
+                    <option value="{{ $especialidade->id }}"> {{ $especialidade->nome_medico }} / {{ $especialidade->campo}}
                     </option>
                     @endforeach
               </select>

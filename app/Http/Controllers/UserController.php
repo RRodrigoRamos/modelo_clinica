@@ -41,7 +41,7 @@ class UserController extends Controller
 
     public function agendamentoForm()
     {
-        $especialidades = Medico::select('*')
+        $especialidades = Medico::select('medicos.id', 'medicos.name as nome_medico','especialidades.campo')
             ->join('especialidades','medicos.especialidade_id', '=', 'especialidades.id' )
             ->orderBy('especialidades.campo', 'asc')
             ->get();
@@ -61,18 +61,18 @@ class UserController extends Controller
             // dd($dadosAgenda);
 
             $clinicamedicos = new ClinicaMedico();
+            $clinicamedicos->id = $clinicamedicos->id;
             $clinicamedicos->medicos_id = $dadosAgenda['medicos_id'];
             $clinicamedicos->clinica_id = $dadosAgenda['clinica_id'];
             $clinicamedicos->save();
 
             // dd($dadosAgenda);
             $agendamento = new Agendamento();
-            $agendamento->clinica_medicos_id = $clinicamedicos['medicos_id'];
-            $agendamento->id = $clinicamedicos['id'];
+            $agendamento->clinica_medicos_id = $clinicamedicos['id'];
             $agendamento->data_agenda = $dadosAgenda['data_agenda'];
             $agendamento->hora_agenda = $dadosAgenda['hora_agenda'];
             $agendamento->agenda_de = $dadosAgenda['agenda_de'];
-            $agendamento->agenda_de = $dadosAgenda['tipo_agenda'];
+            $agendamento->tipo_agenda = $dadosAgenda['tipo_agenda'];
             $agendamento->users_id = $dadosAgenda['users_id'];
             $agendamento->status_id = $dadosAgenda['status_id'];
             $agendamento->save();          
@@ -97,8 +97,10 @@ class UserController extends Controller
             ->join('especialidades','medicos.especialidade_id','=','especialidades.id') 
             ->join('status_agendas','agendamentos.status_id','=','status_agendas.id')
             ->where('users.id', '=', $usuario)
-            ->orderBy('agendamentos.data_agenda', 'asc')
+            ->orderBy('agendamentos.id', 'desc')
             ->get();
+
+            // dd($agendamentosP);
 
         // $agendamentosR = Agendamento::select(['agendamentos.tipo_agenda','agendamentos.data_agenda','agendamentos.hora_agenda','medicos.name as nome_medico','especialidades.campo as especialidade','clinicas.nome as clinica_medica','users.name as nome_paciente','status_agendas.descricao as status_agenda'])
         //     ->join('users','agendamentos.users_id', '=', 'users.id')

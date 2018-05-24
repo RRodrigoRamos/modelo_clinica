@@ -57,8 +57,6 @@ Route::middleware(['admin'])->group (function() {
 	Route::get('/admin/pacientes/{id}', 'AdminController@showpaciente');
 	Route::put('/admin/pacientes/', 'AdminController@editarpaciente');
 
-
-
 });
 
 // Rotas do Cliente 
