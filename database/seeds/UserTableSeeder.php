@@ -42,31 +42,73 @@ class UserTableSeeder extends Seeder
         ]);  
     	 User::create([
              'name' => 'medico1',
-            'email' => 'Medico1@gmail.com',
+            'email' => 'medico1@gmail.com',
             'password' => bcrypt('123456'),
             'cpf' => '851.319.742-20',
             'role'=> 'medico',
         ]);
          User::create([
              'name' => 'medico2',
-            'email' => 'Medico2@gmail.com',
+            'email' => 'medico2@gmail.com',
             'password' => bcrypt('123456'),
             'cpf' => '812.319.002-20',
             'role'=> 'medico',
         ]);
          User::create([
              'name' => 'medico3',
-            'email' => 'Medico3@gmail.com',
+            'email' => 'medico3@gmail.com',
             'password' => bcrypt('123456'),
-            'role'=> 'paciente',
+            'role'=> 'medico',
             'cpf' => '803.349.744-20',
         ]);
          User::create([
-            'name' => 'medico4',
-            'email' => 'Medico4@gmail.com',
+            'name' => 'medico5',
+            'email' => 'medico5@gmail.com',
             'password' => bcrypt('123456'),
             'role'=> 'medico',
-            'cpf' => '804.319.144-21',
+            'cpf' => '804.319.140-01',
+        ]);
+         User::create([
+            'name' => 'medico6',
+            'email' => 'medico6@gmail.com',
+            'password' => bcrypt('123456'),
+            'role'=> 'medico',
+            'cpf' => '804.666.144-21',
+        ]);
+         User::create([
+            'name' => 'medico7',
+            'email' => 'medico7@gmail.com',
+            'password' => bcrypt('123456'),
+            'role'=> 'medico',
+            'cpf' => '804.777.144-21',
+        ]);
+         User::create([
+            'name' => 'medico8',
+            'email' => 'medico8@gmail.com',
+            'password' => bcrypt('123456'),
+            'role'=> 'medico',
+            'cpf' => '804.888.144-21',
+        ]);
+         User::create([
+            'name' => 'medico9',
+            'email' => 'medico9@gmail.com',
+            'password' => bcrypt('123456'),
+            'role'=> 'medico',
+            'cpf' => '804.999.144-21',
+        ]);
+         User::create([
+            'name' => 'medico10',
+            'email' => 'medico10@gmail.com',
+            'password' => bcrypt('123456'),
+            'role'=> 'medico',
+            'cpf' => '804.000.144-21',
+        ]);
+         User::create([
+            'name' => 'medico11',
+            'email' => 'medico11@gmail.com',
+            'password' => bcrypt('123456'),
+            'role'=> 'medico',
+            'cpf' => '804.111.144-21',
         ]);  
     }
 }

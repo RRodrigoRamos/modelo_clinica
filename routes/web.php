@@ -80,8 +80,7 @@ Route::middleware(['web'])->group (function() {
 // Route::get('cria-usuario', 'UsuariosController@formularioUsuario');
 // Route::post('salva-usuario', 'UsuariosController@salvarUsuario');
 // Route::put('altera-usuario/{id}', 'UsuariosController@alteraUsuario');
-// 
 // Route::get('editar-usuario/{id}', 'UsuariosController@editarUsuario');
 // Route::delete('deletar-usuario/{id}', 'UsuariosController@deletarUsuario');
-	
 });
+	

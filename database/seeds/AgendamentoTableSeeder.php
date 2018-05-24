@@ -20,7 +20,7 @@ class AgendamentoTableSeeder extends Seeder
            	'obs' =>'Paciente Confirmou via telefone.',
             'users_id' =>1,
             'clinica_medicos_id' =>1,
-            'status_id' =>2,
+            'status_id' =>1,
         ]);
         Agendamento::create([
            	'data_agenda' =>'2018-02-02',

@@ -152,7 +152,7 @@
                         </div>
                     </form>
                 </fieldset>
-                <a href="/admin/login"> Area Administrativa. </a>
+                <a href="/admin/login" target="_blank"> Area Administrativa. </a>
         </div>
     </div>
 </div>

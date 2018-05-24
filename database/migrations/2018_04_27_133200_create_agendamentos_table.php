@@ -17,7 +17,7 @@ class CreateAgendamentosTable extends Migration
             $table->increments('id');
             $table->date('data_agenda');
             $table->string('hora_agenda');
-            $table->enum('tipo_agenda', ['CONVÊNIO', 'PARTICULAR','RETORNO']);
+            $table->enum('tipo_agenda',['Convênio', 'Particular','Retorno']);
             $table->string('agenda_de');
             $table->string('obs')->nullable();
             $table->integer('users_id')->unsigned();

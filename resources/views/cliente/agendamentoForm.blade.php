@@ -123,7 +123,7 @@
     {!! csrf_field() !!}
     <fieldset>
       <input type="hidden" name="agenda_de" value="CONSULTA">
-      <input type="hidden" name="status_id" value="4">
+      <input type="hidden" name="status_id" value="1">
       <input type="hidden" name="users_id" value="{{ Auth::user()->id }}">
 
           <legend>Dados da Consulta</legend>

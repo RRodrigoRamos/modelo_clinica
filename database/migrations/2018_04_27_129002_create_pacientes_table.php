@@ -18,7 +18,7 @@ class CreatePacientesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('convenio_id')->unsigned();
-            $table->foreign('convenio_id')->references('id')->on('convenios');
+            $table->foreign('convenio_id')->references('id')->on('convenios')->onDelete('cascade');
             $table->string('foto',100)->nullable();
             $table->enum('sexo', ['Masc', 'Fem']);
             $table->date('data_nasc');

@@ -164,18 +164,14 @@
 						  </tr>
 						 </thead>
 						 <tbody>
-						@foreach($agendamentosR as $agendamentosPs)
 						  <tr>
-     					   <td>{{ $agendamentosPs->tipo_agenda}}</td>
-						   <td>{{ $agendamentosPs->especialidade}}</td>
-						   <td>{{ $agendamentosPs->nome_medico}}</td>
-						   <td>{{ $agendamentosPs->clinica_medica}}</td>
-						   <td>{{ date( 'd/m/Y' , strtotime($agendamentosPs->data_agenda))}} às
-
-						   	{{ $agendamentosPs->hora_agenda}}</td>
-						   <td>{{ $agendamentosPs->status_agenda}}</td>
+     					   <td></td>
+						   <td></td>
+						   <td></td>
+						   <td></td>
+						   <td></td>
+						   <td></td>
 						  </tr>
-                    	@endforeach
 						 </tbody>
 						</table>
 	</fieldset>

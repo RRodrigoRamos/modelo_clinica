@@ -17,7 +17,7 @@ class CreateBairrosTable extends Migration
             $table->increments('id');
             $table->string('nome');
             $table->integer('cidade_id')->nullable()->unsigned();
-            $table->foreign('cidade_id')->references('id')->on('cidades');
+            $table->foreign('cidade_id')->references('id')->on('cidades')->onDelete('cascade');
             $table->timestamps();
         });
     }
