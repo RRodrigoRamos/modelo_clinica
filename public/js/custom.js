@@ -198,3 +198,44 @@ function formatar(mascara, documento){
   }
   
 }
+
+document.getElementById("data_nasc").addEventListener('change', function() {
+  var data_nasc = new Date(this.value);
+  if(isDate_(this.value) && data_nasc.getFullYear() > 1900)
+      document.getElementById("idade").value = calculateAge(this.value);
+});
+
+function calculateAge(dobString) {
+  var dob = new Date(dobString);
+  var currentDate = new Date();
+  var currentYear = currentDate.getFullYear();
+  var birthdayThisYear = new Date(currentYear, dob.getMonth(), dob.getDate());
+  var age = currentYear - dob.getFullYear();
+  if(birthdayThisYear > currentDate) {
+    age--;
+  }
+  return age;
+}
+
+function calcular(data_nasc) {
+  var data_nasc = document.form.nascimento.value;
+  alert(data_nasc);
+  var partes = data_nasc.split("/");
+  var junta = partes[2]+"-"+partes[1]+"-"+partes[0];
+  document.form.idade.value = (calculateAge(junta));
+}
+
+var isDate_ = function(input) {
+        var status = false;
+        if (!input || input.length <= 0) {
+          status = false;
+        } else {
+          var result = new Date(input);
+          if (result == 'Data Não valida!') {
+            status = false;
+          } else {
+            status = true;
+          }
+        }
+        return status;
+}

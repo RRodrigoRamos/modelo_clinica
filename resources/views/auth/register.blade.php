@@ -137,6 +137,10 @@
           <legend>Dados de Paciente</legend>
             <div class="row">
               <div class="form-group col-sm-6 col-md-6 col-lg-6"">
+                    <label for="foto" class="control-label">FOTO </label>
+                    <input type="txt" class="form-control" name="foto" id="foto" placeholder="Nome Completo" required autofocus>
+              </div>
+              <div class="form-group col-sm-6 col-md-6 col-lg-6"">
                     <label for="name" class="control-label">Nome <span class="obr">*</span></label>
                     <input type="txt" class="form-control" name="name" id="name" placeholder="Nome Completo" required autofocus>
               </div>
@@ -176,7 +180,7 @@
         </div>
         <div class="form-group col-sm-12 col-md-12 col-lg-3"">
                 <label for="cpf" class="control-label">CPF: <span class="obr">*</span> </label>
-                <input type="text" class="form-control" name="cpf" id="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" placeholder="000.000.000-00" required>
+                <input type="text" class="form-control" name="cpf" id="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" placeholder="000.000.000-00" pattern="[a-z\s]+$" required>
           </div>
           <div class="form-group col-sm-12 col-md-12 col-lg-3">
                 <label for="data_nasc" class="control-label">Data Nascimento: <span class="obr">*</span></label><input type="date" class="form-control" id="data_nasc" name="data_nasc" required>
@@ -198,9 +202,13 @@
                     <label for="peso" class="control-label"> Peso Atual: <span class="obr">*</span></label>
                     <input type="txt" class="form-control" name="peso" id="n_registro" maxlength="4" OnKeyPress="formatar('##.#', this)" placeholder="Ex.: 80.0" required>
               </div>
-              <div class="form-group col-sm-12 col-md-4 col-lg-6">
-                    <label for="obs" class="control-label">Observação</label>
-                    <input type="txtarea" class="form-control" name="obs" id="obs" placeholder="Ex.: Pressão Alta, Alergias, etc..." >
+              <div class="form-group col-md-2">
+                <label for="idade">Idade Atual:</label>
+                <input type="num" name="idade" id="idade" class="form-control" placeholder="Idade" disabled>
+            </div>
+              <div class="form-group col-sm-12 col-md-4 col-lg-4">
+                    <label for="obs" class="control-label">Observação ao Atendimento</label>
+                    <input type="txtarea" class="form-control" name="obs" id="obs" placeholder="Ex.: Cardeirante, Idoso, etc..." >
               </div>
             </div>
     </fieldset>
