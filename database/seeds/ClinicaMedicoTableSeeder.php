@@ -13,7 +13,7 @@ class ClinicaMedicoTableSeeder extends Seeder
     public function run()
     {
         ClinicaMedico::create([
-            'clinica_id' => 2,
+            'clinica_id' => 1,
             'medicos_id' => 1,
         ]);
         ClinicaMedico::create([
@@ -21,7 +21,7 @@ class ClinicaMedicoTableSeeder extends Seeder
             'medicos_id' => 2,
         ]);
         ClinicaMedico::create([
-            'clinica_id' => 3,
+            'clinica_id' => 1,
             'medicos_id' => 3,
         ]);
     }

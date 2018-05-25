@@ -24,7 +24,7 @@ Route::prefix('servico')->group( function() {
 // Evento caso ao acessar ERRO 404
 Event::listen('404', function()
 {
-	return 'ERRO';
+	return view('erros.custom');
 });
 
 Route::get('/admin/login',['as' => 'admin.login','uses' => 'AdminAuth\LoginController@showLoginForm']);
@@ -60,10 +60,11 @@ Route::middleware(['admin'])->group (function() {
 });
 
 // Rotas do Cliente 
-Route::middleware(['web'])->group (function() {
 	Auth::routes();
+Route::middleware(['web'])->group (function() {
 	Route::get('/areaCliente','UserController@index');
 	Route::get('/areaCliente/agendamento','UserController@agendamentoForm');
+	Route::get('/areaCliente/agendamento_hora','UserController@agendamentoFormHorario');
 	Route::get('/areaCliente/listaAgenda','UserController@listaAgenda');
 	Route::post('/areaCliente/agendaSalva','UserController@agendaSalva');
 	Route::get('/areaCliente/meus_dados','UserController@pacienteForm');

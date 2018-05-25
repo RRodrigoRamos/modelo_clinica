@@ -138,7 +138,7 @@
             <div class="row">
               <div class="form-group col-sm-6 col-md-6 col-lg-6"">
                     <label for="foto" class="control-label">FOTO </label>
-                    <input type="txt" class="form-control" name="foto" id="foto" placeholder="Nome Completo" required autofocus>
+                    <input type="file" class="form-control" name="foto" id="foto">
               </div>
               <div class="form-group col-sm-6 col-md-6 col-lg-6"">
                     <label for="name" class="control-label">Nome <span class="obr">*</span></label>

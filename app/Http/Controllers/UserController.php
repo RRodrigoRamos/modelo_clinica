@@ -51,6 +51,10 @@ class UserController extends Controller
         return view('cliente.agendamentoForm',compact('especialidades','clinica'));
     }
 
+    public function agendamentoFormHorario(Request $resquest)
+    {
+        return view('cliente.agendamentoFormHora',compact('Request'));
+    }
 
     public function agendaSalva(Request $resquest)
     {

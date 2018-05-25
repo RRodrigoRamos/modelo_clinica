@@ -116,7 +116,26 @@ h6 { font-size: 16px; }
 
 .form_user {
 	margin:auto !important;
+	background-image:url('../images/figure/agendamento-online.jpeg');
+	background-position:right right;
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-attachment: fixed;
 }
+
+.form_user .fieldset {
+	border-radius:3px;
+}
+
+.form_user .btn {
+	border-radius:12px;
+}
+
+.form_user .btn:hover {
+	box-shadow:1px 2px 3px black;
+}
+
+
 
 /* Formularios & Botões */
 .btn-main, 
@@ -2719,6 +2738,9 @@ ul.nav-wizard.nav-wizard-backnav .active ~ li a:focus {
 
 
 /* Estilizando meu formulario de agendamento */
+
+	
+
     fieldset 
 	{
 		border: 1px solid #ddd !important;

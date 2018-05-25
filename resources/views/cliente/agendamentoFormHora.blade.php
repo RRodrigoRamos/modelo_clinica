@@ -107,6 +107,8 @@
 <!-- Banner Cliente Fim-->
 <!-- Conteudo Agenda -->
 
+
+{{ dd($request) }}
 	
 <div class="container main">
 <br>
@@ -119,7 +121,7 @@
 
 	 
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-12">
-   <form class="form"  method="post" action="/areaCliente/agendamento_hora">
+   <form class="form"  method="post" action="/areaCliente/agendaSalva">
     {!! csrf_field() !!}
     <fieldset>
       <input type="hidden" name="agenda_de" value="CONSULTA">
@@ -169,11 +171,61 @@
 	            <label for="data_agenda" class="control-label">Data do Agendamento <span class="obr">*</span></label>
 	            <input type="date" class="form-control" OnKeyPress="formatar('##/##/####', this)" name="data_agenda" required>
 	          </div>
+	          <div class="form-group col-sm-6 col-md-6 col-lg-4">
+	            <label for="hora_agenda" class="control-label">Hora do Agendamento  <span class="obr">*</span></label>
+	            <select name="hora_agenda" class="form-control" required>
+                  <option value="" disabled="disabled" selected>Segunda à Sexta de 7:00h às 18:00h</option>
+                  <option value="" disabled="disabled">Manhã</option>
+                  <option value="7:00h">7:00h</option>
+                  <option value="7:30h">7:30h</option>
+                  <option value="8:00h">8:00h</option>
+                  <option value="8:30h">8:30h</option>
+                  <option value="9:00h">9:00h</option>
+                  <option value="9:30h">9:30h</option>
+                  <option value="10:00h">10:00h</option>
+                  <option value="10:30h">10:30h</option>
+                  <option value="11:00h">11:00h</option>
+                  <option value="11:30h">11:30h</option>
+                  <option value="12:00h">12:00h</option>
+                  <option value="" disabled="disabled">Tarde</option>
+                  <option value="12:30h">12:30h</option>
+                  <option value="13:00h">13:00h</option>
+                  <option value="13:30h">13:30h</option>
+                  <option value="14:00h">14:00h</option>
+                  <option value="14:30h">14:30h</option>
+                  <option value="15:00h">15:00h</option>
+                  <option value="15:30h">15:30h</option>
+                  <option value="16:00h">16:00h</option>
+                  <option value="16:30h">16:30h</option>
+                  <option value="17:00h">17:00h</option>
+                  <option value="17:30h">17:30h</option>
+                  <option value="18:00h">18:00h</option>
+              </select>
+	            <span class="obr"> Exeto aos Sábado 7:00h as 12:00h !</span>
+	          </div>
 	      </div>
         <div class="row">
         <br>
+        <div class="modal fade" id="modal-mensagem">
+					<div class="modal-dialog">
+					    <div class="modal-content">
+					           <div class="modal-header">
+					              <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+					                 <h4 class="modal-title">AGENDAMENTOS ONLINE</h4>
+					             </div>
+					             <div class="modal-body">
+					                 <p>OBS: Atendimento feito na clinica por Ordem de Chegada, exceto pessoas: Portadoras de Necessidade Especial, Idosos, prioridades amparadas por lei! </p>
+					             </div>
+					             <div class="modal-footer">
+					             	<button type="submit" class="btn btn-primary form-control agendar"> Agendar</button>
+					                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					             </div>
+					           </div>
+					   </div>
+					</div>
+
       		<div class="form-group col-sm-6 col-md-6 col-lg-6 col-lg-6">
-      			<button type="submit" class="btn btn-primary agendar">AGENDAR</button>
+      			<button type="button" class="btn btn-primary agendar" data-toggle="modal" data-target="#modal-mensagem">AGENDAR</button>
       		</div>
       	</div>
     </fieldset>

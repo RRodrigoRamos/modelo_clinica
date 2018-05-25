@@ -16,7 +16,6 @@ class CreateAgendamentosTable extends Migration
         Schema::create('agendamentos', function (Blueprint $table) {
             $table->increments('id');
             $table->date('data_agenda');
-            $table->string('hora_agenda');
             $table->enum('tipo_agenda',['Convênio', 'Particular','Retorno']);
             $table->string('agenda_de');
             $table->string('obs')->nullable();
