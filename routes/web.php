@@ -1,5 +1,20 @@
 <?php
 
+Auth::routes();
+ 
+Route::group(['middleware' => ['guest']], function () {
+	Route::get('/areaCliente','UserController@index');
+	Route::get('/areaCliente/agendamento','UserController@agendamentoForm');
+	Route::get('/areaCliente/listaAgenda','UserController@listaAgenda');
+	Route::post('/areaCliente/agendaSalva','UserController@agendaSalva');
+	Route::get('/areaCliente/meus_dados','UserController@pacienteForm');
+	Route::post('/areaCliente/meus_dados','UserController@pacienteForm');
+	Route::get('/areaCliente/convenios','UserController@pacienteConv');
+	Route::get('/areaCliente/convenios','UserController@pacienteConv');
+	Route::get('/areaCliente/infor','UserController@pacienteInfor');
+	Route::get('/areaCliente/pacienteContat','UserController@pacienteContat');
+	Route::post('/areaCliente/pacienteContat','UserController@pacienteContat');	
+});
 // Pagina Inicial
 Route::get('/inicio', function () {
     return view('home');
@@ -61,27 +76,4 @@ Route::middleware(['admin'])->group (function() {
 
 });
 
-// Rotas do Cliente 
-Route::middleware(['web'])->group (function() {
-	Auth::routes();
-	Route::get('/areaCliente','UserController@index');
-	Route::get('/areaCliente/agendamento','UserController@agendamentoForm');
-	Route::get('/areaCliente/listaAgenda','UserController@listaAgenda');
-	Route::post('/areaCliente/agendaSalva','UserController@agendaSalva');
-	Route::get('/areaCliente/meus_dados','UserController@pacienteForm');
-	Route::post('/areaCliente/meus_dados','UserController@pacienteForm');
-	Route::get('/areaCliente/convenios','UserController@pacienteConv');
-	Route::get('/areaCliente/convenios','UserController@pacienteConv');
-	Route::get('/areaCliente/infor','UserController@pacienteInfor');
-	Route::get('/areaCliente/pacienteContat','UserController@pacienteContat');
-	Route::post('/areaCliente/pacienteContat','UserController@pacienteContat');
-
-// Route::get('lista-usuarios', 'UsuariosController@listaUsuario');
-// Route::get('cria-usuario', 'UsuariosController@formularioUsuario');
-// Route::post('salva-usuario', 'UsuariosController@salvarUsuario');
-// Route::put('altera-usuario/{id}', 'UsuariosController@alteraUsuario');
-// 
-// Route::get('editar-usuario/{id}', 'UsuariosController@editarUsuario');
-// Route::delete('deletar-usuario/{id}', 'UsuariosController@deletarUsuario');
-	
-});
+// Rotas do Cliente

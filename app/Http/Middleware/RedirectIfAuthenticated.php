@@ -3,7 +3,7 @@
 namespace acclinic\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Auth;
+use Auth;
 
 class RedirectIfAuthenticated
 {
@@ -17,10 +17,16 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check()) {
-            return redirect('areaCliente');
+
+        if (Auth::check() && Auth::user()->role == 'paciente') {
+            return redirect('/paciente');
+        }elseif(Auth::check() && Auth::user()->role == 'medico'){
+            return redirect('/medico');
+        }elseif (Auth::check() && Auth::user()->role == 'atendente') {
+            return redirect('/atendente');
+        }else{
+        return $next($request);
         }
 
-        return $next($request);
     }
 }

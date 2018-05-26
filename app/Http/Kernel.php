@@ -45,9 +45,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \acclinic\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            \acclinic\Http\Middleware\AdminMiddleware::class,
         ],
-
         'api' => [
             'throttle:60,1',
             'bindings',
