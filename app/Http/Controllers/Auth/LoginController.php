@@ -2,6 +2,7 @@
 
 namespace acclinic\Http\Controllers\Auth;
 
+use Auth;
 use acclinic\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -25,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/areaCliente';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.

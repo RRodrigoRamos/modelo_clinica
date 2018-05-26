@@ -1,7 +1,6 @@
 <?php
 
 namespace acclinic\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use acclinic\Agendamento;
@@ -19,22 +18,17 @@ use acclinic\Cidade;
 use acclinic\Estado;
 
 
-class UserController extends Controller
+class AtendenteController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    
+     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('atendente');
     }
-
-    public function index()
+    
+       public function index()
     {
-        // Painel do Cliente
-        return view('cliente.painel');
+        return view('medico.painel');
     }
 
     public function agendamentoForm()
@@ -45,7 +39,7 @@ class UserController extends Controller
 
         $clinica = Clinica::select('*')->get();
         
-        return view('cliente.agendamentoForm',compact('especialidades','clinica'));
+        return view('atendente.agendamentoForm',compact('especialidades','clinica'));
     }
 
 
@@ -72,7 +66,7 @@ class UserController extends Controller
             $agendamento->status_id = $dadosAgenda['status_id'];
             $agendamento->save();          
            
-            return redirect('/areaCliente/listaAgenda');
+            return redirect('/areaAtendente/listaAgenda');
     }
 
     public function listaAgenda()
@@ -96,14 +90,14 @@ class UserController extends Controller
             ->orderBy('agendamentos.data_agenda', 'asc')
             ->get();
 
-        return view('cliente.listaAgenda',compact('agendamentosP'));
+        return view('atendente.listaAgenda',compact('agendamentosP'));
     }
 
     
     public function pacienteDados()
     {
     	// Painel do Cliente
-        return view('cliente.pacienteDados');
+        return view('medico.pacienteDados');
     }
 
 	
@@ -111,31 +105,32 @@ class UserController extends Controller
     public function pacienteConv()
     {
         // lista Convênio de Paciênte
-        return view('cliente.pacienteConv');
+        return view('atendente.pacienteConv');
     }
 
     public function pacienteConvCad()
     {
         // Cadastro de Convenio
-        return view('cliente.pacienteConv');
+        return view('atendente.pacienteConv');
     }
 
      public function deleteConven($id)
     {
         User::destroy($id);
 
-    return redirect('cliente.pacienteConvForm');
+    return redirect('atendente.pacienteConvForm');
     }
 
     public function pacienteInfor()
     {
         // informações ao Usuario/Paciente
-        return view('cliente.pacienteInfor');
+        return view('atendente.pacienteInfor');
     }
     
     public function pacienteContat()
     {
     	// informações contato com a Clinica.
-        return view('cliente.pacienteContat');
+        return view('atendente.pacienteContat');
     }
+
 }

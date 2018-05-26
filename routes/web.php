@@ -1,8 +1,8 @@
 <?php
 
+
 Auth::routes();
- 
-Route::group(['middleware' => ['guest']], function () {
+Route::group(['middleware' => ['auth']], function () {
 	Route::get('/areaCliente','UserController@index');
 	Route::get('/areaCliente/agendamento','UserController@agendamentoForm');
 	Route::get('/areaCliente/listaAgenda','UserController@listaAgenda');
@@ -14,6 +14,35 @@ Route::group(['middleware' => ['guest']], function () {
 	Route::get('/areaCliente/infor','UserController@pacienteInfor');
 	Route::get('/areaCliente/pacienteContat','UserController@pacienteContat');
 	Route::post('/areaCliente/pacienteContat','UserController@pacienteContat');	
+
+
+	#medico
+
+	Route::get('/areaMedico','MedicoController@index');
+	Route::get('/areaMedico/agendamento','MedicoController@agendamentoForm');
+	Route::get('/areaMedico/listaAgenda','MedicoController@listaAgenda');
+	Route::post('/areaMedico/agendaSalva','MedicoController@agendaSalva');
+	Route::get('/areaMedico/meus_dados','MedicoController@pacienteForm');
+	Route::post('/areaMedico/meus_dados','MedicoController@pacienteForm');
+	Route::get('/areaMedico/convenios','MedicoController@pacienteConv');
+	Route::get('/areaMedico/convenios','MedicoController@pacienteConv');
+	Route::get('/areaMedico/infor','MedicoController@pacienteInfor');
+	Route::get('/areaMedico/pacienteContat','MedicoController@pacienteContat');
+	Route::post('/areaMedico/pacienteContat','MedicoController@pacienteContat');	
+
+	#atendente
+
+	Route::get('/areaAtendente','AtendenteController@index');
+	Route::get('/areaAtendente/agendamento','AtendenteController@agendamentoForm');
+	Route::get('/areaAtendente/listaAgenda','AtendenteController@listaAgenda');
+	Route::post('/areaAtendente/agendaSalva','AtendenteController@agendaSalva');
+	Route::get('/areaAtendente/meus_dados','AtendenteController@pacienteForm');
+	Route::post('/areaAtendente/meus_dados','AtendenteController@pacienteForm');
+	Route::get('/areaAtendente/convenios','AtendenteController@pacienteConv');
+	Route::get('/areaAtendente/convenios','AtendenteController@pacienteConv');
+	Route::get('/areaAtendente/infor','AtendenteController@pacienteInfor');
+	Route::get('/areaAtendente/pacienteContat','AtendenteController@pacienteContat');
+	Route::post('/areaAtendente/pacienteContat','AtendenteController@pacienteContat');	
 });
 // Pagina Inicial
 Route::get('/inicio', function () {
