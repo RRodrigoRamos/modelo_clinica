@@ -32,45 +32,7 @@ class MedicoController extends Controller
         return view('medico.painel');
     }
 
-    public function agendamentoForm()
-    {
-        $especialidades = Medico::select('*')
-            ->join('especialidades','medicos.especialidade_id', '=', 'especialidades.id' )
-            ->get();
-
-        $clinica = Clinica::select('*')->get();
-        
-        return view('medico.agendamentoForm',compact('especialidades','clinica'));
-    }
-
-
-    public function agendaSalva(Request $resquest)
-    {
-
-
-            // // dados do agendamento
-            $dadosAgenda = $resquest->all();
-
-            $clinicamedicos = new ClinicaMedico();
-            $clinicamedicos->medicos_id = $dadosAgenda['medicos_id'];
-            $clinicamedicos->clinica_id = $dadosAgenda['clinica_id'];
-            $clinicamedicos->save();
-
-            // dd($dadosAgenda);
-            $agendamento = new Agendamento();
-            $agendamento->clinica_medicos_id = $clinicamedicos['id'];
-            $agendamento->data_agenda = $dadosAgenda['data_agenda'];
-            $agendamento->hora_agenda = $dadosAgenda['hora_agenda'];
-            $agendamento->tipo_agenda = $dadosAgenda['tipo_agenda'];
-            $agendamento->agenda_de = $dadosAgenda['agenda_de'];
-            $agendamento->users_id = $dadosAgenda['users_id'];
-            $agendamento->status_id = $dadosAgenda['status_id'];
-            $agendamento->save();          
-           
-            return redirect('/areaMedico/listaAgenda');
-    }
-
-    public function listaAgenda()
+    public function agendaMedico()
     {
             // recupera o usuario logado
             $usuario = auth()->user()->id; 

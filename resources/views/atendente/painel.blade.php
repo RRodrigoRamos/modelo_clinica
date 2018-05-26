@@ -1,11 +1,11 @@
 @extends('layout.templateAdmin')
-@section('title', 'Area Cliente')
+@section('title', 'Area Atendente')
 @section('topoInfor')
 			<!-- Informações do Topo site -->
 				<div class="top-bar hidden-sm hidden-xs">
 					<div class="row">
 						<div class="col-sm-6 col-xs-12">
-							  Bem vindo {{ Auth::user()->name }} a sua pagina de Area do Cliente.
+							  Bem vindo {{ Auth::user()->name }} a sua pagina do atendimentos ao Paciente.
 						</div>
 					</div>
 				</div>
@@ -27,7 +27,7 @@
 							</button>
 						<!-- Collapse Button Menu Mobile Fim -->
 							<!-- Logo  -->
-							<a href="/areaCliente" class="navbar-brand">
+							<a href="/areaAtendente" class="navbar-brand">
 								<img src="../images/fav/logo.png" alt="ACClinic - Agendamentos de Consultas Clinicas e Exames" class="imgLogo">
 							</a>
 						<!-- Logo Fim -->
@@ -39,11 +39,23 @@
 							<div class="navbar-collapse collapse">					
 								<ul class="nav navbar-nav navbar-right">
 									<li class="active">
-										<a href="/areaCliente">Início</a>
+										<a href="/areaAtendente">Início</a>
 									</li>
 									<li>
-										<a href="/areaCliente/pacienteContat"><i class="fa fa-comments"> </i> Fale Conosco</a>
-									</li>
+											<a href="/atendente/medicos_horario">
+												Horários Médicos
+											</a>
+										</li>
+										<li>
+											<a href="/atendente/medicos">
+												Consultar Médicos
+											</a>
+										</li>
+										<li>
+											<a href="/atendente/convenios">
+												Convênios da Clinica
+											</a>
+										</li>
 									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 											{{ Auth::user()->name }} 
@@ -51,32 +63,17 @@
 										</a>
 										<ul class="dropdown-menu" role="menu">
 										<li>
-											<a href="/areaCliente/agendamento">
-												<i class="fa fa-plus-square" aria-hidden="true"></i> Agendamento
-											</a>
-										</li>
-										<li>
-											<a href="/areaCliente/listaAgenda">
-												Minha Agenda
-											</a>
-										</li>
-										<li>
-											<a href="/areaCliente/pacienteConv">
-												Meus Convenios
-											</a>
-										</li>
-										<li>
-											<a href="/areaCliente/meus_dados">
+											<a href="/atendente/meus_dados">
 												 Meus Dados <i class="fa fa-user" aria-hidden="true"></i>	
 											</a>
 										</li>
 										<li>
-											<a href="/areaCliente/altera_senha">
+											<a href="/atendente/altera_senha">
 												 Alterar Senha <i class="fa fa-cogs" aria-hidden="true"></i>
 											</a>
 										</li>
 										<li>
-											<a href="/areaCliente/infor">
+											<a href="/atendente/infor">
 												 Informativo <i class="fa fa-info-circle" aria-hidden="true"></i>
 											</a>
 										</li>
@@ -108,7 +105,7 @@
 <!-- Banner Cliente -->
 		<div class="main-banner cliente">
 			<div class="container">
-				<h2><span>Área do Cliente</span></h2>
+				<h2><span>Área do Atendente</span></h2>
 			</div>
 		</div>
 <!-- Banner Cliente Fim-->
@@ -120,47 +117,47 @@
 				<div class="col-md-3 col-sm-6 col-xs-12">
 					<div class="box">
 						<i class="fa fa-calendar-plus-o"></i>
-						<h4> Novo Agendamento </h4>
+						<h4> Horários Médicos </h4>
 						<p>
-							Consulta e Exame. 
+							Horários disponivel a consultas
 						</p>
-						<a href="/areaCliente/agendamento" class="btn btn-transparent">Agendar...</a>
+						<a href="/atendente/medicos_horario" class="btn btn-transparent">Vê registro...</a>
 					</div>
 				</div>
 			<!-- Box #1 Ends -->
 			<!-- Box #2 Starts -->
-				<div class="col-md-3 col-sm-6 col-xs-12">
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 					<div class="box">
 						<i class="fa fa-calendar-check-o"></i>
 						<h4>Agendamentos</h4>
 						<p>
-							Minha Lista de Consultas e Exames
+							Lista de Consultas
 						</p>
-						<a href="/areaCliente/listaAgenda" class="btn btn-transparent">Vê Registro...</a>
+						<a href="/atendente/listaAgenda" class="btn btn-transparent">Vê Registro...</a>
 					</div>
 				</div>
 			<!-- Box #2 Ends -->
 			<!-- Box #3 Starts -->
-				<div class="col-md-3 col-sm-6 col-xs-12">
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 					<div class="box">
 						<i class="fa fa-credit-card" aria-hidden="true"></i>
-						<h4>Meus Convênios</h4>
+						<h4>Convênios Clinica</h4>
 							<p>
-								Registro de Convênios
+								Registros de Convênios
 							</p>
-						<a href="/areaCliente/pacienteConv" class="btn btn-transparent">Vê registro...</a>
+						<a href="/atendente/convenios" class="btn btn-transparent">Vê registro...</a>
 					</div>
 				</div>
 			<!-- Box #3 Ends -->
 			<!-- Box #4 Starts -->
-				<div class="col-md-3 col-sm-6 col-xs-12">
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 					<div class="box">
 						<i class="fa fa-user" aria-hidden="true"></i>
-						<h4> Meus Dados </h4>
+						<h4> Cliente / Cadastro </h4>
 						<p>
-							Dados do Paciente.
+							Dados do cliente.
 						</p>
-						<a href="/areaCliente/meus_dados" class="btn btn-transparent">Vê registro...</a>
+						<a href="/atendente/cliente" class="btn btn-transparent">Vê registro...</a>
 					</div>
 				</div>
 			<!-- Box #4 Ends -->

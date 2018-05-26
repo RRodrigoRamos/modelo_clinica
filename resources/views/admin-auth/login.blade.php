@@ -88,9 +88,11 @@
             </div>
         </div>
       <!-- Banner Cliente Fim-->
-<div class="container form_user">
+<div class="container-fluid form_user">
+    <div class="col-lg-1">
+    </div>
     <div class="row justify-content-center">
-        <div class="col-md-12 col-sm-12 col-lg-8 col-xs-8">
+        <div class="col-md-12 col-sm-12 col-lg-6 col-xs-12">
             <br>
                 <fieldset>
                         <legend>Login / Admin</legend>
@@ -150,9 +152,8 @@
                         </div>
                     </form>
                 </fieldset>
-                <a href="/login"> Area Cliente</a>
         </div>
     </div>
+    <br>
 </div>
-<br>
 @endsection

@@ -17,10 +17,12 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 	#medico
-
 	Route::get('/areaMedico','MedicoController@index');
+
+	#agenda_Médico
+	Route::get('/areaMedico/agenda_medico','MedicoController@agendaMedico');
+
 	Route::get('/areaMedico/agendamento','MedicoController@agendamentoForm');
-	Route::get('/areaMedico/listaAgenda','MedicoController@listaAgenda');
 	Route::post('/areaMedico/agendaSalva','MedicoController@agendaSalva');
 	Route::get('/areaMedico/meus_dados','MedicoController@pacienteForm');
 	Route::post('/areaMedico/meus_dados','MedicoController@pacienteForm');
@@ -31,7 +33,6 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::post('/areaMedico/pacienteContat','MedicoController@pacienteContat');	
 
 	#atendente
-
 	Route::get('/areaAtendente','AtendenteController@index');
 	Route::get('/areaAtendente/agendamento','AtendenteController@agendamentoForm');
 	Route::get('/areaAtendente/listaAgenda','AtendenteController@listaAgenda');
@@ -79,7 +80,7 @@ Route::post('/admin/password/email',['as' => 'admin.password.email','uses' => 'A
 Route::get('/admin/password/reset/{token}',['as' => 'admin.password.reset.token','uses' => 'AdminAuth\ResetPasswordController@showResetForm']);
 Route::post('/admin/password/reset',['as'=>'admin.password.request','uses' => 'AdminAuth\ResetPasswordController@reset']);
 
-// Rotas de registro Admin...
+// Rotas Administrativas...
 Route::middleware(['admin'])->group (function() {
 	Route::get('/areaAdmin', 'AdminController@index');
 	Route::get('/admin/agendamentos', 'AdminController@listaAgendas');
@@ -92,18 +93,12 @@ Route::middleware(['admin'])->group (function() {
 	Route::get('/admin/medicos/{id}', 'AdminController@showmedico');
 	Route::put('/admin/medicos/', 'AdminController@editarmedico');
 
-
-
 	#salvar
 	Route::get('/admin/pacientes', 'AdminController@listaPacientes');
 	Route::post('/admin/pacientesalvar', 'AdminController@pacientesalvar');
+
 	#editar
 	Route::get('/admin/pacientes/{id}', 'AdminController@showpaciente');
 	Route::put('/admin/pacientes/', 'AdminController@editarpaciente');
 
 });
-
-
-// =======
-// // Rotas do Cliente
-// >>>>>>> 1c76d105c100cfbf75b31eef1c68798b9041eba4

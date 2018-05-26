@@ -28,7 +28,7 @@ class AtendenteController extends Controller
     
        public function index()
     {
-        return view('medico.painel');
+        return view('atendente.painel');
     }
 
     public function agendamentoForm()
