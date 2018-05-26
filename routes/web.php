@@ -19,9 +19,8 @@ Route::group(['middleware' => ['auth']], function () {
 	#medico
 	Route::get('/areaMedico','MedicoController@index');
 
-	#agenda_Médico
+		#agenda_Médico
 	Route::get('/areaMedico/agenda_medico','MedicoController@agendaMedico');
-
 	Route::get('/areaMedico/agendamento','MedicoController@agendamentoForm');
 	Route::post('/areaMedico/agendaSalva','MedicoController@agendaSalva');
 	Route::get('/areaMedico/meus_dados','MedicoController@pacienteForm');
