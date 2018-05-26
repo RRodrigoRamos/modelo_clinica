@@ -1,23 +1,12 @@
 <?php
 
 namespace acclinic\Http\Controllers\AdminAuth;
-
 use acclinic\Admin;
 use acclinic\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
 
     use AuthenticatesUsers;
 
@@ -35,13 +24,16 @@ class LoginController extends Controller
      */
 
 
-    
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }   
     protected function guard()
     {
         return Auth()->guard('admin');
     }
 
-    public function showLoginForm() 
+    public function showLoginForm()
     {
         return view('admin-auth.login');
     } 

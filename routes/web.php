@@ -1,5 +1,49 @@
 <?php
 
+
+Auth::routes();
+Route::group(['middleware' => ['auth']], function () {
+	Route::get('/areaCliente','UserController@index');
+	Route::get('/areaCliente/agendamento','UserController@agendamentoForm');
+	Route::get('/areaCliente/listaAgenda','UserController@listaAgenda');
+	Route::post('/areaCliente/agendaSalva','UserController@agendaSalva');
+	Route::get('/areaCliente/meus_dados','UserController@pacienteForm');
+	Route::post('/areaCliente/meus_dados','UserController@pacienteForm');
+	Route::get('/areaCliente/convenios','UserController@pacienteConv');
+	Route::get('/areaCliente/convenios','UserController@pacienteConv');
+	Route::get('/areaCliente/infor','UserController@pacienteInfor');
+	Route::get('/areaCliente/pacienteContat','UserController@pacienteContat');
+	Route::post('/areaCliente/pacienteContat','UserController@pacienteContat');	
+
+
+	#medico
+
+	Route::get('/areaMedico','MedicoController@index');
+	Route::get('/areaMedico/agendamento','MedicoController@agendamentoForm');
+	Route::get('/areaMedico/listaAgenda','MedicoController@listaAgenda');
+	Route::post('/areaMedico/agendaSalva','MedicoController@agendaSalva');
+	Route::get('/areaMedico/meus_dados','MedicoController@pacienteForm');
+	Route::post('/areaMedico/meus_dados','MedicoController@pacienteForm');
+	Route::get('/areaMedico/convenios','MedicoController@pacienteConv');
+	Route::get('/areaMedico/convenios','MedicoController@pacienteConv');
+	Route::get('/areaMedico/infor','MedicoController@pacienteInfor');
+	Route::get('/areaMedico/pacienteContat','MedicoController@pacienteContat');
+	Route::post('/areaMedico/pacienteContat','MedicoController@pacienteContat');	
+
+	#atendente
+
+	Route::get('/areaAtendente','AtendenteController@index');
+	Route::get('/areaAtendente/agendamento','AtendenteController@agendamentoForm');
+	Route::get('/areaAtendente/listaAgenda','AtendenteController@listaAgenda');
+	Route::post('/areaAtendente/agendaSalva','AtendenteController@agendaSalva');
+	Route::get('/areaAtendente/meus_dados','AtendenteController@pacienteForm');
+	Route::post('/areaAtendente/meus_dados','AtendenteController@pacienteForm');
+	Route::get('/areaAtendente/convenios','AtendenteController@pacienteConv');
+	Route::get('/areaAtendente/convenios','AtendenteController@pacienteConv');
+	Route::get('/areaAtendente/infor','AtendenteController@pacienteInfor');
+	Route::get('/areaAtendente/pacienteContat','AtendenteController@pacienteContat');
+	Route::post('/areaAtendente/pacienteContat','AtendenteController@pacienteContat');	
+});
 // Pagina Inicial
 Route::get('/inicio', function () {
     return view('home');
@@ -59,27 +103,7 @@ Route::middleware(['admin'])->group (function() {
 
 });
 
-// Rotas do Cliente 
-	Auth::routes();
-Route::middleware(['web'])->group (function() {
-	Route::get('/areaCliente','UserController@index');
-	Route::get('/areaCliente/agendamento','UserController@agendamentoForm');
-	Route::get('/areaCliente/agendamento_hora','UserController@agendamentoFormHorario');
-	Route::get('/areaCliente/listaAgenda','UserController@listaAgenda');
-	Route::post('/areaCliente/agendaSalva','UserController@agendaSalva');
-	Route::get('/areaCliente/meus_dados','UserController@pacienteForm');
-	Route::post('/areaCliente/meus_dados','UserController@pacienteForm');
-	Route::get('/areaCliente/convenios','UserController@pacienteConv');
-	Route::get('/areaCliente/convenios','UserController@pacienteConv');
-	Route::get('/areaCliente/infor','UserController@pacienteInfor');
-	Route::get('/areaCliente/pacienteContat','UserController@pacienteContat');
-	Route::post('/areaCliente/pacienteContat','UserController@pacienteContat');
 
-// Route::get('lista-usuarios', 'UsuariosController@listaUsuario');
-// Route::get('cria-usuario', 'UsuariosController@formularioUsuario');
-// Route::post('salva-usuario', 'UsuariosController@salvarUsuario');
-// Route::put('altera-usuario/{id}', 'UsuariosController@alteraUsuario');
-// Route::get('editar-usuario/{id}', 'UsuariosController@editarUsuario');
-// Route::delete('deletar-usuario/{id}', 'UsuariosController@deletarUsuario');
-});
-	
+// =======
+// // Rotas do Cliente
+// >>>>>>> 1c76d105c100cfbf75b31eef1c68798b9041eba4
