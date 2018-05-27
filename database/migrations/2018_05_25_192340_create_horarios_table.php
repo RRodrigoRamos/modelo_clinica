@@ -15,6 +15,11 @@ class CreateHorariosTable extends Migration
     {
         Schema::create('horarios', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('medico_id')->unsigned();
+            $table->foreign('medico_id')->references('id')->on('medicos')->onDelete('cascade');
+            $table->json('dias_da_semana');
+            $table->string('horario_inicio');
+            $table->string('horario_termino');
             $table->timestamps();
         });
     }

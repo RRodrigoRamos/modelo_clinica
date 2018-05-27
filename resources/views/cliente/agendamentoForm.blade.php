@@ -142,15 +142,8 @@
             </div>
           </div> 
           <div class="form-group col-sm-12 col-md-12 col-lg-6">
-            <label for="clinica_id" class="control-label">Escolhar Unidade Média <span class="obr">*</span></label>
-                <div class="form-group">
-                  <select name="clinica_id" class="form-control" data-live-search="true" required>
-                  <option value="" disabled="disabled">Selecione</option>
-                  	@foreach($clinica as $clinica_escolha)
-                    <option value="{{ $clinica_escolha->id }}"> {{ $clinica_escolha->nome }} </option>
-                    @endforeach
-              </select>
-            </div>
+            <label for="clinica_id" class="control-label"><span class="obr">*</span></label>
+                
             </div>
           </div>
           <div class="row">

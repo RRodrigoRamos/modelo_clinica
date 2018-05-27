@@ -17,6 +17,8 @@ use acclinic\Endereco;
 use acclinic\Bairro;
 use acclinic\Cidade;
 use acclinic\Estado;
+use acclinic\Horario;
+use Calendar;
 
 
 class MedicoController extends Controller
@@ -66,41 +68,39 @@ class MedicoController extends Controller
 
     public function medicoHorarios()
     {
-            $events = [];
-
-            $events[] = \Calendar::event(
-                'Event One', //event title
-                false, //full day event?
-                '2015-02-11T0800', //start time (you can also use Carbon instead of DateTime)
-                '2015-02-12T0800', //end time (you can also use Carbon instead of DateTime)
-                0 //optionally, you can specify an event ID
-            );
-
-            $events[] = \Calendar::event(
-                "Valentine's Day", //event title
-                true, //full day event?
-                new \DateTime('2015-02-14'), //start time (you can also use Carbon instead of DateTime)
-                new \DateTime('2015-02-14'), //end time (you can also use Carbon instead of DateTime)
-                'stringEventId' //optionally, you can specify an event ID
-            );
-
-            $eloquentEvent = EventModel::first(); //EventModel implements MaddHatter\LaravelFullcalendar\Event
-
-            $calendar = \Calendar::addEvents($events) //add an array with addEvents
-                ->addEvent($eloquentEvent, [ //set custom color fo this event
-                    'color' => '#800',
-                ])->setOptions([ //set fullcalendar options
-                    'firstDay' => 1
-                ])->setCallbacks([ //set fullcalendar callback options (will not be JSON encoded)
-                    'viewRender' => 'function() {alert("Callbacks!");}'
-                ]);
-
-            return view('hello', compact('calendar'));
-                }
+        $value =Horario::where('medico_id', auth()->user()->medico->id)->get();
+        $value= $value[0];
+        return view('medico.medicoHorarios',['value'=>$value]);
+    }
+    public function medicoHorariosupdate(Request $request)
+    {
+        $medicoHorarioupdate =Horario::where('medico_id', auth()->user()->medico->id)->get();
+        if(sizeof($medicoHorarioupdate)==0){
+            
+            $horario = new Horario;
+            $horario->medico_id = auth()->user()->medico->id;
+            $horario->dias_da_semana = $request->dia_da_semana;
+            $horario->horario_inicio =$request->horario_inicio;
+            $horario->horario_termino =$request->horario_termino;
+            $horario->save();
+        }else{
+            
+            $array= $request->dia_da_semana; 
+            $collection = collect($array);
+            $string = $collection->toJson();
+            Horario::where('medico_id', auth()->user()->medico->id)->update(['medico_id'=> auth()->user()->medico->id,
+            'dias_da_semana'=> $string,
+            'horario_inicio'=>$request->horario_inicio,
+            'horario_termino'=>$request->horario_termino]);
+            
+            
+            
+        }
+        return view('medico.medicoHorarios',['value'=>$medicoHorarioupdate]);
+    }
 
     public function medicoConvCad()
     {
-        // Cadastro de Convenio
         return view('medico.medicoConv');
     }
 

@@ -47,7 +47,7 @@
 											</a>
 										</li>
 										<li>
-											<a href="/areaMedico/horario">
+											<a href="/areaMedico/medicoHorarios">
 												Meus Horários
 											</a>
 										</li>
