@@ -5,6 +5,9 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function () {
 	Route::get('/areaCliente','UserController@index');
 	Route::get('/areaCliente/agendamento','UserController@agendamentoForm');
+	Route::get('/areaCliente/horario/{id}','UserController@select_dia_semanal');
+	
+	
 	Route::get('/areaCliente/listaAgenda','UserController@listaAgenda');
 	Route::post('/areaCliente/agendaSalva','UserController@agendaSalva');
 	Route::get('/areaCliente/meus_dados','UserController@pacienteForm');
@@ -14,6 +17,10 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/areaCliente/infor','UserController@pacienteInfor');
 	Route::get('/areaCliente/pacienteContat','UserController@pacienteContat');
 	Route::post('/areaCliente/pacienteContat','UserController@pacienteContat');	
+	
+	
+	
+	
 	#medico
 	Route::get('/areaMedico','MedicoController@index');
 	#agenda_Médico

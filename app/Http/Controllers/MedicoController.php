@@ -42,21 +42,54 @@ class MedicoController extends Controller
 
             // busca o registro
             // $medico = Medico::find(1);
-
-            // lista os campos da minha lista Agenda
-        $agendamentosP = Agendamento::select(['agendamentos.tipo_agenda','agendamentos.data_agenda','agendamentos.hora_agenda','medicos.name as nome_medico','especialidades.campo as especialidade','clinicas.nome as clinica_medica','status_agendas.descricao as status_agenda'])
+            
+        $dia_da_semana = self::dia_da_semana();
+        $agendamentosP = Agendamento::select([
+        'users.name as nome_do_paciente',
+        'pacientes.telefone as telefone_do_paciente',
+        'agendamentos.tipo_agenda',
+        'agendamentos.data_agenda',
+        'agendamentos.hora_agenda',
+        'medicos.name as nome_medico',
+        'clinicas.nome as clinica_medica',
+        'status_agendas.descricao as status_agenda',
+        'horarios.dias_da_semana'
+        ])
+            ->join('users','users.id','=','agendamentos.users_id')
+            ->join('pacientes','pacientes.user_id','=','agendamentos.users_id')
             ->join('clinica_medicos','agendamentos.clinica_medicos_id','=','clinica_medicos.id')
             ->join('medicos','clinica_medicos.medicos_id','=','medicos.id') 
-            ->join('especialidades','medicos.especialidade_id','=','especialidades.id') 
+            ->join('horarios','horarios.medico_id','=','medicos.id') 
             ->join('clinicas','clinica_medicos.clinica_id','=','clinicas.id') 
             ->join('status_agendas','agendamentos.status_id','=','status_agendas.id')
             ->where('clinica_medicos.medicos_id', '=', auth()->user()->medico->id )
-            ->orderBy('agendamentos.data_agenda', 'asc')
+            ->where('horarios.dias_da_semana->'.$dia_da_semana,'=', 'true' )
             ->get();
 
         return view('medico.listaAgenda',compact('agendamentosP'));
     }
+    public function dia_da_semana(){
+        $dd = date("w");
 
+        switch($dd) {
+
+        case"0": $dia_semana = "domingo"; break;
+
+        case"1": $dia_semana = "segunda"; break;
+
+        case"2": $dia_semana = "terca"; break;
+
+        case"3": $dia_semana = "quarta"; break;
+
+        case"4": $dia_semana = "quinta"; break;
+
+        case"5": $dia_semana = "sexta"; break;
+
+        case"6": $dia_semana = "sabado"; break;
+
+        }
+        return $dia_semana;
+    }
     
     public function medicoDados()
     {
@@ -68,8 +101,10 @@ class MedicoController extends Controller
 
     public function medicoHorarios()
     {
-        $value =Horario::where('medico_id', auth()->user()->medico->id)->get();
-        $value= $value[0];
+        $value = Horario::where('medico_id', auth()->user()->medico->id)->get();
+        if(empty($value)){    
+            $value= $value[0];
+        }
         return view('medico.medicoHorarios',['value'=>$value]);
     }
     public function medicoHorariosupdate(Request $request)

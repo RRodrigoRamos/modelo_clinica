@@ -1,4 +1,23 @@
 @extends('layout.templateAdmin')
+@section('script')
+<script>
+$('.medicos').on('change', function (e) {
+    var optionSelected = $("option:selected", this);
+    var valueSelected = this.value;
+$.ajax({
+  url: "http://127.0.0.1:8000/areaCliente/horario/"+$('.medicos option:selected').val(),
+  method : 'GET',
+  data : data,
+  dataType : 'JSON',
+   success : function (data) {
+            $("#feedback").html(data);
+        }
+}).done(function(data) {
+  alert(data.nome)
+});
+});
+</script>
+@endsection
 @section('title', 'Area Cliente')
 @section('topoInfor')
 			<!-- Informações do Topo site -->
@@ -88,93 +107,94 @@
 
 @endsection
 @section('ConteudoPrincipal')
-<!-- Banner Cliente -->
-		<div class="main-banner clienteAgenda">
-			<div class="container">
-				<h2><span>Agendamentos</span></h2>
+	<!-- Banner Cliente -->
+			<div class="main-banner clienteAgenda">
+				<div class="container">
+					<h2><span>Agendamentos</span></h2>
+				</div>
 			</div>
-		</div>
-		<div class="breadcrumb">
-			<div class="container">
-				<ul class="list-unstyled list-inline">
-					<li>
-						<a href="/areaCliente">Área Cliente</a>
-					</li>
-					<li>Agendamentos</li>
-				</ul>
+			<div class="breadcrumb">
+				<div class="container">
+					<ul class="list-unstyled list-inline">
+						<li>
+							<a href="/areaCliente">Área Cliente</a>
+						</li>
+						<li>Agendamentos</li>
+					</ul>
+				</div>
 			</div>
-		</div>
-<!-- Banner Cliente Fim-->
-<!-- Conteudo Agenda -->
+	<!-- Banner Cliente Fim-->
+	<!-- Conteudo Agenda -->
 
-	
-<div class="container main">
-<br>
-	<div class="col-md-12 col-sm-12 col-lg-8 col-xs-12">
-		<div class="alert alert-info">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <div class="text"><i class="fa fa-info-circle fa-2x	"></i> &nbsp; Preencha os campos necessário para o AGENDAMENTO!</div>
-        </div>
+		
+	<div class="container main">
+	<br>
+		<div class="col-md-12 col-sm-12 col-lg-8 col-xs-12">
+			<div class="alert alert-info">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+				<div class="text"><i class="fa fa-info-circle fa-2x	"></i> &nbsp; Preencha os campos necessário para o AGENDAMENTO!</div>
+			</div>
+		</div>
+
+		
+	<div class="col-xs-12 col-sm-12 col-md-8 col-lg-12">
+	<form class="form"  method="post" action="/areaCliente/agendamento_hora">
+		{!! csrf_field() !!}
+		<fieldset>
+		<input type="hidden" name="agenda_de" value="CONSULTA">
+		<input type="hidden" name="status_id" value="1">
+		<input type="hidden" name="users_id" value="{{ Auth::user()->id }}">
+
+
+			<legend>Dados da Consulta</legend>
+			<div class="row">
+			<div class="form-group col-sm-12 col-md-12 col-lg-6">
+				<label for="medicos_id" class="control-label">Escolhar o Médico / Especialidade <span class="obr">*</span></label>
+					<div class="form-group">
+				<select name="medicos_id" class="form-control medicos" required>
+					<option value="" disabled="disabled">Selecione</option>
+						@foreach($especialidades as $especialidade)
+						<option value="{{ $especialidade->id }}"> {{ $especialidade->nome_medico }} / {{ $especialidade->campo}}
+						</option>
+						@endforeach
+				</select>
+				</div>
+			</div> 
+			<div class="form-group col-sm-12 col-md-12 col-lg-6">
+				<label for="clinica_id" class="control-label"><span class="obr">*</span></label>
+					<select name="horarios" class="form-control select_dia_semanal" required> 
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-sm-12 col-md-12 col-lg-4">
+					<label for="tipo_agenda" class="control-label">Tipo de Atendimento <span class="obr">*</span></label>
+						<div class="form-group">
+					<select id="tipo_agenda" name="tipo_agenda" class="form-control" data-live-search="true" required>
+						<option value="" disabled="disabled">Selecione</option>
+						<option value="Convênio">Convênio</option>
+						<option value="Particular" selected="selected">Particular</option>
+						<option value="Retorno">Retorno</option>
+					</select>
+					</div>
+				</div>
+				<div class="form-group col-sm-6 col-md-6 col-lg-4"">
+					<label for="data_agenda" class="control-label">Data do Agendamento <span class="obr">*</span></label>
+					<input type="date" class="form-control" OnKeyPress="formatar('##/##/####', this)" name="data_agenda" required>
+				</div>
+			</div>
+			<div class="row">
+			<br>
+				<div class="form-group col-sm-6 col-md-6 col-lg-6 col-lg-6">
+					<button type="submit" class="btn btn-primary agendar">AGENDAR</button>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+	<br>
+	</div>
+	<br>
 	</div>
 
-	 
-<div class="col-xs-12 col-sm-12 col-md-8 col-lg-12">
-   <form class="form"  method="post" action="/areaCliente/agendamento_hora">
-    {!! csrf_field() !!}
-    <fieldset>
-      <input type="hidden" name="agenda_de" value="CONSULTA">
-      <input type="hidden" name="status_id" value="1">
-      <input type="hidden" name="users_id" value="{{ Auth::user()->id }}">
-
-
-          <legend>Dados da Consulta</legend>
-          <div class="row">
-          <div class="form-group col-sm-12 col-md-12 col-lg-6">
-            <label for="medicos_id" class="control-label">Escolhar o Médico / Especialidade <span class="obr">*</span></label>
-                <div class="form-group">
-              <select name="medicos_id" class="form-control" required>
-                  <option value="" disabled="disabled">Selecione</option>
-                  	@foreach($especialidades as $especialidade)
-                    <option value="{{ $especialidade->id }}"> {{ $especialidade->nome_medico }} / {{ $especialidade->campo}}
-                    </option>
-                    @endforeach
-              </select>
-            </div>
-          </div> 
-          <div class="form-group col-sm-12 col-md-12 col-lg-6">
-            <label for="clinica_id" class="control-label"><span class="obr">*</span></label>
-                
-            </div>
-          </div>
-          <div class="row">
-	          <div class="form-group col-sm-12 col-md-12 col-lg-4">
-	            <label for="tipo_agenda" class="control-label">Tipo de Atendimento <span class="obr">*</span></label>
-	                <div class="form-group">
-	              <select id="tipo_agenda" name="tipo_agenda" class="form-control" data-live-search="true" required>
-	                  <option value="" disabled="disabled">Selecione</option>
-	                  <option value="Convênio">Convênio</option>
-	                  <option value="Particular" selected="selected">Particular</option>
-	                  <option value="Retorno">Retorno</option>
-	              </select>
-	            </div>
-	          </div>
-	          <div class="form-group col-sm-6 col-md-6 col-lg-4"">
-	            <label for="data_agenda" class="control-label">Data do Agendamento <span class="obr">*</span></label>
-	            <input type="date" class="form-control" OnKeyPress="formatar('##/##/####', this)" name="data_agenda" required>
-	          </div>
-	      </div>
-        <div class="row">
-        <br>
-      		<div class="form-group col-sm-6 col-md-6 col-lg-6 col-lg-6">
-      			<button type="submit" class="btn btn-primary agendar">AGENDAR</button>
-      		</div>
-      	</div>
-    </fieldset>
-  </form>
-  <br>
-</div>
-<br>
-</div>
-
-<!-- Conteudo Agenda Fim -->
+	<!-- Conteudo Agenda Fim -->
 @endsection

@@ -146,5 +146,6 @@
     <script src="../js/custom.js"></script>
     <script src="../js/jquery-ui.js"></script>
     <script src="../js/jquery.mask.min.js"></script>
+    @yield('script')
     </body>
 </html>

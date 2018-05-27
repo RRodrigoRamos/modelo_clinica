@@ -135,67 +135,42 @@
 <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xs-12">
 <form class="form"  method="post" action="/areaCliente/agendaSalva">
     <fieldset>
-          <legend>Lista Agenda Programadas</legend>
+          <legend>Lista Agenda Programadas para hoje</legend>
 	            <table class="table table-striped table-bordered table-condensed table-hover table-responsive">
 						 <thead>
 						  <tr>
+						   <th>Paciente</th>
+						   <th>Telefone</th>
 						   <th>Tipo</th>
-						   <th>Especialidade</th>
-						   <th>Médico</th>
 						   <th>Unidade</th>
 						   <th>Data</th>
-						   <th>Status</th>
+						   <th>Dias da semana</th>
 						  </tr>
 						 </thead>
 						 <tbody>
 						@foreach($agendamentosP as $agendamentosPs)
 						  <tr>
+     					   <td>{{ $agendamentosPs->nome_do_paciente}}</td>
+     					   <td>{{ $agendamentosPs->telefone_do_paciente}}</td>
      					   <td>{{ $agendamentosPs->tipo_agenda}}</td>
-						   <td>{{ $agendamentosPs->especialidade}}</td>
-						   <td>{{ $agendamentosPs->nome_medico}}</td>
 						   <td>{{ $agendamentosPs->clinica_medica}}</td>
 						   <td>{{ $agendamentosPs->data_agenda}} / {{ $agendamentosPs->hora_agenda}}</td>
-						   <td>{{ $agendamentosPs->status_agenda}}</td>
+						   <td>{{ $agendamentosPs->dias_da_semana}}</td>
 						  </tr>
                     	@endforeach
 						 </tbody>
 						</table>
+						 <center>
+						 @if(sizeof($agendamentosP)==0)
+							Nenhum Agendamento Para Hoje
+						 @endif
+						 </center>
 	</fieldset>
 <br>
   		</form>
 	</div>
 <br>
 </div>
-<div class="row">
-	<form class="form"  method="post" action="/areaCliente/agendaSalva">
-    <fieldset>
-          <legend>Lista Agenda Realizados</legend>
-	            <table class="table table-striped table-bordered table-condensed table-hover table-responsive">
-						 <thead>
-						  <tr>
-						   <th>Tipo</th>
-						   <th>Especialidade</th>
-						   <th>Médico</th>
-						   <th>Unidade</th>
-						   <th>Data</th>
-						   <th>Status</th>
-						  </tr>
-						 </thead>
-						 <tbody>
-						  <tr>
-						   <td>Consulta</td>
-						   <td>Clinico Geral</td>
-						   <td>Dr. Brasil</td>
-						   <td>Matriz</td>
-						   <td>12/12/18 17:00h</td>
-						   <td>Aguardando Confirmação</td>
-						  </tr>
-						 </tbody>
-						</table>
-	</fieldset>
-<br>
-  		</form>
-	</div>
 </div>
 	<!-- Conteudo Agenda Fim -->
 @endsection

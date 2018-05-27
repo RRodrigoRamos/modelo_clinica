@@ -5,6 +5,7 @@ namespace acclinic\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use acclinic\Agendamento;
+use acclinic\Horario;
 use acclinic\Clinica;
 use acclinic\User;
 use acclinic\Medico;
@@ -45,12 +46,12 @@ class UserController extends Controller
             ->join('especialidades','medicos.especialidade_id', '=', 'especialidades.id' )
             ->orderBy('especialidades.campo', 'asc')
             ->get();
-
-        $clinica = Clinica::select('*')->get();
-        
-        return view('cliente.agendamentoForm',compact('especialidades','clinica'));
+        return view('cliente.agendamentoForm',['especialidades'=> $especialidades]);
     }
+    public function select_dia_semanal($id){
 
+        return Horario::where('medico_id',$id)->get();
+    }
     public function agendamentoFormHorario(Request $resquest)
     {
         return view('cliente.agendamentoFormHora',compact('Request'));
