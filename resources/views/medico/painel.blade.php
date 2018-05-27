@@ -5,7 +5,7 @@
 				<div class="top-bar hidden-sm hidden-xs">
 					<div class="row">
 						<div class="col-sm-6 col-xs-12">
-							  Bem vindo {{ Auth::user()->name }} a sua pagina de Médico Agenda.
+							  Bem vindo {{ Auth::user()->medico->name }} a sua pagina!.
 						</div>
 					</div>
 				</div>
@@ -42,12 +42,12 @@
 										<a href="/areaMedico">Início</a>
 									</li>
 									<li>
-											<a href="/medico/agenda">
+											<a href="/areaMedico/agenda">
 												Minha Agenda
 											</a>
 										</li>
 										<li>
-											<a href="/medico/horario">
+											<a href="/areaMedico/horario">
 												Meus Horários
 											</a>
 										</li>
@@ -58,12 +58,12 @@
 										</a>
 										<ul class="dropdown-menu" role="menu">
 										<li>
-											<a href="/medico/meus_dados">
+											<a href="/areaMedico/meus_dados">
 												 Meus Dados <i class="fa fa-user" aria-hidden="true"></i>	
 											</a>
 										</li>
 										<li>
-											<a href="/medico/altera_senha">
+											<a href="/areaMedico/altera_senha">
 												 Alterar Senha <i class="fa fa-cogs" aria-hidden="true"></i>
 											</a>
 										</li>
@@ -111,7 +111,7 @@
 						<p>
 							Agendamentos marcados...  
 						</p>
-						<a href="/medicos/agenda" class="btn btn-transparent">Vê registro...</a>
+						<a href="/areaMedico/agenda" class="btn btn-transparent">Vê registro...</a>
 					</div>
 				</div>
 			<!-- Box #1 Ends -->
@@ -123,7 +123,7 @@
 						<p>
 							Horário disponivel para consultas médicas.
 						</p>
-						<a href="/medicos/horario" class="btn btn-transparent">Vê Registro...</a>
+						<a href="/areaMedico/horario" class="btn btn-transparent">Vê Registro...</a>
 					</div>
 				</div>
 			<!-- Box #2 Ends -->
@@ -135,7 +135,7 @@
 						<p>
 							Dados de registro paciente
 						</p>
-						<a href="/areaCliente/meus_dados" class="btn btn-transparent">Vê registro...</a>
+						<a href="/areaMedico/meus_dados" class="btn btn-transparent">Vê registro...</a>
 					</div>
 				</div>
 			<!-- Box #4 Ends -->

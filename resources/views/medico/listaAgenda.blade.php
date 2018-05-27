@@ -148,16 +148,6 @@
 						  </tr>
 						 </thead>
 						 <tbody>
-<!-- 
-						 	 "tipo_agenda" => "PARTICULAR"
-        "data_agenda" => "2018-05-10"
-        "hora_agenda" => "08:00h"
-        "nome_medico" => "Dr. Alice Costa"
-        "especialidade" => "Cardiologia"
-        "clinica_medica" => "Laboratório de Analises Clínicas - Hemodiagnostico / Matriz"
-        "nome_paciente" => "Cliente Novo"
-        "status_agenda" => "Pendente" -->
-	
 						@foreach($agendamentosP as $agendamentosPs)
 						  <tr>
      					   <td>{{ $agendamentosPs->tipo_agenda}}</td>
