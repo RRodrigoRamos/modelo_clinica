@@ -57,7 +57,11 @@
                                         <a href="/pagina/contato"><i class="fa fa-comments"> </i> Fale Conosco</a>
                                     </li>
                                     <li class="active">
-                                        <a href="/areaCliente" ><i class="fa fa-user"></i> Área do cliente</a>
+                                        <a href="/areaCliente" >
+                                            <i class="fa fa-sign-in"></i>
+                                              Login 
+                                            <i class="fa fa-user"></i>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -83,7 +87,7 @@
                     <li>
                         <a href="/inicio">Inicio</a>
                     </li>
-                    <li class="active">Area do Cliente</li>
+                    <li class="active">Login - Usuário</li>
                 </ul>
             </div>
         </div>

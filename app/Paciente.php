@@ -20,19 +20,23 @@ class Paciente extends Model
         'data_nasc',
         'telefone',
     ];
-      public function user()
+
+    public function user()
     {
         return $this->hasOne(\acclinic\User::class);
     }
-        public function triagen()
+
+    public function triagen()
     {
         return $this->hasOne(\acclinic\Triagen::class);
     }
-        public function convenio()
+
+    public function convenio()
     {
         return $this->hasOne(\acclinic\Convenio::class);
     }
-        public function agenda()
+    
+    public function agenda()
     {
         return $this->hasMany(\acclinic\Agendamento::class);
     }

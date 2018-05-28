@@ -32,16 +32,25 @@ class User extends Authenticatable
     protected $hidden = [
         'remember_token','updated_at','created_at'
     ];
-       public function medico()
+
+    public function medico()
     {
-        return $this->hasOne(\acclinic\Medico::class);
+        return $this->belongsTo(\acclinic\Medico::class);
     }
+
     public function endereco()
     {
         return $this->hasOne(\acclinic\Endereco::class);
     }
+
     public function paciente()
     {
-        return $this->hasOne(\acclinic\Paciente::class);
+        return $this->belongsTo(\acclinic\Paciente::class);
     }
+    
+    public function atendente()
+    {
+        return $this->belongsTo(\acclinic\Atendente::class);
+    }
+    
 }

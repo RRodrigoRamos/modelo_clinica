@@ -75,7 +75,11 @@
 										<a href="/pagina/contato"><i class="fa fa-comments"> </i> Fale Conosco</a>
 									</li>
 									<li>
-										<a href="/areaCliente" ><i class="fa fa-user"></i> Área do cliente</a>
+										<a href="/areaCliente" >
+											<i class="fa fa-sign-in"></i>
+											  Login 
+											<i class="fa fa-user"></i>
+										</a>
 									</li>
 								</ul>
 							</div>
@@ -162,7 +166,7 @@
 				<div class="col-md-3 col-sm-6 col-xs-12">
 					<div class="box">
 						<i class="fa fa-hospital-o"></i>
-						<h4>Nossas Unidades de Atendimento </h4>
+						<h4>Nossas Unidades Matriz e Filias </h4>
 						<p>
 							Unidades no Estado...
 						</p>

@@ -180,7 +180,7 @@
         </div>
         <div class="form-group col-sm-12 col-md-12 col-lg-3"">
                 <label for="cpf" class="control-label">CPF: <span class="obr">*</span> </label>
-                <input type="text" class="form-control" name="cpf" id="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" placeholder="000.000.000-00" pattern="[a-z\s]+$" required>
+                <input type="text" class="form-control" name="cpf" id="cpf" maxlength="14" OnKeyPress="formatar('###.###.###-##', this)" placeholder="000.000.000-00" required>
           </div>
           <div class="form-group col-sm-12 col-md-12 col-lg-3">
                 <label for="data_nasc" class="control-label">Data Nascimento: <span class="obr">*</span></label><input type="date" class="form-control" id="data_nasc" name="data_nasc" required>

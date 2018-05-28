@@ -16,10 +16,12 @@ class Agendamento extends Model
     {
         return $this->hasOne(\acclinic\ClinicaMedico::class);
     }
+
     public function user()
     {
         return $this->belongsTo(\acclinic\User::class);
     }
+    
     public function status()
     {
         return $this->hasMany(\acclinic\statusAgenda::class);

@@ -16,7 +16,7 @@ class CreatePacientesTable extends Migration
         Schema::create('pacientes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('convenio_id')->unsigned();
             $table->foreign('convenio_id')->references('id')->on('convenios')->onDelete('cascade');
             $table->string('foto',100)->nullable();
