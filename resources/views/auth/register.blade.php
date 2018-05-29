@@ -61,33 +61,17 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="/pagina/especialidades">Especialidades</a>
-                                    </li>
-                                    <li>
                                         <a href="/pagina/convenios">Convênios</a>
                                     </li>       
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                            Serviços 
-                                            <i class="fa fa-caret-down"></i>
-                                        </a>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li>
-                                                <a href="/servico/consultas">Consultas</a>
-                                            </li>
-                                            <li>
-                                                <a href="/servico/exames">Exames</a>
-                                            </li>
-                                            <li>
-                                                <a href="/servico/agendamentos">Agendamentos</a>
-                                            </li>
-                                        </ul>
-                                    </li>
                                     <li>
                                         <a href="/pagina/contato"><i class="fa fa-comments"> </i> Fale Conosco</a>
                                     </li>
                                     <li class="active">
-                                        <a href="/areaCliente" ><i class="fa fa-user"></i> Área do cliente</a>
+                                        <a href="/areaCliente" >
+                                            <i class="fa fa-sign-in"></i>
+                                              Login 
+                                            <i class="fa fa-user"></i>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -312,11 +296,28 @@
     <br>
     <div class="col-lg-4">
     </div>
+    <div class="modal fade" id="modal-mensagem">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                     <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                           <h4 class="modal-title">AGENDAMENTOS ONLINE - Acclinic</h4>
+                       </div>
+                       <div class="modal-body">
+                           <p><span class="obr">OBS:</span> Atendimento feito na clinica por Ordem de Chegada, exceto pessoas: Portadoras de Necessidade Especial, Idosos, prioridades amparadas por lei! </p>
+                       </div>
+                       <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary form-control agendar"> Cadastrar</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                       </div>
+                     </div>
+             </div>
+          </div>
   <div class="form-group col-sm-6 col-md-6 col-lg-6 col-lg-6">
-            <button type="submit" class="btn btn-primary form-control agendar"> 
+            <button type="button" class="btn btn-primary form-control agendar" data-toggle="modal" data-target="#modal-mensagem"> 
             Cadastrar</button>
         
-      </div>
+  </div>
   <br>
   </form>
 </div>

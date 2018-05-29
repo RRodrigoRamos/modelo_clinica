@@ -99,7 +99,7 @@
         <div class="col-md-12 col-sm-12 col-lg-6 col-xs-12">
             <br>
                 <fieldset>
-                        <legend>Login</legend>
+                        <legend>::Login::</legend>
                     <form id="formLoginUser" method="POST" action="{{ route('login') }}">
                         @csrf
                     
@@ -108,7 +108,7 @@
                             {{ __('E-Mail @') }}
                         </label>
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="::Email do Usuario::" required autofocus>
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback">
                                         <strong>
@@ -123,7 +123,7 @@
                             <label for="password" class="col-md-12 col-sm-12 col-xs-12 col-form-label text-md-right" placehold="teste">{{ __('Senha') }}</label>
 
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="::Senha do Usuario::" required>
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback">

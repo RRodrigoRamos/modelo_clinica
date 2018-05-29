@@ -46,7 +46,7 @@
 							<div class="navbar-collapse collapse">					
 								<ul class="nav navbar-nav navbar-right">
 									<li class="active">
-										<a href="/inicio">Início</a>
+										<a href="/inicio"><i class="fa fa-home" aria-hidden="true"></i> Início</a>
 									</li>
 									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Institucional <i class="fa fa-caret-down"></i>

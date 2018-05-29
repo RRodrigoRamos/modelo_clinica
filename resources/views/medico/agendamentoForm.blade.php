@@ -5,7 +5,7 @@
 				<div class="top-bar hidden-sm hidden-xs">
 					<div class="row">
 						<div class="col-sm-6 col-xs-12">
-							  Bem vindo {{ Auth::user()->name }} a sua pagina de Area do Cliente.
+							  Bem vindo {{ Auth::user()->medico->name }} a sua pagina de Area do Cliente.
 						</div>
 					</div>
 				</div>
@@ -46,7 +46,7 @@
 									</li>
 									<li class="dropdown active">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-											{{ Auth::user()->name }} 
+											{{ Auth::user()->medico->name }} 
 											<i class="fa fa-caret-down"></i>
 										</a>
 										<ul class="dropdown-menu" role="menu">
