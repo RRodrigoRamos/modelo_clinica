@@ -7,14 +7,20 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/areaCliente/agendamento','UserController@agendamentoForm');
 	Route::get('/areaCliente/horario/{id}','UserController@select_dia_semanal');
 	
-	
 	Route::get('/areaCliente/listaAgenda','UserController@listaAgenda');
 	Route::post('/areaCliente/agendaSalva','UserController@agendaSalva');
+
+	#altera_dados
 	Route::get('/areaCliente/meus_dados','UserController@pacienteForm');
-	Route::post('/areaCliente/meus_dados','UserController@pacienteForm');
+	Route::post('/areaCliente/meus_dados','UserController@editarDados');
+
+	#seleciona_convênio
 	Route::get('/areaCliente/convenios','UserController@pacienteConv');
 	Route::get('/areaCliente/convenios','UserController@pacienteConv');
+
 	Route::get('/areaCliente/infor','UserController@pacienteInfor');
+
+	#envia_email
 	Route::get('/areaCliente/pacienteContat','UserController@pacienteContat');
 	Route::post('/areaCliente/pacienteContat','UserController@pacienteContat');	
 	
