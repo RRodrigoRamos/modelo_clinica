@@ -123,7 +123,7 @@
 						<p>
 							Horário disponivel para consultas médicas.
 						</p>
-						<a href="/areaMedico/horario" class="btn btn-transparent">Vê Registro...</a>
+						<a href="/areaMedico/medicoHorarios" class="btn btn-transparent">Vê Registro...</a>
 					</div>
 				</div>
 			<!-- Box #2 Ends -->

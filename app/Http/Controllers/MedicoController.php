@@ -102,7 +102,7 @@ class MedicoController extends Controller
     public function medicoHorarios()
     {
         $value = Horario::where('medico_id', auth()->user()->medico->id)->get();
-        if(empty($value)){    
+        if(!empty($value)){    
             $value= $value[0];
         }
         return view('medico.medicoHorarios',['value'=>$value]);
@@ -127,6 +127,7 @@ class MedicoController extends Controller
             'horario_inicio'=>$request->horario_inicio,
             'horario_termino'=>$request->horario_termino]);
         }
+        
         return view('medico.medicoHorarios',['value'=>$medicoHorarioupdate]);
     }
 

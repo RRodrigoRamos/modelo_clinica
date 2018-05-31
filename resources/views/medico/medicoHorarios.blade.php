@@ -107,37 +107,37 @@
     <input type="text" class="form-control" value="@if(isset($value->horario_inicio)) {{$value->horario_termino}} @endif" name="horario_termino" id="exampleInputEmail1" aria-describedby="v" placeholder="00:00">
   </div>
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="true" id="defaultCheck1" name="dia_da_semana[segunda]" @if(empty($value)) @if(isset($value->dias_da_semana['segunda']) && $value->dias_da_semana['segunda']==true) checked @endif @endif>
+  <input class="form-check-input" type="checkbox" value="true" id="defaultCheck1" name="dia_da_semana[segunda]" @if(!empty($value)) @if(isset($value->dias_da_semana['segunda']) && $value->dias_da_semana['segunda']==true) checked @endif @endif>
   <label class="form-check-label" for="defaultCheck1" >
    Segunda
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="true" id="defaultCheck2" name="dia_da_semana[terca]"  @if(empty($value)) @if(isset($value->dias_da_semana['terca']) && $value->dias_da_semana['terca']==true) checked @endif @endif>
+  <input class="form-check-input" type="checkbox" value="true" id="defaultCheck2" name="dia_da_semana[terca]"  @if(!empty($value)) @if(isset($value->dias_da_semana['terca']) && $value->dias_da_semana['terca']==true) checked @endif @endif>
   <label class="form-check-label" for="defaultCheck2">
     Terça
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="true" id="defaultCheck3" name="dia_da_semana[quarta]" @if(empty($value))@if(isset($value->dias_da_semana['quarta']) && $value->dias_da_semana['quarta']==true) checked @endif @endif >
+  <input class="form-check-input" type="checkbox" value="true" id="defaultCheck3" name="dia_da_semana[quarta]" @if(!empty($value))@if(isset($value->dias_da_semana['quarta']) && $value->dias_da_semana['quarta']==true) checked @endif @endif >
   <label class="form-check-label" for="defaultCheck3">
     Quarta
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="true" id="defaultCheck4" name="dia_da_semana[quinta]" @if(empty($value)) @if(isset($value->dias_da_semana['quinta']) && $value->dias_da_semana['quinta']==true) checked @endif @endif>
+  <input class="form-check-input" type="checkbox" value="true" id="defaultCheck4" name="dia_da_semana[quinta]" @if(!empty($value)) @if(isset($value->dias_da_semana['quinta']) && $value->dias_da_semana['quinta']==true) checked @endif @endif>
   <label class="form-check-label" for="defaultCheck4">
     Quinta
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="true" id="defaultCheck5" name="dia_da_semana[sexta]" @if(empty($value)) @if(isset($value->dias_da_semana['sexta']) && $value->dias_da_semana['sexta']==true) checked @endif @endif>
+  <input class="form-check-input" type="checkbox" value="true" id="defaultCheck5" name="dia_da_semana[sexta]" @if(!empty($value)) @if(isset($value->dias_da_semana['sexta']) && $value->dias_da_semana['sexta']==true) checked @endif @endif>
   <label class="form-check-label" for="defaultCheck5">
     Sexta
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="true" id="defaultCheck6" name="dia_da_semana[sabado]" @if(empty($value)) @if(isset($value->dias_da_semana['sabado']) && $value->dias_da_semana['sabado']==true) checked @endif @endif>
+  <input class="form-check-input" type="checkbox" value="true" id="defaultCheck6" name="dia_da_semana[sabado]" @if(!empty($value)) @if(isset($value->dias_da_semana['sabado']) && $value->dias_da_semana['sabado']==true) checked @endif @endif>
   <label class="form-check-label" for="defaultCheck6">
     Sabado
   </label>
