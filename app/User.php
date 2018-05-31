@@ -35,7 +35,7 @@ class User extends Authenticatable
 
     public function medico()
     {
-        return $this->belongsTo(\acclinic\Medico::class);
+        return $this->hasOne(\acclinic\Medico::class);
     }
 
     public function endereco()
