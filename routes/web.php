@@ -17,10 +17,6 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/areaCliente/infor','UserController@pacienteInfor');
 	Route::get('/areaCliente/pacienteContat','UserController@pacienteContat');
 	Route::post('/areaCliente/pacienteContat','UserController@pacienteContat');	
-	
-	
-	
-	
 	#medico
 	Route::get('/areaMedico','MedicoController@index');
 	#agenda_Médico

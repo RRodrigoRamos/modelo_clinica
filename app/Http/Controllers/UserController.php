@@ -104,21 +104,6 @@ class UserController extends Controller
             ->where('users.id', '=', $usuario)
             ->orderBy('agendamentos.id', 'desc')
             ->get();
-
-            // dd($agendamentosP);
-
-        // $agendamentosR = Agendamento::select(['agendamentos.tipo_agenda','agendamentos.data_agenda','agendamentos.hora_agenda','medicos.name as nome_medico','especialidades.campo as especialidade','clinicas.nome as clinica_medica','users.name as nome_paciente','status_agendas.descricao as status_agenda'])
-        //     ->join('users','agendamentos.users_id', '=', 'users.id')
-        //     ->join('clinica_medicos','agendamentos.clinica_medicos_id','=','clinica_medicos.id')
-        //     ->join('medicos','clinica_medicos.medicos_id','=','medicos.id') 
-        //     ->join('especialidades','medicos.especialidade_id','=','especialidades.id') 
-        //     ->join('clinicas','clinica_medicos.clinica_id','=','clinicas.id') 
-        //     ->join('status_agendas','agendamentos.status_id','=','status_agendas.id')
-        //     ->where('users.id', '=', $usuario)
-        //     ->where('status_agendas.descricao', '=', 'Finalizado')
-        //     ->orderBy('agendamentos.data_agenda', 'asc')
-        //     ->get();
-
         return view('cliente.listaAgenda',compact('agendamentosP'));
     }
 

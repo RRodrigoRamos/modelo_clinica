@@ -119,7 +119,6 @@ class MedicoController extends Controller
             $horario->horario_termino =$request->horario_termino;
             $horario->save();
         }else{
-            
             $array= $request->dia_da_semana; 
             $collection = collect($array);
             $string = $collection->toJson();
@@ -127,9 +126,6 @@ class MedicoController extends Controller
             'dias_da_semana'=> $string,
             'horario_inicio'=>$request->horario_inicio,
             'horario_termino'=>$request->horario_termino]);
-            
-            
-            
         }
         return view('medico.medicoHorarios',['value'=>$medicoHorarioupdate]);
     }
