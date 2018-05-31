@@ -94,7 +94,7 @@
                                 <li>
                                     <a href="/inicio">
                                         <i class="fa fa-angle-right"></i> 
-                                        Voltar a Pagina Inicial
+                                        Voltar ao Site Pagina Inicial
                                     </a> 
                                 </li>
                                 <li> <a class="dropdown-item" href="{{ route('logout') }}"

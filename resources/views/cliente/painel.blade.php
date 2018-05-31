@@ -91,7 +91,7 @@
 <!-- Banner Cliente -->
 		<div class="main-banner cliente">
 			<div class="container">
-				<h2><span>Área do Cliente</span></h2>
+				<h2><span>Área do Paciente</span></h2>
 			</div>
 		</div>
 <!-- Banner Cliente Fim-->
@@ -115,7 +115,7 @@
 				<div class="col-md-3 col-sm-6 col-xs-12">
 					<div class="box">
 						<i class="fa fa-calendar-check-o"></i>
-						<h4>Lista de Agendamentos </h4>
+						<h4>Meus Agendamentos </h4>
 						<p>
 							Minha Lista de Histórico Consultas Clinicas.
 						</p>
@@ -124,26 +124,28 @@
 				</div>
 			<!-- Box #2 Ends -->
 			<!-- Box #3 Starts -->
-				 <div class="col-md-6 col-sm-6 col-xs-12">
-					<div class="" >
-						
-						
-							<iframe width="100%" height="290px" src="https://www.youtube.com/embed/LdWPLMZeNUc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-						
-					</div> 
+				 <div class="col-md-3 col-sm-6 col-xs-12">
+					<div class="box">
+						<i class="fa fa-calendar-check-o"></i>
+						<h4>Meu Convênio </h4>
+						<p>
+							lista de convênios que da clínica ao Paciente.
+						</p>
+						<a href="/areaCliente/listaAgenda" class="btn btn-transparent">Ver Lista...</a>
+					</div>
 				</div>
 			<!-- Box #3 Ends -->
 			<!-- Box #4 Starts -->
-				<!-- <div class="col-md-3 col-sm-6 col-xs-12"> -->
-					<!-- <div class="box">
+				<div class="col-md-3 col-sm-6 col-xs-12">
+					<div class="box">
 						<i class="fa fa-user" aria-hidden="true"></i>
 						<h4> Meus Dados </h4>
 						<p>
-							Dados do Paciente.
+							Dados do Paciente. 
 						</p>
 						<a href="/areaCliente/meus_dados" class="btn btn-transparent">Vê registro...</a>
 					</div>
-				</div> -->
+				</div>
  			<!-- Box #4 Ends -->
 			</div>
 		<!-- Conteudo inBox Fim -->
