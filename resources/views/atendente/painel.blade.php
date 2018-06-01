@@ -42,17 +42,17 @@
 										<a href="/areaAtendente">Início</a>
 									</li>
 									<li>
-											<a href="/atendente/medicos_horario">
+											<a href="/areaAtendente/medicos_horario">
 												Horários Médicos
 											</a>
 										</li>
 										<li>
-											<a href="/atendente/medicos">
+											<a href="/areaAtendente/medicos">
 												Consultar Médicos
 											</a>
 										</li>
 										<li>
-											<a href="/atendente/convenios">
+											<a href="/areaAtendente/convenios">
 												Convênios da Clinica
 											</a>
 										</li>
@@ -63,17 +63,17 @@
 										</a>
 										<ul class="dropdown-menu" role="menu">
 										<li>
-											<a href="/atendente/meus_dados">
+											<a href="/areaAtendente/meus_dados">
 												 Meus Dados <i class="fa fa-user" aria-hidden="true"></i>	
 											</a>
 										</li>
 										<li>
-											<a href="/atendente/altera_senha">
+											<a href="/areaAtendente/altera_senha">
 												 Alterar Senha <i class="fa fa-cogs" aria-hidden="true"></i>
 											</a>
 										</li>
 										<li>
-											<a href="/atendente/infor">
+											<a href="/areaAtendente/infor">
 												 Informativo <i class="fa fa-info-circle" aria-hidden="true"></i>
 											</a>
 										</li>
@@ -121,7 +121,7 @@
 						<p>
 							Horários disponivel a consultas
 						</p>
-						<a href="/atendente/medicos_horario" class="btn btn-transparent">Vê registro...</a>
+						<a href="/areaAtendente/medicos_horario" class="btn btn-transparent">Vê registro...</a>
 					</div>
 				</div>
 			<!-- Box #1 Ends -->
@@ -133,7 +133,7 @@
 						<p>
 							Lista de Consultas
 						</p>
-						<a href="/atendente/listaAgenda" class="btn btn-transparent">Vê Registro...</a>
+						<a href="/areaAtendente/listaAgenda" class="btn btn-transparent">Vê Registro...</a>
 					</div>
 				</div>
 			<!-- Box #2 Ends -->
@@ -145,7 +145,7 @@
 							<p>
 								Registros de Convênios
 							</p>
-						<a href="/atendente/convenios" class="btn btn-transparent">Vê registro...</a>
+						<a href="/areaAtendente/convenios" class="btn btn-transparent">Vê registro...</a>
 					</div>
 				</div>
 			<!-- Box #3 Ends -->
@@ -157,7 +157,7 @@
 						<p>
 							Dados do cliente.
 						</p>
-						<a href="/atendente/cliente" class="btn btn-transparent">Vê registro...</a>
+						<a href="/areaAtendente/cliente" class="btn btn-transparent">Vê registro...</a>
 					</div>
 				</div>
 			<!-- Box #4 Ends -->

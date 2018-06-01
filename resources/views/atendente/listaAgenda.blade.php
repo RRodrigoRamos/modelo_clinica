@@ -133,7 +133,6 @@
 	</div>
 <div class="row">
 <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xs-12">
-<form class="form"  method="post" action="/areaCliente/agendaSalva">
     <fieldset>
           <legend>Lista Agenda Programadas</legend>
 	            <table class="table table-striped table-bordered table-condensed table-hover table-responsive">
@@ -145,6 +144,7 @@
 						   <th>Unidade</th>
 						   <th>Data</th>
 						   <th>Status</th>
+						   <th>Ação</th>
 						  </tr>
 						 </thead>
 						 <tbody>
@@ -158,54 +158,47 @@
         "nome_paciente" => "Cliente Novo"
         "status_agenda" => "Pendente" -->
 	
+
 						@foreach($agendamentosP as $agendamentosPs)
 						  <tr>
      					   <td>{{ $agendamentosPs->tipo_agenda}}</td>
 						   <td>{{ $agendamentosPs->especialidade}}</td>
 						   <td>{{ $agendamentosPs->nome_medico}}</td>
 						   <td>{{ $agendamentosPs->clinica_medica}}</td>
-						   <td>{{ $agendamentosPs->data_agenda}} / {{ $agendamentosPs->hora_agenda}}</td>
+						   <td>{{ date( 'd/m/Y' , strtotime($agendamentosPs->data_do_agendamento))}} às {{ $agendamentosPs->horario_inicio}} até {{ $agendamentosPs->horario_termino}}</td>
 						   <td>{{ $agendamentosPs->status_agenda}}</td>
+						   <td>
+						   <form action="{{ url('areaAtendente/acao') }}" method="post">
+						   @csrf
+						   <input type="hidden" name="id" value="{{$agendamentosPs->id}}">
+						   <input type="hidden" name="status_id" value="2}}">
+						   <button class="btn btn-primary">Confirmar</button>
+						   </form>
+						   <form action="{{ url('areaAtendente/acao') }}" method="post">
+						   @csrf
+						   <input type="hidden" name="id" value="{{$agendamentosPs->id}}">
+						   <input type="hidden" name="status_id" value="4">
+						   <button class="btn btn-primary">Verificando Convenio</button>
+						   </form>
+						   <form action="{{ url('areaAtendente/acao') }}" method="post">
+						   @csrf
+						   <input type="hidden" name="id" value="{{$agendamentosPs->id}}">
+						   <input type="hidden" name="status_id" value="5">
+						   <button class="btn btn-primary">Convenio Permitiu</button>
+						   </form>
+						   <form action="{{ url('areaAtendente/acao') }}" method="post">
+						   @csrf
+						   <input type="hidden" name="id" value="{{$agendamentosPs->id}}">
+						   <input type="hidden" name="status_id" value="3">
+						   <button class="btn btn-primary">Cancelar</button>
+						   </form>
+						   </td>
 						  </tr>
                     	@endforeach
 						 </tbody>
 						</table>
 	</fieldset>
 <br>
-  		</form>
-	</div>
-<br>
-</div>
-<div class="row">
-	<form class="form"  method="post" action="/areaCliente/agendaSalva">
-    <fieldset>
-          <legend>Lista Agenda Realizados</legend>
-	            <table class="table table-striped table-bordered table-condensed table-hover table-responsive">
-						 <thead>
-						  <tr>
-						   <th>Tipo</th>
-						   <th>Especialidade</th>
-						   <th>Médico</th>
-						   <th>Unidade</th>
-						   <th>Data</th>
-						   <th>Status</th>
-						  </tr>
-						 </thead>
-						 <tbody>
-						  <tr>
-						   <td>Consulta</td>
-						   <td>Clinico Geral</td>
-						   <td>Dr. Brasil</td>
-						   <td>Matriz</td>
-						   <td>12/12/18 17:00h</td>
-						   <td>Aguardando Confirmação</td>
-						  </tr>
-						 </tbody>
-						</table>
-	</fieldset>
-<br>
-  		</form>
-	</div>
 </div>
 	<!-- Conteudo Agenda Fim -->
 @endsection

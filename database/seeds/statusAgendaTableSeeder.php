@@ -13,19 +13,16 @@ class statusAgendaTableSeeder extends Seeder
     public function run()
     {
     	statusAgenda::create([
-            'descricao' => 'Confirmado',
+            'descricao' => 'Pendente',
         ]);
         statusAgenda::create([
-            'descricao' => 'Presente',
+            'descricao' => 'Confirmado',
         ]);
         statusAgenda::create([
             'descricao' => 'Cancelado',
         ]);
         statusAgenda::create([
-            'descricao' => 'Pendente',
-        ]);
-        statusAgenda::create([
-            'descricao' => 'Reagendamento',
+            'descricao' => 'Verificando Convenio',
         ]);
         statusAgenda::create([
             'descricao' => 'Pago',

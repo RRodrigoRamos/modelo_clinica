@@ -30,8 +30,8 @@ class Medico extends Model
     {
         return $this->hasMany(\acclinic\Especialidade::class);
     }
-    public function medicoAgenda()
+    public function agenda()
     {
-        return $this->belongsTo(\acclinic\ClinicaMedico::class);
+        return $this->hasOne(\acclinic\Agendamento::class);
     }
 }

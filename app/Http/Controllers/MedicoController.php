@@ -37,40 +37,45 @@ class MedicoController extends Controller
 
     public function agendaMedico()
     {
-            // recupera o usuario logado
-            $usuario = auth()->user()->id; 
-
-            // busca o registro
-            // $medico = Medico::find(1);
-            
+        $usuario = auth()->user()->id; 
         $dia_da_semana = self::dia_da_semana();
         $agendamentosP = Agendamento::select([
         'users.name as nome_do_paciente',
         'pacientes.telefone as telefone_do_paciente',
         'agendamentos.tipo_agenda',
-        'agendamentos.data_agenda',
-        'agendamentos.hora_agenda',
+        'agendamentos.data_do_agendamento',
+        'agendamentos.dia_da_semana',
         'medicos.name as nome_medico',
         'clinicas.nome as clinica_medica',
         'status_agendas.descricao as status_agenda',
-        'horarios.dias_da_semana'
+        'horarios.dias_da_semana',
+        'agendamentos.id','horarios.horario_inicio','horarios.horario_termino'
         ])
-            ->join('users','users.id','=','agendamentos.users_id')
-            ->join('pacientes','pacientes.user_id','=','agendamentos.users_id')
-            ->join('clinica_medicos','agendamentos.clinica_medicos_id','=','clinica_medicos.id')
+            ->join('users','users.id','=','agendamentos.user_id')
+            ->join('pacientes','pacientes.user_id','=','agendamentos.user_id')
+            ->join('clinica_medicos','agendamentos.medico_id','=','clinica_medicos.id')
             ->join('medicos','clinica_medicos.medicos_id','=','medicos.id') 
             ->join('horarios','horarios.medico_id','=','medicos.id') 
             ->join('clinicas','clinica_medicos.clinica_id','=','clinicas.id') 
             ->join('status_agendas','agendamentos.status_id','=','status_agendas.id')
             ->where('clinica_medicos.medicos_id', '=', auth()->user()->medico->id )
+            ->where('status_agendas.id', '=', 2 )
             ->where('horarios.dias_da_semana->'.$dia_da_semana,'=', 'true' )
             ->get();
 
-        return view('medico.listaAgenda',compact('agendamentosP'));
+        return view('medico.listaAgenda',['agendamentosP'=>$agendamentosP,'dia_da_semana_funcao'=> self::dia_da_semana()]);
+    }
+
+    public function status(Request $request)
+    {
+        $agendamento = Agendamento::find($request->id);
+        $agendamento->status_id = 6;
+        $agendamento->update();
+        return redirect('/areaMedico/agenda');
+
     }
     public function dia_da_semana(){
         $dd = date("w");
-
         switch($dd) {
 
         case"0": $dia_semana = "domingo"; break;
@@ -97,21 +102,22 @@ class MedicoController extends Controller
         return view('medico.medicoDados');
     }
 
-	
-
     public function medicoHorarios()
     {
         $value = Horario::where('medico_id', auth()->user()->medico->id)->get();
-        if(!empty($value)){    
-            $value= $value[0];
+        $value = isset($value[0])? $value[0]: null ;
+        
+        if(sizeof($value)==0){
+            return view('medico.medicoHorarios');
+        }else{
+            return view('medico.medicoHorarios',['value'=>$value]);
         }
-        return view('medico.medicoHorarios',['value'=>$value]);
+        
     }
     public function medicoHorariosupdate(Request $request)
     {
         $medicoHorarioupdate =Horario::where('medico_id', auth()->user()->medico->id)->get();
         if(sizeof($medicoHorarioupdate)==0){
-            
             $horario = new Horario;
             $horario->medico_id = auth()->user()->medico->id;
             $horario->dias_da_semana = $request->dia_da_semana;
@@ -128,27 +134,26 @@ class MedicoController extends Controller
             'horario_termino'=>$request->horario_termino]);
         }
         
+        $medicoHorarioupdate =Horario::where('medico_id', auth()->user()->medico->id)->get();
+        $medicoHorarioupdate = $medicoHorarioupdate[0];
         return view('medico.medicoHorarios',['value'=>$medicoHorarioupdate]);
+        
     }
-
     public function medicoConvCad()
     {
         return view('medico.medicoConv');
     }
-
      public function deleteConven($id)
     {
         User::destroy($id);
 
     return redirect('medico.medicoConvForm');
     }
-
     public function medicoInfor()
     {
         // informações ao Usuario/medico
         return view('medico.medicoInfor');
     }
-    
     public function medicoContat()
     {
     	// informações contato com a Clinica.

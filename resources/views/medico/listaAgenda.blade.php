@@ -1,5 +1,19 @@
 @extends('layout.templateAdmin')
 @section('title', 'Area Cliente')
+@section('script')
+<script>
+    var myVar = setInterval(myTimer ,1000);
+    function myTimer() {
+        var d = new Date(), displayDate;
+       if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+          displayDate = d.toLocaleTimeString('pt-BR');
+       } else {
+          displayDate = d.toLocaleTimeString('pt-BR', {timeZone: 'America/Belem'});
+       }
+          document.getElementById("hora").innerHTML = displayDate;
+    }
+</script>
+@endsection
 @section('topoInfor')
 			<!-- Informações do Topo site -->
 				<div class="top-bar hidden-sm hidden-xs">
@@ -133,18 +147,19 @@
 	</div>
 <div class="row">
 <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xs-12">
-<form class="form"  method="post" action="/areaCliente/agendaSalva">
     <fieldset>
-          <legend>Lista Agenda Programadas para hoje</legend>
+
+			
+          <legend>Lista Agenda Programadas para hoje <div>Hora Atual:<span id="hora"></span><br><span>{{$dia_da_semana_funcao}}</span></div></legend>
 	            <table class="table table-striped table-bordered table-condensed table-hover table-responsive">
 						 <thead>
 						  <tr>
 						   <th>Paciente</th>
 						   <th>Telefone</th>
 						   <th>Tipo</th>
-						   <th>Unidade</th>
 						   <th>Data</th>
-						   <th>Dias da semana</th>
+						   <th>Status</th>
+						   <th>Acao</th>
 						  </tr>
 						 </thead>
 						 <tbody>
@@ -153,9 +168,15 @@
      					   <td>{{ $agendamentosPs->nome_do_paciente}}</td>
      					   <td>{{ $agendamentosPs->telefone_do_paciente}}</td>
      					   <td>{{ $agendamentosPs->tipo_agenda}}</td>
-						   <td>{{ $agendamentosPs->clinica_medica}}</td>
-						   <td>{{ $agendamentosPs->data_agenda}} / {{ $agendamentosPs->hora_agenda}}</td>
-						   <td>{{ $agendamentosPs->dias_da_semana}}</td>
+						   <td>{{ $agendamentosPs->horario_inicio}} ás {{$agendamentosPs->horario_termino}} / {{ date( 'd/m/Y' , strtotime($agendamentosPs->data_do_agendamento))}}</td>
+						   <td>{{ $agendamentosPs->status_agenda}}</td>
+						  	<td>
+						   <form action="{{ url('areaMedico/acao') }}" method="post">
+						   @csrf
+						   <input type="hidden" name="id" value="{{$agendamentosPs->id}}">
+						   <button class="btn btn-primary">Finalizar Consulta</button>
+						   </form>
+						   </td>
 						  </tr>
                     	@endforeach
 						 </tbody>
@@ -167,7 +188,6 @@
 						 </center>
 	</fieldset>
 <br>
-  		</form>
 	</div>
 <br>
 </div>

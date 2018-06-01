@@ -136,7 +136,7 @@
 						   <td>{{ $agendamentosPs->especialidade}}</td>
 						   <td>{{ $agendamentosPs->nome_medico}}</td>
 						   <td>{{ $agendamentosPs->clinica_medica}}</td>
-						   <td>{{ date( 'd/m/Y' , strtotime($agendamentosPs->data_agenda))}} às {{ $agendamentosPs->hora_agenda}}</td>
+						   <td>{{ date( 'd/m/Y' , strtotime($agendamentosPs->data_do_agendamento))}} às {{ $agendamentosPs->horario_inicio}} á {{ $agendamentosPs->horario_termino}}</td>
 						   <td>{{ $agendamentosPs->status_agenda}}</td>
 						  </tr>
                     	@endforeach

@@ -7,12 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class Agendamento extends Model
 {
    protected $fillable = [
-        'data_agenda', 'hora_agenda', 'tipo_agenda',
-        'agenda_de', 'obs', 'users_id',
-        'clinica_medicos_id', 'status_id',
+        'dia_da_semana',
+        'data_do_agendamento',
+        'tipo_agenda',
+        'obs',
+        'user_id',
+        'medico_id',
+        'status_id',
     ];
 
-    public function medicoClinicaAgenda()
+    public function medico()
     {
         return $this->hasOne(\acclinic\ClinicaMedico::class);
     }

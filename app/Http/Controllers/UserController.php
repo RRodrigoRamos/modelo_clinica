@@ -50,7 +50,9 @@ class UserController extends Controller
     }
     public function select_dia_semanal($id){
 
-        return Horario::where('medico_id',$id)->get();
+        $value = Horario::where('medico_id',$id)->firstOrFail();
+        return $value->toJson();
+        
     }
     public function agendamentoFormHorario(Request $resquest)
     {
@@ -60,28 +62,14 @@ class UserController extends Controller
     public function agendaSalva(Request $resquest)
     {
 
-            // // dados do agendamento
-            $dadosAgenda = $resquest->all();
-
-            // dd($dadosAgenda);
-
-            $clinicamedicos = new ClinicaMedico();
-            $clinicamedicos->id = $clinicamedicos->id;
-            $clinicamedicos->medicos_id = $dadosAgenda['medicos_id'];
-            $clinicamedicos->clinica_id = $dadosAgenda['clinica_id'];
-            $clinicamedicos->save();
-
-            // dd($dadosAgenda);
             $agendamento = new Agendamento();
-            $agendamento->clinica_medicos_id = $clinicamedicos['id'];
-            $agendamento->data_agenda = $dadosAgenda['data_agenda'];
-            $agendamento->hora_agenda = $dadosAgenda['hora_agenda'];
-            $agendamento->agenda_de = $dadosAgenda['agenda_de'];
-            $agendamento->tipo_agenda = $dadosAgenda['tipo_agenda'];
-            $agendamento->users_id = $dadosAgenda['users_id'];
-            $agendamento->status_id = $dadosAgenda['status_id'];
+            $agendamento->medico_id = $resquest->medico_id;
+            $agendamento->user_id = auth()->user()->id;
+            $agendamento->dia_da_semana = $resquest->dia_da_semana;
+            $agendamento->data_do_agendamento = $resquest->data_do_agendamento;
+            $agendamento->tipo_agenda = $resquest->tipo_agenda;
+            $agendamento->status_id = 1;
             $agendamento->save();          
-           
             return redirect('/areaCliente/listaAgenda');
     }
 
@@ -94,20 +82,56 @@ class UserController extends Controller
             // $medico = Medico::find(1);
 
             // lista os campos da minha lista Agenda
-        $agendamentosP = Agendamento::select(['agendamentos.tipo_agenda','agendamentos.data_agenda','agendamentos.hora_agenda','medicos.name as nome_medico','especialidades.campo as especialidade','clinicas.nome as clinica_medica','users.name as nome_paciente','status_agendas.descricao as status_agenda'])
-            ->join('users','agendamentos.users_id', '=', 'users.id')
-            ->join('clinica_medicos','agendamentos.clinica_medicos_id','=','clinica_medicos.id')
-            ->join('clinicas','clinica_medicos.clinica_id','=','clinicas.id') 
-            ->join('medicos','clinica_medicos.medicos_id','=','medicos.id') 
-            ->join('especialidades','medicos.especialidade_id','=','especialidades.id') 
-            ->join('status_agendas','agendamentos.status_id','=','status_agendas.id')
-            ->where('users.id', '=', $usuario)
-            ->orderBy('agendamentos.id', 'desc')
-            ->get();
+        $agendamentosP = Agendamento::select(['agendamentos.tipo_agenda',
+        'agendamentos.dia_da_semana',
+        'agendamentos.data_do_agendamento',
+        'medicos.name as nome_medico',
+        'especialidades.campo as especialidade',
+        'clinicas.nome as clinica_medica',
+        'status_agendas.descricao as status_agenda',
+        'horarios.dias_da_semana',
+        'horarios.horario_inicio',
+        'horarios.horario_termino'
+        ])
+        ->join('medicos','agendamentos.medico_id','=','medicos.id') 
+        ->join('horarios','horarios.medico_id','=','agendamentos.medico_id') 
+        ->join('clinica_medicos','clinica_medicos.medicos_id','=','medicos.id')
+        ->join('clinicas','clinica_medicos.clinica_id','=','clinicas.id')
+        ->join('especialidades','medicos.especialidade_id','=','especialidades.id') 
+        ->join('status_agendas','agendamentos.status_id','=','status_agendas.id')
+        ->where('agendamentos.user_id', '=', $usuario)
+        ->orderBy('agendamentos.id', 'desc')
+        ->get();
         return view('cliente.listaAgenda',compact('agendamentosP'));
     }
 
     
+    public function data_do_da_semana($dia_da_semana)
+    {
+        
+        for ($i=1; $i < 31 ; $i++) {
+            if(date("l",strtotime($i.' days'))=='Monday' && $dia_da_semana=='segunda'){
+            $array[]=date('Y-m-d', strtotime($i.' days'));
+            }
+            if(date("l",strtotime($i.' days'))=='Tuesday' && $dia_da_semana=='terca'){
+            $array[]=date('Y-m-d', strtotime($i.' days'));
+            }
+            if(date("l",strtotime($i.' days'))=='Wednesday' && $dia_da_semana=='quarta'){
+            $array[]=date('Y-m-d', strtotime($i.' days'));
+            }
+            if(date("l",strtotime($i.' days'))=='Thursday' && $dia_da_semana=='quinta'){
+            $array[]=date('Y-m-d', strtotime($i.' days'));
+            }
+            if(date("l",strtotime($i.' days'))=='Friday' && $dia_da_semana=='sexta'){
+            $array[]=date('Y-m-d', strtotime($i.' days'));
+            }
+            if(date("l",strtotime($i.' days'))=='Saturday' && $dia_da_semana=='sabado'){
+            $array[]=date('Y-m-d', strtotime($i.' days'));
+            }
+        }
+        
+        return json_encode($array,JSON_FORCE_OBJECT);
+    }
     public function pacienteDados()
     {
     	// Painel do Cliente

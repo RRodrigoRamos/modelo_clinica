@@ -1,21 +1,50 @@
 @extends('layout.templateAdmin')
 @section('script')
-<script>
-$('.medicos').on('change', function (e) {
-    var optionSelected = $("option:selected", this);
-    var valueSelected = this.value;
+<script type="text/javascript">
+$('.medicos').click(function(){
+gerar_dia_da_semana();
+})
+$('.select_dia_semanal').click(function(){
+gerar_data();
+})
+
+function gerar_dia_da_semana(){
+var data2;
+$('.select_dia_semanal').html('');
+$('.select_dia_semanal').append($("<option>").attr('value',"").attr('disabled',"disabled").attr('selected',"true").text("Selecione:"));
 $.ajax({
   url: "http://127.0.0.1:8000/areaCliente/horario/"+$('.medicos option:selected').val(),
+  method : 'GET',
+  data : data2,
+  dataType : 'JSON',
+  success : function (data2) {
+$.each(data2.dias_da_semana,function (index, value) { 
+$('.select_dia_semanal').append($("<option>").attr('value',index).text(index+'/'+data2.horario_inicio+'-'+data2.horario_termino));
+});
+}
+
+});
+}
+function gerar_data(){
+	var data;
+	$('.data_do_agendamento').html('');
+$('.data_do_agendamento').append($("<option>").attr('value',"").attr('disabled',"disabled").attr('selected',"true").text("Selecione:"));
+$.ajax({
+  url: "http://127.0.0.1:8000/areaCliente/dias/"+$('.select_dia_semanal option:selected').val(),
   method : 'GET',
   data : data,
   dataType : 'JSON',
    success : function (data) {
-            $("#feedback").html(data);
-        }
-}).done(function(data) {
-  alert(data.nome)
+
+$.each(data,function (index, value) { 
+$('.data_do_agendamento').append($("<option>").attr('value',value).text(value));
 });
+
+}
+
 });
+}
+
 </script>
 @endsection
 @section('title', 'Area Cliente')
@@ -138,21 +167,16 @@ $.ajax({
 
 		
 	<div class="col-xs-12 col-sm-12 col-md-8 col-lg-12">
-	<form class="form"  method="post" action="/areaCliente/agendamento_hora">
+	<form class="form"  method="post" action="/areaCliente/agendamento">
 		{!! csrf_field() !!}
 		<fieldset>
-		<input type="hidden" name="agenda_de" value="CONSULTA">
-		<input type="hidden" name="status_id" value="1">
-		<input type="hidden" name="users_id" value="{{ Auth::user()->id }}">
-
-
 			<legend>Dados da Consulta</legend>
 			<div class="row">
 			<div class="form-group col-sm-12 col-md-12 col-lg-6">
-				<label for="medicos_id" class="control-label">Escolhar o Médico / Especialidade <span class="obr">*</span></label>
+				<label for="medico_id" class="control-label">Escolhar o Médico / Especialidade <span class="obr">*</span></label>
 					<div class="form-group">
-				<select name="medicos_id" class="form-control medicos" required>
-					<option value="" disabled="disabled">Selecione</option>
+				<select name="medico_id" class="form-control medicos" required>
+					<option value="" disabled="disabled" selected>Selecione</option>
 						@foreach($especialidades as $especialidade)
 						<option value="{{ $especialidade->id }}"> {{ $especialidade->nome_medico }} / {{ $especialidade->campo}}
 						</option>
@@ -160,13 +184,21 @@ $.ajax({
 				</select>
 				</div>
 			</div> 
-			<div class="form-group col-sm-12 col-md-12 col-lg-6">
-				<label for="clinica_id" class="control-label"><span class="obr">*</span></label>
-					<select name="horarios" class="form-control select_dia_semanal" required> 
+			<div class="form-group col-sm-12 col-md-12 col-lg-4">
+				<label for="dia_da_semana" class="control-label"><span class="obr">Dia da Semana*</span></label>
+					<select name="dia_da_semana" class="form-control select_dia_semanal" required>
+					<option value="" disabled="disabled" selected>Selecione</option>
 					</select>
 				</div>
 			</div>
-			<div class="row">
+			<div class="form-group col-sm-12 col-md-12 col-lg-4">
+				<label for="data_do_agendamento" class="control-label"><span class="obr">Data do Agendamento*</span></label>
+					<select name="data_do_agendamento" class="form-control data_do_agendamento" required> 
+					<option value="" disabled="disabled" selected>Selecione</option>
+					</select>
+				</div>
+			</div>
+			
 				<div class="form-group col-sm-12 col-md-12 col-lg-4">
 					<label for="tipo_agenda" class="control-label">Tipo de Atendimento <span class="obr">*</span></label>
 						<div class="form-group">
@@ -178,11 +210,7 @@ $.ajax({
 					</select>
 					</div>
 				</div>
-				<div class="form-group col-sm-6 col-md-6 col-lg-4"">
-					<label for="data_agenda" class="control-label">Data do Agendamento <span class="obr">*</span></label>
-					<input type="date" class="form-control" OnKeyPress="formatar('##/##/####', this)" name="data_agenda" required>
-				</div>
-			</div>
+				
 			<div class="row">
 			<br>
 				<div class="form-group col-sm-6 col-md-6 col-lg-6 col-lg-6">
@@ -195,6 +223,5 @@ $.ajax({
 	</div>
 	<br>
 	</div>
-
 	<!-- Conteudo Agenda Fim -->
 @endsection

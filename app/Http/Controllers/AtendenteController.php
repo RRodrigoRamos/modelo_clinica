@@ -31,6 +31,14 @@ class AtendenteController extends Controller
         return view('atendente.painel');
     }
 
+    public function status(Request $request)
+    {
+        $agendamento = Agendamento::find($request->id);
+        $agendamento->status_id = $request->status_id;
+        $agendamento->update();
+        return redirect('/areaAtendente/listaAgenda');
+
+    }
     public function agendamentoForm()
     {
         $especialidades = Medico::select('*')
@@ -72,27 +80,33 @@ class AtendenteController extends Controller
     public function listaAgenda()
     {
             // recupera o usuario logado
-            $usuario = auth()->user()->id; 
-
+    
             // busca o registro
             // $medico = Medico::find(1);
 
             // lista os campos da minha lista Agenda
-        $agendamentosP = Agendamento::select(['agendamentos.tipo_agenda','agendamentos.data_agenda','agendamentos.hora_agenda','medicos.name as nome_medico','especialidades.campo as especialidade','clinicas.nome as clinica_medica','users.name as nome_paciente','status_agendas.descricao as status_agenda'])
-            ->join('users','agendamentos.users_id', '=', 'users.id')
-            ->join('clinica_medicos','agendamentos.clinica_medicos_id','=','clinica_medicos.id')
-            ->join('medicos','clinica_medicos.medicos_id','=','medicos.id') 
+    $agendamentosP = Agendamento::select(['agendamentos.tipo_agenda',
+        'agendamentos.dia_da_semana',
+        'agendamentos.data_do_agendamento',
+        'medicos.name as nome_medico',
+        'especialidades.campo as especialidade',
+        'clinicas.nome as clinica_medica',
+        'status_agendas.descricao as status_agenda',
+        'agendamentos.id','horarios.horario_inicio','horarios.horario_termino'])
+            ->join('medicos','agendamentos.medico_id','=','medicos.id') 
+            ->join('clinica_medicos','clinica_medicos.medicos_id','=','medicos.id')
+            ->join('clinicas','clinica_medicos.clinica_id','=','clinicas.id')
             ->join('especialidades','medicos.especialidade_id','=','especialidades.id') 
-            ->join('clinicas','clinica_medicos.clinica_id','=','clinicas.id') 
             ->join('status_agendas','agendamentos.status_id','=','status_agendas.id')
-            ->where('users.id', '=', $usuario)
-            ->where('status_agendas.descricao', '=', 'Finalizado')
-            ->orderBy('agendamentos.data_agenda', 'asc')
+            ->join('horarios','horarios.medico_id','=','medicos.id')
+            ->where('agendamentos.data_do_agendamento', '>=',date('Y-m-d') )
+            ->orderBy('agendamentos.id', 'desc')
             ->get();
-
+    
         return view('atendente.listaAgenda',compact('agendamentosP'));
     }
 
+    
     
     public function pacienteDados()
     {
