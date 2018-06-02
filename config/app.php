@@ -161,6 +161,7 @@ return [
         acclinic\Providers\EventServiceProvider::class,
         acclinic\Providers\RouteServiceProvider::class,
         MaddHatter\LaravelFullcalendar\ServiceProvider::class,
+        Barryvdh\Cors\ServiceProvider::class,
 
     ],
 

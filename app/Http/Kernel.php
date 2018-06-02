@@ -36,6 +36,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \acclinic\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \Barryvdh\Cors\HandleCors::class,
         ],
         'admin' => [
             \acclinic\Http\Middleware\EncryptCookies::class,
