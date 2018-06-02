@@ -72,6 +72,5 @@ class Kernel extends HttpKernel
         'admin' => \acclinic\Http\Middleware\AdminMiddleware::class,
         'medico' => \acclinic\Http\Middleware\MedicoMiddleware::class,
         'atendente' => \acclinic\Http\Middleware\AtendenteMiddleware::class,
-        'allow_header'=> \acclinic\Http\Middleware\AllowHeaderMiddleware::class
     ];
 }
