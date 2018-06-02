@@ -105,8 +105,6 @@ class MedicoController extends Controller
     public function medicoHorarios()
     {
         $value = Horario::where('medico_id', auth()->user()->medico->id)->get();
-        $value = isset($value[0])? $value[0]: null ;
-        
         if(sizeof($value)==0){
             return view('medico.medicoHorarios');
         }else{
