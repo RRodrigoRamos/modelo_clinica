@@ -222,6 +222,7 @@ class AdminController extends Controller
             'numero' => $request->numero,
             'complement' => $request->complement,
             'bairro_id' => $request->bairro_id]);
+            
             return redirect('admin/pacientes');
         
     }

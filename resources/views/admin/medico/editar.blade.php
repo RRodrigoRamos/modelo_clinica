@@ -1,7 +1,6 @@
-@extends('layout.template_login')
+@extends('layout.templateAdmin')
+
 @section('ConteudoPrincipal')
-@endsection
-@section('ConteudoSecundario')
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>

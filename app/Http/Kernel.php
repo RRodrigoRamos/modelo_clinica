@@ -68,7 +68,7 @@ class Kernel extends HttpKernel
         'guest' => \acclinic\Http\Middleware\RedirectIfAuthenticated::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'admin' => AdminMiddleware::class,
+        'admin' => \acclinic\Http\Middleware\AdminMiddleware::class,
         'medico' => \acclinic\Http\Middleware\MedicoMiddleware::class,
         'atendente' => \acclinic\Http\Middleware\AtendenteMiddleware::class,
     ];
