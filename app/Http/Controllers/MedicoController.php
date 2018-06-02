@@ -108,7 +108,7 @@ class MedicoController extends Controller
         if(sizeof($value)==0){
             return view('medico.medicoHorarios');
         }else{
-            return view('medico.medicoHorarios',['value'=>$value]);
+            return view('medico.medicoHorarios',['value'=>$value[0]]);
         }
         
     }
