@@ -6,8 +6,8 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/areaCliente','UserController@index');
 	Route::get('/areaCliente/agendamento','UserController@agendamentoForm');
 	Route::post('/areaCliente/agendamento','UserController@agendaSalva');
-	Route::get('/areaCliente/horario/{id}','UserController@select_dia_semanal');
-	Route::get('/areaCliente/dias/{dia_da_semana}','UserController@data_do_da_semana');
+	Route::get('/areaCliente/horario/{id}','UserController@select_dia_semanal')->middleware('allow_header');
+	Route::get('/areaCliente/dias/{dia_da_semana}','UserController@data_do_da_semana')->middleware('allow_header');
 	
 	Route::get('/areaCliente/listaAgenda','UserController@listaAgenda');
 	Route::get('/areaCliente/meus_dados','UserController@pacienteForm');
