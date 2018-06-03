@@ -41,7 +41,7 @@
 									<li class="active">
 										<a href="/areaMedico">Início</a>
 									</li>
-									<li>
+										<li>
 											<a href="/areaMedico/agenda">
 												Minha Agenda
 											</a>
@@ -51,26 +51,27 @@
 												Meus Horários
 											</a>
 										</li>
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-											{{ Auth::user()->medico->name }} 
-											<i class="fa fa-caret-down"></i>
-										</a>
-										<ul class="dropdown-menu" role="menu">
+										<li>
+											<a href="/areaMedico/consultarPaciente">
+												Consulta Paciente
+											</a>
+										</li>
+										<li class="dropdown">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+												{{ Auth::user()->medico->name }} 
+												<i class="fa fa-caret-down"></i>
+											</a>
+											<ul class="dropdown-menu" role="menu">
 										<li>
 											<a href="/areaMedico/meus_dados">
-												 Meus Dados <i class="fa fa-user" aria-hidden="true"></i>	
+												Meus Dados
 											</a>
 										</li>
-										<li>
-											<a href="/areaMedico/altera_senha">
-												 Alterar Senha <i class="fa fa-cogs" aria-hidden="true"></i>
-											</a>
-										</li>
-										<li> <a class="dropdown-item" href="{{ route('logout') }}"
+										<li> 
+											<a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Sair') }} <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                        {{ __('Sair') }} <i class="fa fa-sign-out"></i>
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -93,7 +94,7 @@
 @endsection
 @section('ConteudoPrincipal')
 <!-- Banner Cliente -->
-		<div class="main-banner cliente">
+		<div class="main-banner medicos">
 			<div class="container">
 				<h2><span>Área do Médico</span></h2>
 			</div>
@@ -127,18 +128,18 @@
 					</div>
 				</div>
 			<!-- Box #2 Ends -->
-			<!-- Box #4 Starts -->
+			<!-- Box #3 Starts -->
 				<div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
 					<div class="box">
-						<i class="fa fa-user" aria-hidden="true"></i>
-						<h4> Consultar Paciente </h4>
+						<i class="fa fa-user"></i>
+						<h4>Consultar Paciente</h4>
 						<p>
-							Dados de registro paciente
+							Consultar Paciente da Clinica.
 						</p>
-						<a href="/areaMedico/meus_dados" class="btn btn-transparent">Vê registro...</a>
+						<a href="/areaMedico/consultarPaciente" class="btn btn-transparent">Consultar...</a>
 					</div>
 				</div>
-			<!-- Box #4 Ends -->
+			<!-- Box #3 Ends -->
 			</div>
 		<!-- Conteudo inBox Fim -->
 		<!-- Conteudo Section -->

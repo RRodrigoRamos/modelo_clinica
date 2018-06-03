@@ -96,9 +96,15 @@ class MedicoController extends Controller
         return $dia_semana;
     }
     
+    public function medicoDadosForm()
+    {
+        // form dos dados do médico...
+        return view('medico.medicoEdit');
+    }
+
     public function medicoDados()
     {
-    	// Painel do Cliente
+    	// Após salvar os dados...
         return view('medico.medicoDados');
     }
 
@@ -137,24 +143,10 @@ class MedicoController extends Controller
         return view('medico.medicoHorarios',['value'=>$medicoHorarioupdate]);
         
     }
-    public function medicoConvCad()
-    {
-        return view('medico.medicoConv');
-    }
-     public function deleteConven($id)
-    {
-        User::destroy($id);
 
-    return redirect('medico.medicoConvForm');
-    }
-    public function medicoInfor()
-    {
-        // informações ao Usuario/medico
-        return view('medico.medicoInfor');
-    }
-    public function medicoContat()
+    public function consultarPaciente()
     {
     	// informações contato com a Clinica.
-        return view('medico.medicoContat');
+        return view('medico.consultarPaciente');
     }
 }

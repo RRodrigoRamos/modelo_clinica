@@ -1,11 +1,11 @@
-@extends('layout.template')
-@section('title', 'Area Cliente')
+@extends('layout.templateAdmin')
+@section('title', 'Area Médico')
 @section('topoInfor')
 			<!-- Informações do Topo site -->
 				<div class="top-bar hidden-sm hidden-xs">
 					<div class="row">
 						<div class="col-sm-6 col-xs-12">
-							  Bem vindo {{ Auth::user()->name }} a sua pagina de Area do Cliente.
+							  Bem vindo {{ Auth::user()->medico->name }} a sua pagina.
 						</div>
 					</div>
 				</div>
@@ -13,7 +13,7 @@
 @endsection
 @section('Menu')
 			<!-- Navbar Menu -Inicio -->
-			<nav id="nav" class="navbar navbar-default" role="navigation">
+				<nav id="nav" class="navbar navbar-default" role="navigation">
 			<div class="container-fluid">
 				<!-- Navbar Header Starts -->
 					<div class="navbar-header">
@@ -27,7 +27,7 @@
 							</button>
 						<!-- Collapse Button Menu Mobile Fim -->
 							<!-- Logo  -->
-							<a href="/areaCliente" class="navbar-brand">
+							<a href="/areaMedico" class="navbar-brand">
 								<img src="../images/fav/logo.png" alt="ACClinic - Agendamentos de Consultas Clinicas e Exames" class="imgLogo">
 							</a>
 						<!-- Logo Fim -->
@@ -39,51 +39,39 @@
 							<div class="navbar-collapse collapse">					
 								<ul class="nav navbar-nav navbar-right">
 									<li>
-										<a href="/areaCliente">Início</a>
+										<a href="/areaMedico">Início</a>
 									</li>
 									<li>
-										<a href="/areaCliente/pacienteContat"><i class="fa fa-comments"> </i> Fale Conosco</a>
-									</li>
-									<li class="dropdown active">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-											{{ Auth::user()->name }} 
-											<i class="fa fa-caret-down"></i>
-										</a>
-										<ul class="dropdown-menu" role="menu">
-										<li>
-											<a href="/areaCliente/agendamento">
-												<i class="fa fa-plus-square" aria-hidden="true"></i> Agendamento
-											</a>
-										</li>
-										<li>
-											<a href="/areaCliente/listaAgenda">
+											<a href="/areaMedico/agenda">
 												Minha Agenda
 											</a>
 										</li>
 										<li>
-											<a href="/areaCliente/pacienteConv">
-												Meus Convenios
+											<a href="/areaMedico/medicoHorarios">
+												Meus Horários
 											</a>
 										</li>
 										<li class="active">
-											<a href="/areaCliente/meus_dados">
-												 Meus Dados <i class="fa fa-user" aria-hidden="true"></i>	
+											<a href="/areaMedico/consultarPaciente">
+												Consulta Paciente
 											</a>
 										</li>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+											{{ Auth::user()->medico->name }} 
+											<i class="fa fa-caret-down"></i>
+										</a>
+										<ul class="dropdown-menu" role="menu">
 										<li>
-											<a href="/areaCliente/altera_senha">
-												 Alterar Senha <i class="fa fa-cogs" aria-hidden="true"></i>
+											<a href="/areaMedico/meus_dados">
+												Meus Dados
 											</a>
 										</li>
-										<li>
-											<a href="/areaCliente/infor">
-												 Informativo <i class="fa fa-info-circle" aria-hidden="true"></i>
-											</a>
-										</li>
-										<li> <a class="dropdown-item" href="{{ route('logout') }}"
+										<li> 
+											<a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Sair') }} <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                        {{ __('Sair') }} <i class="fa fa-sign-out"></i>
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -106,10 +94,28 @@
 @endsection
 @section('ConteudoPrincipal')
 <!-- Banner Cliente -->
-		<div class="main-banner cliente">
+		<div class="main-banner clienteInfor">
 			<div class="container">
-				<h2><span>Área do Cliente</span></h2>
+				<h2><span>Consulta Paciente</span></h2>
+			</div>
+		</div>
+		<div class="breadcrumb">
+			<div class="container">
+				<ul class="list-unstyled list-inline">
+					<li>
+						<a href="/areaCliente">Área Médico</a>
+					</li>
+					<li>Consulta Paciente</li>
+				</ul>
 			</div>
 		</div>
 <!-- Banner Cliente Fim-->
+<!-- Conteudo Agenda -->
+
+	
+<div class="container main">
+<br>
+	Consultar Paciente
+</div>
+<!-- Conteudo Agenda Fim -->
 @endsection

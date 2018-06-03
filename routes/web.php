@@ -24,6 +24,8 @@ Route::group(['middleware' => ['auth']], function () {
 	#envia_email
 	Route::get('/areaCliente/pacienteContat','UserController@pacienteContat');
 	Route::post('/areaCliente/pacienteContat','UserController@pacienteContat');	
+
+	
 	#medico
 	Route::get('/areaMedico','MedicoController@index');
 	#agenda_Médico
@@ -34,17 +36,14 @@ Route::group(['middleware' => ['auth']], function () {
 	
 	Route::post('/areaMedico/agendaSalva','MedicoController@agendaSalva');
 	
-	Route::get('/areaMedico/meus_dados','MedicoController@medicoForm');
-	Route::post('/areaMedico/meus_dados','MedicoController@medicoForm');
 	Route::post('/areaMedico/acao','MedicoController@status');
 	
-	Route::get('/areaMedico/convenios','MedicoController@medicoConv');
-	Route::get('/areaMedico/convenios','MedicoController@medicoConv');
+	Route::get('/areaMedico/consultarPaciente','MedicoController@consultarPaciente');
 	
-	Route::get('/areaMedico/infor','MedicoController@medicoInfor');
-	
-	Route::get('/areaMedico/medicoContat','MedicoController@medicoContat');
-	Route::post('/areaMedico/medicoContat','MedicoController@medicoContat');	
+	Route::get('/areaMedico/meus_dados','MedicoController@medicoDadosForm');
+	Route::post('/areaMedico/meus_dados','MedicoController@medicoDados');	
+
+
 	#atendente
 	Route::get('/areaAtendente','AtendenteController@index');
 	Route::get('/areaAtendente/agendamento','AtendenteController@agendamentoForm');

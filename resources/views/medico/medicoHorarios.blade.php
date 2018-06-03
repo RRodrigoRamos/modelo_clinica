@@ -1,6 +1,16 @@
-@extends('layout.template')
-@section('title', 'Area Cliente')
-
+@extends('layout.templateAdmin')
+@section('title', 'Area Médico')
+@section('topoInfor')
+			<!-- Informações do Topo site -->
+				<div class="top-bar hidden-sm hidden-xs">
+					<div class="row">
+						<div class="col-sm-6 col-xs-12">
+							  Bem vindo {{ Auth::user()->medico->name }} a sua pagina.
+						</div>
+					</div>
+				</div>
+		<!-- Informações do Topo site Fim -->
+@endsection
 @section('Menu')
 			<!-- Navbar Menu -Inicio -->
 				<nav id="nav" class="navbar navbar-default" role="navigation">
@@ -17,98 +27,110 @@
 							</button>
 						<!-- Collapse Button Menu Mobile Fim -->
 							<!-- Logo  -->
-							<a href="/home" class="navbar-brand">
+							<a href="/areaMedico" class="navbar-brand">
 								<img src="../images/fav/logo.png" alt="ACClinic - Agendamentos de Consultas Clinicas e Exames" class="imgLogo">
 							</a>
 						<!-- Logo Fim -->
 					</div>
+					
 					<!-- Menu Infor Fim -->
 						<!-- Navbar Header Ends -->
 						<!-- Navbar Collapse Starts -->
 							<div class="navbar-collapse collapse">					
 								<ul class="nav navbar-nav navbar-right">
 									<li>
-										<a href="/inicio">Início</a>
-									</li>
-									<li class="dropdown active">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Institucional <i class="fa fa-caret-down"></i>
-										</a>
-										<ul class="dropdown-menu" role="menu">
-											<li>
-												<a href="/pagina/institucional">Quem Somos</a>
-											</li>
-											<li class="active">
-												<a href="/pagina/equipe"> 
-												Equipe</a>
-											</li>
-											<li>
-												<a href="/pagina/medicos">
-												Médicos</a>
-											</li>
-											<li>
-												<a href="/pagina/unidades">Unidades</a>
-											</li>
-										</ul>
+										<a href="/areaMedico">Início</a>
 									</li>
 									<li>
-										<a href="/pagina/especialidades">Especialidades</a>
-									</li>
-									<li>
-										<a href="/pagina/convenios">Convênios</a>
-									</li>		
+											<a href="/areaMedico/agenda">
+												Minha Agenda
+											</a>
+										</li>
+										<li class="active">
+											<a href="/areaMedico/medicoHorarios">
+												Meus Horários
+											</a>
+										</li>
+										<li>
+											<a href="/areaMedico/consultarPaciente">
+												Consulta Paciente
+											</a>
+										</li>
 									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-											Serviços 
+											{{ Auth::user()->medico->name }} 
 											<i class="fa fa-caret-down"></i>
 										</a>
 										<ul class="dropdown-menu" role="menu">
-											<li>
-												<a href="/servicos/consultas">Consultas</a>
-											</li>
-											<li>
-												<a href="/servicos/exames">Exames</a>
-											</li>
-											<li>
-												<a href="/servico/agendamento">Agendamentos</a>
-											</li>
-										</ul>
-									</li>
-									<li>
-										<a href="/pagina/contato"><i class="fa fa-comments"> </i> Fale Conosco</a>
-									</li>
-									<li>
-										<a href="/areaClinte" ><i class="fa fa-user"></i> Área do cliente</a>
-									</li>
-								</ul>
-							</div>
+										<li>
+											<a href="/areaMedico/meus_dados">
+												Meus Dados
+											</a>
+										</li>
+										<li> 
+											<a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Sair') }} <i class="fa fa-sign-out"></i>
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                		</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
 						<!-- Navbar Collapse Ends -->
-					</div>
+				</div>
 		</nav>
 			<!-- Navbar Menu Fim -->
 			</div>
 		<!-- Conteudo Inicial Fim -->
 		</header>
 	<!-- Topo Fim -->
-	@endsection
 
+@endsection
 
 @section('ConteudoPrincipal')
+<!-- Banner Cliente -->
+		<div class="main-banner horarios">
+			<div class="container">
+				<h2><span>Horário</span></h2>
+			</div>
+		</div>
+		<div class="breadcrumb">
+			<div class="container">
+				<ul class="list-unstyled list-inline">
+					<li>
+						<a href="/areaCliente">Área Médico</a>
+					</li>
+					<li>Horários</li>
+				</ul>
+			</div>
+		</div>
+<!-- Banner Cliente Fim-->
+<br>
 <div class="container main">
+<div class="col-8">
+	<fieldset>
+		<legend>Meus Horários</legend>
+		<form id="logout-form" class="form-horizontal"action="{{ route('medico.horario') }}" method="POST">
+	@csrf
+  	<div class="form-group">
+    	<label for="exampleInputEmail1">Horario de Inicio</label>
+    	<input type="text" class="form-control" value="@if(isset($value->horario_inicio)) {{$value->horario_inicio}} @endif" name="horario_inicio" id="exampleInputEmail1" aria-describedby="v" placeholder="00:00">
+  	</div>
+	@csrf
 
-<form id="logout-form" class="form-horizontal"action="{{ route('medico.horario') }}" method="POST">
-@csrf
-  <div class="form-group">
-    <label for="exampleInputEmail1">Horario de Inicio</label>
-    <input type="text" class="form-control" value="@if(isset($value->horario_inicio)) {{$value->horario_inicio}} @endif" name="horario_inicio" id="exampleInputEmail1" aria-describedby="v" placeholder="00:00">
-  </div>
-@csrf
-  <div class="form-group">
-    <label for="exampleInputEmail1">Horario de Termino</label>
-    <input type="text" class="form-control" value="@if(isset($value->horario_inicio)) {{$value->horario_termino}} @endif" name="horario_termino" id="exampleInputEmail1" aria-describedby="v" placeholder="00:00">
-  </div>
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="true" id="defaultCheck1" name="dia_da_semana[segunda]" @if(!empty($value))) @if(isset($value->dias_da_semana['segunda']) && $value->dias_da_semana['segunda']==true) checked @endif @endif>
-  <label class="form-check-label" for="defaultCheck1" >
+  	<div class="form-group">
+    	<label for="exampleInputEmail1">Horario de Termino</label>
+    	<input type="text" class="form-control" value="@if(isset($value->horario_inicio)) {{$value->horario_termino}} @endif" name="horario_termino" id="exampleInputEmail1" aria-describedby="v" placeholder="00:00">
+  	</div>
+	<div class="form-check">
+  		<input class="form-check-input" type="checkbox" value="true" id="defaultCheck1" name="dia_da_semana[segunda]" @if(!empty($value))) @if(isset($value->dias_da_semana['segunda']) && $value->dias_da_semana['segunda']==true) checked @endif @endif>
+  	<label class="form-check-label" for="defaultCheck1" >
    Segunda
   </label>
 </div>
@@ -145,5 +167,6 @@
   
     <input type="submit" name="formSubmit" value="Submit" />
 </form>
+</fieldset>
 </div>	
 @endsection

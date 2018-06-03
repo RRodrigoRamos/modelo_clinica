@@ -8,6 +8,9 @@ use acclinic\Triagen;
 use acclinic\Convenio;
 use acclinic\Endereco;
 use acclinic\Bairro;
+use acclinic\cidade;
+use acclinic\Estado;
+
 use acclinic\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -87,19 +90,30 @@ class RegisterController extends Controller
         $bairros = Bairro::all();
         return $bairros;
     }
-    public function convenios(){
-        $convenio = Convenio::all();
-        return $convenio;
+
+    public function cidades(){
+        $cidades = Cidade::all();
+        return $cidades;
     }
+
+    public function estados(){
+        $estados = Estado::all();
+        return $estados;
+    }
+
+    public function convenios(){
+        $convenios = Convenio::all();
+        return $convenios;
+    }
+
     public function showRegistrationForm()
     {
 
-        return view('auth.register',['bairros' => self::bairros(), 'convenios' => self::convenios()]);
+        return view('auth.register',['bairros' => self::bairros(),'cidades' => self::cidades(),'estados' => self::estados(), 'convenios' => self::convenios()]);
     }
 
     protected function register(Request $request)
     {       
-           
 
             $user = new User();
             $user->name = $request->name;
@@ -108,6 +122,7 @@ class RegisterController extends Controller
             $user->password = bcrypt($request->password);
             $user->role = 'paciente';
             $user->save();
+
             $endereco = new Endereco();
             $endereco->user_id = $user->id;
             $endereco->cep = $request->cep;
@@ -117,6 +132,7 @@ class RegisterController extends Controller
             $endereco->complement = $request->complement;
             $endereco->bairro_id = $request->bairro_id;
             $user->endereco()->save($endereco);
+
             $paciente = new Paciente();
             $paciente->user_id = $user->id;
             $paciente->convenio_id = $request->convenio_id;
@@ -124,8 +140,9 @@ class RegisterController extends Controller
             $paciente->data_nasc = $request->data_nasc;
             $paciente->telefone = $request->telefone;
             $user->paciente()->save($paciente);
+
             $triagen = new Triagen;
-            $triagen->paciente_id = User::find($user->id)->paciente->id;
+            $triagen->paciente_id = $paciente->id;
             $triagen->altura= $request->altura;
             $triagen->peso = $request->peso;
             $triagen->obs = $request->obs;

@@ -570,6 +570,13 @@ h6 { font-size: 16px; }
 	}	
 	.main-banner.pgAgenda{
 		background: url(../images/banners/preventivo.jpg) center top;
+	}
+	.main-banner.medicos{
+		background: url(../images/banners/direcao.jpg) center top;
+	}
+
+	.main-banner.horarios{
+		background: url(../images/banners/financeiro.png) center top;
 	}	
 	.main-banner h2 {
 		margin-top: 0;
