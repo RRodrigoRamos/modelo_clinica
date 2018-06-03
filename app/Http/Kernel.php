@@ -20,6 +20,7 @@ class Kernel extends HttpKernel
         \acclinic\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \acclinic\Http\Middleware\TrustProxies::class,
+        
     ];
 
     /**
@@ -72,5 +73,6 @@ class Kernel extends HttpKernel
         'admin' => \acclinic\Http\Middleware\AdminMiddleware::class,
         'medico' => \acclinic\Http\Middleware\MedicoMiddleware::class,
         'atendente' => \acclinic\Http\Middleware\AtendenteMiddleware::class,
+        'cors' => \Barryvdh\Cors\HandleCors::class,
     ];
 }
