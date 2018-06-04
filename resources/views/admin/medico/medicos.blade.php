@@ -28,7 +28,7 @@
             <!-- Collapse Button Menu Mobile Fim -->
               <!-- Logo  -->
               <a href="/areaAdmin" class="navbar-brand">
-                <img src="../images/fav/logo.png" alt="ACClinic - Agendamentos de Consultas Clinicas e Exames" class="imgLogo">
+                <img src="{{ asset('../images/fav/logo.png')}}" alt="ACClinic - Agendamentos de Consultas Clinicas e Exames" class="imgLogo">
               </a>
             <!-- Logo Fim -->
           </div>
@@ -96,6 +96,18 @@
     <div class="main-banner index_1">
       <div class="container">
         <h2><span>Médicos Clinica</span></h2>
+      </div>
+    </div>
+    <div class="breadcrumb">
+      <div class="container">
+        <ul class="list-unstyled list-inline">
+          <li>
+            <a href="/areaAdmin">Area Administrativa</a>
+          </li>
+          <li class="active">
+            Medicos
+          </li>
+        </ul>
       </div>
     </div>
 <!-- Banner Cliente Fim-->

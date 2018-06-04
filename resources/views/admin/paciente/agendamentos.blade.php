@@ -95,7 +95,7 @@
 <!-- Banner Cliente -->
 		<div class="main-banner index_1">
 			<div class="container">
-				<h2><span>Lista Agenda</span></h2>
+				<h2><span>Lista Agenda	</span></h2>
 			</div>
 		</div>
 <!-- Banner Cliente Fim-->
@@ -111,7 +111,7 @@
 <div class="row">
 <div class="col-lg-1">
 </div>
-<div class="form-group col-sm-12 col-md-12 col-lg-10 col-xs-12">
+<div class="form-group col-sm-12 col-md-12 col-lg-12 col-xs-12">
  <fieldset>
           <legend>Lista Agenda - Clinica </legend>
 	            <table class="table table-striped table-bordered table-condensed table-hover table-responsive">
