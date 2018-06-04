@@ -136,6 +136,7 @@
 <!-- Main Container Starts -->
 <div class="container main">
   @if ($errors->any())
+    <br>
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)

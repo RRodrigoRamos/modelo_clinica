@@ -38,7 +38,7 @@
 						<!-- Navbar Collapse Starts -->
 							<div class="navbar-collapse collapse">					
 								<ul class="nav navbar-nav navbar-right">
-									<li class="active">
+									<li>
 										<a href="/areaAdmin">Início</a>
 									</li>
 									<li>
@@ -73,7 +73,7 @@
 											<i class="fa fa-caret-down"></i>
 										</a>
 										<ul class="dropdown-menu" role="menu">
-										<li>
+										<li class="active">
 											<a href="/admin/meus_dados">
 												 Meus Dados <i class="fa fa-user" aria-hidden="true"></i>	
 											</a>
@@ -100,56 +100,58 @@
 		<!-- Conteudo Inicial Fim -->
 		</header>
 	<!-- Topo Fim -->
-
 @endsection
 @section('ConteudoPrincipal')
 <!-- Banner Cliente -->
-		<div class="main-banner indexAdm">
-			<div class="container">
-				<h2><span>Administração</span></h2>
-			</div>
-		</div>
+    <div class="main-banner index_1">
+      <div class="container">
+        <h2><span>Meus Dados</span></h2>
+      </div>
+    </div>
+    <div class="breadcrumb">
+      <div class="container">
+        <ul class="list-unstyled list-inline">
+          <li>
+            <a href="/areaAdmin">Area Administrativa</a>
+          </li>
+          <li class="active">
+            Edição
+          </li>
+        </ul>
+      </div>
+    </div>
 <!-- Banner Cliente Fim-->
-<div class="container main-container">
-<!-- Conteudo inBox -->
-			<div class="notification-boxes row">
-			<!-- Box #1 Starts -->
-				<div class="col-md-3 col-sm-6 col-xs-12">
-					<div class="box">
-						<i class="fa fa-calendar-check-o"></i>
-						<h4> Listagem de Agendamentos </h4>
-						<a href="/admin/agendamentos" class="btn btn-transparent">Vê Registro...</a>
-					</div>
-				</div>
-			<!-- Box #1 Ends -->
-			<!-- Box #2 Starts -->
-				<div class="col-md-3 col-sm-6 col-xs-12">
-					<div class="box">
-						<i class="fa fa-user-md"></i>
-						<h4>Médicos Cadastrados</h4>
-						<a href="/admin/medicos" class="btn btn-transparent">Vê Registro...</a>
-					</div>
-				</div>
-			<!-- Box #2 Ends -->
-			<!-- Box #3 Starts -->
-				<div class="col-md-3 col-sm-6 col-xs-12">
-					<div class="box">
-						<i class="fa fa-users"></i>
-						<h4>Atendentes Cadastrados</h4>
-						<a href="/admin/atendentes" class="btn btn-transparent">Vê registro...</a>
-					</div>
-				</div>
-			<!-- Box #3 Ends -->
-			<!-- Box #4 Starts -->
-				<div class="col-md-3 col-sm-6 col-xs-12">
-					<div class="box">
-						<i class="fa fa-user" aria-hidden="true"></i>
-						<h4> Pacientes Cadastrados </h4>
-						<a href="/admin/pacientes" class="btn btn-transparent">Vê registro...</a>
-					</div>
-				</div>
-			<!-- Box #4 Ends -->
-			</div>
-		<!-- Conteudo inBox Fim -->
-</div>
+<br>
+<fieldset>
+	<legend>Atendentes Clinica</legend>
+
+<form action="{{url('/admin/atendentes')}}" method="post">
+@csrf
+Nome:
+<input type="text" name="name" required>
+<br>
+Nome Social:
+<input type="text" name="name_social" required>
+<br>
+Email:
+<input type="email" name="email" required>
+<br>
+Sexo:
+<input type="text" name="sexo" required>
+<br>
+Data de Nascimento:
+<input type="date" name="data_nasc" required>
+<br>
+Telefone:
+<input type="text" name="telefone" required>
+<br>
+Senha:
+<input type="password" name="password" required>
+<br>
+
+<button type="submit" class="btn" value="Cadastrar"></button>
+</form>
+<br>
+</fieldset>
+<br>
 @endsection

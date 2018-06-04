@@ -2821,3 +2821,56 @@ ul.nav-wizard.nav-wizard-backnav .active ~ li a:focus {
 			text-transform: uppercase;
 			border-radius:10px !important;
 		}
+
+
+
+
+		.dropdown-toggle.atendente{
+			background: steelblue;
+			width: 100%;
+			padding: 15PX;
+		}
+		.dropdown .dropdown-menu{
+		background: #D8D8D8;	
+		}
+		.dropdown .dropdown-menu form{
+			
+			background: #D8D8D8;
+			width: 100%;
+			padding: 8px;	
+		}
+		.dropdown .dropdown-menu form button{
+			background: steelblue;
+			width: 100%;
+		}
+		.dropdown .dropdown-menu form button:hover{
+			background: steelblue;
+			width: 100%;
+			background:#003366;
+			font-weight: 550;
+		}
+		.dropdown-toggle:hover{
+			background:#003366;
+			font-weight: bold;
+			width:100%;
+		}
+
+fieldset table tr th, fieldset table tr td{
+	text-align: center;
+}
+fieldset table tr th, fieldset table tr td.a{
+	text-align: left;
+}
+fieldset table tr th span.dia, fieldset table tr td span.dia{
+	text-align: left;
+	font-weight: bold;
+}
+fieldset table tr th span.hr, fieldset table tr td span.hr{
+	text-align: left;
+	font-weight: bold;
+}
+fieldset table tr th span.ate, fieldset table tr td span.ate{
+	text-align: left;
+	font-weight: bold;
+}
+

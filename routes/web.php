@@ -101,6 +101,16 @@ Route::middleware(['admin'])->group (function() {
 	Route::get('/admin/agendamentos', 'AdminController@listaAgendas');
 	Route::post('/admin/agendamentosalvar', 'AdminController@CadastrarAgendas');
 	
+	#convenios
+	Route::get('/admin/convenios', 'AdminController@conveniosCad');
+
+	#atendente
+
+	Route::get('/admin/atendentes', 'AdminController@listaAtendentes');
+	Route::post('/admin/atendentes', 'AdminController@criarAtendentes');
+	
+	#dados_atendente
+	Route::get('/admin/meus_dados', 'AdminController@atendentesEdite');
 	#salvar
 	Route::get('/admin/medicos', 'AdminController@listaMedicos');
 	Route::post('/admin/medicos/medicosalvar', 'AdminController@medicosalvar');

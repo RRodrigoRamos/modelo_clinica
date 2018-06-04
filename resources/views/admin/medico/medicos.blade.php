@@ -28,7 +28,7 @@
             <!-- Collapse Button Menu Mobile Fim -->
               <!-- Logo  -->
               <a href="/areaAdmin" class="navbar-brand">
-                <img src="{{ asset('../images/fav/logo.png')}}" alt="ACClinic - Agendamentos de Consultas Clinicas e Exames" class="imgLogo">
+                <img src="../images/fav/logo.png" alt="ACClinic - Agendamentos de Consultas Clinicas e Exames" class="imgLogo">
               </a>
             <!-- Logo Fim -->
           </div>
@@ -43,12 +43,17 @@
                   </li>
                   <li>
                       <a href="/admin/agendamentos">
-                        Lista Agendamentos
+                        Lista Agenda
                       </a>
                   </li>
                   <li class="active">
                       <a href="/admin/medicos">
-                        Médicos Cad.
+                        Médicos <Cad class=""></Cad>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="/admin/convenios">
+                        Convênios Cad.
                       </a>
                   </li>
                   <li>
@@ -63,17 +68,23 @@
                   </li>
                   <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                    <i class="fa fa-caret-down"></i>
+                      {{ Auth::user() }} 
+                      <i class="fa fa-user" aria-hidden="true"></i>
+                      <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu" role="menu">
-                    <li> <a class="dropdown-item" href="{{ route('admin.logout') }}"
+                    <li>
+                      <a href="/admin/meus_dados">
+                         Meus Dados <i class="fa fa-user" aria-hidden="true"></i> 
+                      </a>
+                    </li>
+                    <li> <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Sair') }} <i class="fa fa-sign-out" aria-hidden="true"></i>
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                     </li>
