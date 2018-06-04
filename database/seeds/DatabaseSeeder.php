@@ -25,5 +25,6 @@ class DatabaseSeeder extends Seeder
     $this->call(ClinicaMedicoTableSeeder::class);
     $this->call(statusAgendaTableSeeder::class);
     $this->call(AdminTableSeeder::class);
+    $this->call(HorarioTableSeeder::class);
     }
 }

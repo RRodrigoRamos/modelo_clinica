@@ -46,16 +46,18 @@ class AdminController extends Controller
     {
         $agendamentos = Agendamento::paginate(15);
 
-        $agenda_totais = Agendamento::select(['agendamentos.tipo_agenda','agendamentos.data_agenda','agendamentos.hora_agenda','medicos.name as nome_medico','especialidades.campo as especialidade','clinicas.nome as clinica_medica','users.name as nome_paciente','status_agendas.descricao as status_agenda'])
+        /*$agenda_totais = Agendamento::select(['agendamentos.tipo_agenda','agendamentos.data_do_agendamento','agendamentos.dia_da_semana','medicos.name as nome_medico','especialidades.campo as especialidade','clinicas.nome as clinica_medica','users.name as nome_paciente','status_agendas.descricao as status_agenda'])
             ->join('users','agendamentos.users_id', '=', 'users.id')
             ->join('clinica_medicos','agendamentos.clinica_medicos_id','=','clinica_medicos.id')
             ->join('medicos','clinica_medicos.medicos_id','=','medicos.id') 
             ->join('especialidades','medicos.especialidade_id','=','especialidades.id') 
             ->join('clinicas','clinica_medicos.clinica_id','=','clinicas.id') 
             ->join('status_agendas','agendamentos.status_id','=','status_agendas.id')
-            ->orderBy('agendamentos.data_agenda', 'asc')
-            ->get();
-        return view('admin.paciente.agendamentos',['agendamentos' => $agendamentos, 'bairros' => self::bairros()],compact('agenda_totais'));
+            ->orderBy('agendamentos.data_do_agendamento', 'asc')
+            ->get();*/
+
+            // ,compact('agenda_totais')
+        return view('admin.paciente.agendamentos',['agendamentos' => $agendamentos, 'bairros' => self::bairros()]);
     }
     public function listaMedicos()
     {
