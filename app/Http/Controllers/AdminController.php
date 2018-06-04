@@ -150,6 +150,7 @@ class AdminController extends Controller
         $paciente = User::where('role','paciente')->paginate(15);
         return view('admin.pacientes',['pacientes' => $paciente]);
     }
+
     #MEDICO EDITAR
     public function showmedico($id)
     {
@@ -227,6 +228,16 @@ class AdminController extends Controller
             
             return redirect('admin/pacientes');
         
+    }
+
+    public function conveniosCad()
+    {   
+        return view('admin.convenios.convenios');
+    }
+
+    public function atendentesEdite()
+    {   
+        return view('admin.atendente.atendentesEdit');
     }
 
 }
