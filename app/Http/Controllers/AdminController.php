@@ -267,7 +267,7 @@ class AdminController extends Controller
             $triagen->peso = $request->peso;
             $triagen->obs = $request->obs;
             $triagen->save();
-            return redirect('/admin');
+            return redirect('/admin/pacientes');
     }
     public function showpaciente($id)
     {

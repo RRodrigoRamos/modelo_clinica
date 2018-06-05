@@ -46,12 +46,12 @@
                         Lista Agenda
                       </a>
                   </li>
-                  <li class="active">
+                  <li>
                       <a href="/admin/medicos">
                         Médicos <Cad class=""></Cad>
                       </a>
                   </li>
-                  <li>
+                  <li class="active">
                       <a href="/admin/convenios">
                         Convênios Cad.
                       </a>
@@ -126,7 +126,7 @@
             <a href="/areaAdmin">Area Administrativa</a>
           </li>
           <li>
-            <a href="/admin/medicos"> Medicos </a>
+            <a href="/admin/medicos"> Convênio </a>
           </li>
           <li class="active">Edição</li>
         </ul>
@@ -148,27 +148,29 @@
     <br>
     <div class="col-lg-1">
     </div>
-  <div class="col-lg-10">
-<div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+    <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
       <div class="alert alert-info">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             <div class="text"><i class="fa fa-info-circle fa-2x "></i> &nbsp; Preencha os campos necessário para o CADASTRO ! <span class="obr"> obs: ( * ) Campos obrigatórios<span></div> 
         </div>
     </div>    
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-   <form class="form"  method="post" action="{{url('admin/convenio/') }}">
+	<fieldset>
+    <legend>Convênio Clinica</legend>
+    <form class="form"  method="post" action="{{url('admin/convenio/') }}">
         @csrf
         <input type="hidden" name="_method" value="PUT">
         <input type="hidden" value="{{$id}}" name="id">
-	<fieldset>
         Nome do convenio:
         <input type="text" value="{{$value->nome_convenio}}" name="nome_convenio">
-        <br>
+        <br><br>
         Tipo de Plano:
         <input type="text" value="{{$value->tipo_plano}}" name="tipo_plano">
-  </fieldset> 
-  <button>Cadastrar</button>     
+        <br>
+      <button>Alterar</button>     
   </form>
+  </fieldset> 
+  <br>
 </div>
 </div>
 

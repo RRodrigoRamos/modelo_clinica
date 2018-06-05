@@ -113,7 +113,16 @@
             <a href="/areaAdmin">Area Administrativa</a>
           </li>
           <li class="active">
-            <div class="form-group col-sm-12 col-md-12 col-lg-10 col-xs-12">
+          	Convênios
+          </li>
+         </ul>
+      </div>
+    </div>
+    <div class="col-lg-1">
+    </div>
+    <br>
+      <div class="form-group col-sm-12 col-md-12 col-lg-10 col-xs-12">
+    	<fieldset>
          <legend>convenios</legend>
               <table class="table table-striped table-bordered table-condensed table-hover table-responsive">
              <thead>
@@ -135,6 +144,7 @@
             </table>
 					
             {{$links}}
+         </fieldset>
   </div>
 @endsection
 @section('ConteudoPrincipal')
@@ -152,7 +162,7 @@
 	@endslot
 	@slot('formulario')
 	<fieldset>
-          <legend>Dados de Medico</legend>
+          <legend>Cadastro de Convênio</legend>
             <div class="row">
               <div class="form-group col-sm-6 col-md-6 col-lg-6"	>
                     <label for="nome_convenio" class="control-label">Nome de Convenio<span class="obr">*</span></label>
