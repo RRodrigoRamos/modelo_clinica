@@ -60,11 +60,6 @@
 												Minha Agenda &nbsp;<i class="fa fa-calendar-check-o" aria-hidden="true"></i>
 											</a>
 										</li>
-										<li>
-											<a href="/areaCliente/meus_dados">
-												Meus Dados &nbsp; <i class="fa fa-user"></i>
-											</a>
-										</li>
 										<li class="active">
 											<a href="/areaCliente/infor">
 												Informativo &nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i>

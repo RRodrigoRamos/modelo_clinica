@@ -61,11 +61,6 @@
 											</a>
 										</li>
 										<li>
-											<a href="/areaCliente/meus_dados">
-												Meus Dados &nbsp; <i class="fa fa-user"></i>
-											</a>
-										</li>
-										<li>
 											<a href="/areaCliente/infor">
 												Informativo &nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i>
 											</a>
@@ -110,7 +105,7 @@
 		<!-- Conteudo inBox -->
 			<div class="notification-boxes row">
 			<!-- Box #1 Starts -->
-				<div class="col-md-3 col-sm-6 col-xs-12">
+				<div class="col-lg-6 col-md-3 col-sm-6 col-xs-12">
 					<div class="box">
 						<i class="fa fa-calendar-plus-o"></i>
 						<h4> Novo Agendamento </h4>
@@ -122,7 +117,7 @@
 				</div>
 			<!-- Box #1 Ends -->
 			<!-- Box #2 Starts -->
-				<div class="col-md-3 col-sm-6 col-xs-12">
+				<div class="col-lg-6 col-md-3 col-sm-6 col-xs-12">
 					<div class="box">
 						<i class="fa fa-calendar-check-o"></i>
 						<h4>Meus Agendamentos </h4>
@@ -133,29 +128,6 @@
 					</div>
 				</div>
 			<!-- Box #2 Ends -->
-			<!-- Box #3 Starts -->
-				 <div class="col-md-3 col-sm-6 col-xs-12">
-					<div class="box">
-						<i class="fa fa-calendar-check-o"></i>
-						<h4>Meu Convênio </h4>
-						<p>
-							lista de convênios que da clínica ao Paciente.
-						</p>
-						<a href="/areaCliente/listaAgenda" class="btn btn-transparent">Ver Lista...</a>
-					</div>
-				</div>
-			<!-- Box #3 Ends -->
-			<!-- Box #4 Starts -->
-				<div class="col-md-3 col-sm-6 col-xs-12">
-					<div class="box">
-						<i class="fa fa-user" aria-hidden="true"></i>
-						<h4> Meus Dados </h4>
-						<p>
-							Dados do Paciente. 
-						</p>
-						<a href="/areaCliente/meus_dados" class="btn btn-transparent">Vê registro...</a>
-					</div>
-				</div>
  			<!-- Box #4 Ends -->
 			</div>
 		<!-- Conteudo inBox Fim -->

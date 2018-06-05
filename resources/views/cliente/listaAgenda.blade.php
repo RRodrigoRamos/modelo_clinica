@@ -32,6 +32,7 @@
 							</a>
 						<!-- Logo Fim -->
 					</div>
+					
 					<!-- Menu Infor Fim -->
 						<!-- Navbar Header Ends -->
 						<!-- Navbar Collapse Starts -->
@@ -41,28 +42,36 @@
 										<a href="/areaCliente">Início</a>
 									</li>
 									<li>
-										<a href="/areaCliente/infor"><i class="fa fa-info-circle" aria-hidden="true"></i> Dúvidas Frequentes</a>
+										<a href="/areaCliente/infor"><i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; Dúvidas Frequentes</a>
 									</li>
-									<li class="dropdown active">
+									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-											<i class="fa fa-user"></i> &nbsp;{{ Auth::user()->name }} 
+											<i class="fa fa-user"></i> &nbsp;{{ Auth::user()->name }} &nbsp;
 											<i class="fa fa-caret-down"></i>
 										</a>
 										<ul class="dropdown-menu" role="menu">
 										<li>
 											<a href="/areaCliente/agendamento">
-												<i class="fa fa-plus-square" aria-hidden="true"></i> Agendar
+												Agendar &nbsp;<i class="fa fa-plus" aria-hidden="true"></i>
 											</a>
 										</li>
 										<li class="active">
 											<a href="/areaCliente/listaAgenda">
-												Minha Agenda
+												Minha Agenda &nbsp;<i class="fa fa-calendar-check-o" aria-hidden="true"></i>
 											</a>
 										</li>
+										<li>
+											<a href="/areaCliente/infor">
+												Informativo &nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i>
+											</a>
+										</li>
+										
+										
+										
 										<li> <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Sair') }} <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                        {{ __('Sair') }} &nbsp; <i class="fa fa-sign-out" aria-hidden="true"></i>
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -79,6 +88,7 @@
 			<!-- Navbar Menu Fim -->
 			</div>
 		<!-- Conteudo Inicial Fim -->
+		</header>
 	<!-- Topo Fim -->
 
 @endsection

@@ -107,11 +107,6 @@ $('.data_do_agendamento').append($("<option>").attr('value',value).text(value));
 											</a>
 										</li>
 										<li>
-											<a href="/areaCliente/meus_dados">
-												Meus Dados &nbsp; <i class="fa fa-user"></i>
-											</a>
-										</li>
-										<li>
 											<a href="/areaCliente/infor">
 												Informativo &nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i>
 											</a>
