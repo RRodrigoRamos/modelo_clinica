@@ -13,7 +13,7 @@ class PacientesTableSeeder extends Seeder
   public function run()
     {
       Paciente::create([
-            'user_id' => 1,
+            'user_id' => 3,
             'convenio_id' => 1,
             'foto' =>'../public/images/perfil/homem_jovem.jpg',
             'sexo' =>'Masc',
@@ -21,7 +21,7 @@ class PacientesTableSeeder extends Seeder
             'telefone' =>'96-99100-0001',
         ]);
       Paciente::create([
-            'user_id' => 2,
+            'user_id' => 4,
             'convenio_id' => 2,
             'foto' =>'../public/images/perfil/homem_jovem.jpg',
             'sexo' =>'Masc',
@@ -29,7 +29,7 @@ class PacientesTableSeeder extends Seeder
             'telefone' =>'96-99100-0001',
         ]);
       Paciente::create([
-            'user_id' => 3,
+            'user_id' => 5,
             'convenio_id' => 3,
             'foto' =>'../public/images/perfil/homem_jovem.jpg',
             'sexo' =>'Masc',
@@ -37,7 +37,7 @@ class PacientesTableSeeder extends Seeder
             'telefone' =>'96-99100-0001',
         ]);
       Paciente::create([
-            'user_id' => 4,
+            'user_id' => 6,
             'convenio_id' => 4,
             'foto' =>'../public/images/perfil/homem_jovem.jpg',
             'sexo' =>'Masc',

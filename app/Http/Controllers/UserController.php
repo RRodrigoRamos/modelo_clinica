@@ -13,6 +13,7 @@ use acclinic\ClinicaMedico;
 use acclinic\Especialidade;
 use acclinic\statusAgenda;
 use acclinic\Triagen;
+use acclinic\Paciente;
 use acclinic\Convenio;
 use acclinic\Endereco;
 use acclinic\Bairro;
@@ -46,6 +47,8 @@ class UserController extends Controller
             ->join('especialidades','medicos.especialidade_id', '=', 'especialidades.id' )
             ->orderBy('especialidades.campo', 'asc')
             ->get();
+
+
         return view('cliente.agendamentoForm',['especialidades'=> $especialidades]);
     }
     public function select_dia_semanal($id){
@@ -132,33 +135,54 @@ class UserController extends Controller
         
         return json_encode($array,JSON_FORCE_OBJECT);
     }
+
+    public function bairros(){
+        $bairros = Bairro::all();
+        return $bairros;
+    }
+
+    public function cidades(){
+        $cidades = Cidade::all();
+        return $cidades;
+    }
+
+    public function estados(){
+        $estados = Estado::all();
+        return $estados;
+    }
+
+    public function pacienteForm()
+    {
+        return view('cliente.pacienteForm',['bairros' => self::bairros(), 'cidades' => self::cidades(),'estados' => self::estados()]);
+    }
+
     public function pacienteDados()
     {
-    	$request->validate([
-        'email' => 'required|unique:medicos|max:255',
-        'cpf' => 'required|unique:users|max:255',
-    ]);
+    // 	$request->validate([
+    //     'email' => 'required|unique:medicos|max:255',
+    //     'cpf' => 'required|unique:users|max:255',
+    // ]);
 
-            $paciente = Paciente::find($request->id);
-            $paciente->convenio_id = $request->convenio_id;
-            $paciente->sexo = $request->sexo;
-            $paciente->data_nasc = $request->data_nasc;
-            $paciente->telefone = $request->telefone;
-            $paciente->update();
+    //         $paciente = Paciente::find($request->id);
+    //         $paciente->convenio_id = $request->convenio_id;
+    //         $paciente->sexo = $request->sexo;
+    //         $paciente->data_nasc = $request->data_nasc;
+    //         $paciente->telefone = $request->telefone;
+    //         $paciente->update();
 
-            $user = User::find($paciente->user_id);
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->cpf = $request->cpf;
-            $user->password = bcrypt($request->password);
-            $user->update();
+    //         $user = User::find($paciente->user_id);
+    //         $user->name = $request->name;
+    //         $user->email = $request->email;
+    //         $user->cpf = $request->cpf;
+    //         $user->password = bcrypt($request->password);
+    //         $user->update();
 
-            $endereco = Endereco::where('id',$user->endereco_id)->update(['cep' => $request->cep,
-            'tipo_local' => $request->tipo_local,
-            'endereco' => $request->endereco,
-            'numero' => $request->numero,
-            'complement' => $request->complement,
-            'bairro_id' => $request->bairro_id]);
+    //         $endereco = Endereco::where('id',$user->endereco_id)->update(['cep' => $request->cep,
+    //         'tipo_local' => $request->tipo_local,
+    //         'endereco' => $request->endereco,
+    //         'numero' => $request->numero,
+    //         'complement' => $request->complement,
+    //         'bairro_id' => $request->bairro_id]);
 
             return redirect('areaCliente/meus_dados');
     }

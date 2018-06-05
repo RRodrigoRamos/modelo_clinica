@@ -2801,6 +2801,10 @@ ul.nav-wizard.nav-wizard-backnav .active ~ li a:focus {
 	}
 	.verd {
 		color:silver !important;
+	}
+
+	.crit {
+		color:#31708F !important;
 	}	
 
 	.agendar {

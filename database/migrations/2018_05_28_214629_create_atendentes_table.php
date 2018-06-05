@@ -20,7 +20,6 @@ class CreateAtendentesTable extends Migration
             $table->enum('sexo', ['Masc', 'Fem']);
             $table->date('data_nasc');
             $table->string('telefone');
-            $table->string('email')->unique();
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

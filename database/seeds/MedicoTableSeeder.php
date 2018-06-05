@@ -13,7 +13,7 @@ class MedicoTableSeeder extends Seeder
     public function run()
     {
       Medico::create([
-            'user_id' => 6,
+            'user_id' => 7,
             'foto' =>'../public/images/perfil/homem_jovem.jpg',
             'name' =>'Dr. Carlos',
             'crm' =>'12341-AP', 
@@ -24,7 +24,7 @@ class MedicoTableSeeder extends Seeder
             'especialidade_id' =>12,
         ]);
       Medico::create([
-            'user_id' => 7,
+            'user_id' => 8,
             'foto' =>'../public/images/perfil/mulher_jovem.png',
             'name' =>'Drª. Andreza Mayara',
             'crm' =>'12001-AP', 
@@ -35,7 +35,7 @@ class MedicoTableSeeder extends Seeder
             'especialidade_id' =>2,
         ]);
       Medico::create([
-            'user_id' => 8,          
+            'user_id' => 9,          
             'foto' =>'../public/images/perfil/homem_jovem.jpg',
             'name' =>'Dr. Brasil',
             'crm' =>'12012-AP', 
@@ -46,7 +46,7 @@ class MedicoTableSeeder extends Seeder
             'especialidade_id' =>3,
         ]);
       Medico::create([
-            'user_id' => 9,
+            'user_id' => 10,
             'foto' =>'../public/images/perfil/mulher_jovem.png',
             'name' =>'Dr. Carmem Lúcia',
             'crm' =>'12013-AP', 
@@ -57,7 +57,7 @@ class MedicoTableSeeder extends Seeder
             'especialidade_id' =>8,
         ]);
       Medico::create([
-            'user_id' => 10,
+            'user_id' => 11,
             'foto' =>'../public/images/perfil/homem_jovem.jpg',
             'name' =>'Dr. Santos',
             'crm' =>'12088-AP', 
@@ -68,7 +68,7 @@ class MedicoTableSeeder extends Seeder
             'especialidade_id' =>12,
         ]);
       Medico::create([
-            'user_id' => 11,
+            'user_id' => 12,
             'foto' =>'../public/images/perfil/homem_jovem.jpg',
             'name' =>'Dr. Tomas Edson',
             'crm' =>'12998-AP', 
@@ -79,7 +79,7 @@ class MedicoTableSeeder extends Seeder
             'especialidade_id' =>3,
         ]);
       Medico::create([
-            'user_id' => 12,
+            'user_id' => 13,
             'foto' =>'../public/images/perfil/homem_jovem.jpg',
             'name' =>'Dr. Paulo Coelho',
             'crm' =>'12111-AP', 
@@ -90,7 +90,7 @@ class MedicoTableSeeder extends Seeder
             'especialidade_id' =>2,
         ]);
       Medico::create([
-            'user_id' => 13,
+            'user_id' => 14,
             'foto' =>'../public/images/perfil/mulher_jovem.png',
             'name' =>'Drª Elizabeth Gomes',
             'crm' =>'10187-AP', 
@@ -101,7 +101,7 @@ class MedicoTableSeeder extends Seeder
             'especialidade_id' =>3,
         ]);
         Medico::create([
-            'user_id' => 14,
+            'user_id' => 15,
             'foto' =>'../public/images/perfil/mulher_jovem.png',
             'name' =>'Drª Francys',
             'crm' =>'76578-AP', 
@@ -112,7 +112,7 @@ class MedicoTableSeeder extends Seeder
             'especialidade_id' =>12,
         ]);
         Medico::create([
-            'user_id' => 15,
+            'user_id' => 16,
             'foto' =>'../public/images/perfil/mulher_jovem.png',
             'name' =>'Dr. Paulo Barbosa',
             'crm' =>'33445-AP', 

@@ -12,8 +12,9 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::post('/areaCliente/agendamento','UserController@agendaSalva');
 	
 	Route::get('/areaCliente/listaAgenda','UserController@listaAgenda');
+	
 	Route::get('/areaCliente/meus_dados','UserController@pacienteForm');
-	Route::post('/areaCliente/meus_dados','UserController@editarDados');
+	Route::post('/areaCliente/meus_dados','UserController@pacienteDados');
 
 	#seleciona_convênio
 	Route::get('/areaCliente/convenios','UserController@pacienteConv');

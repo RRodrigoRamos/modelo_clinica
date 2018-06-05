@@ -18,7 +18,7 @@ $.ajax({
   dataType : 'JSON',
   success : function (data2) {
 $.each(data2.dias_da_semana,function (index, value) { 
-$('.select_dia_semanal').append($("<option>").attr('value',index).text(index+'/'+data2.horario_inicio+'-'+data2.horario_termino));
+$('.select_dia_semanal').append($("<option>").attr('value',index).text(index+' / '+data2.horario_inicio+' às '+data2.horario_termino));
 });
 }
 });
@@ -88,22 +88,32 @@ $('.data_do_agendamento').append($("<option>").attr('value',value).text(value));
 										<a href="/areaCliente">Início</a>
 									</li>
 									<li>
-										<a href="/areaCliente/infor"><i class="fa fa-info-circle" aria-hidden="true"></i> Dúvidas Frequentes</a>
+										<a href="/areaCliente/infor"><i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp; Dúvidas Frequentes</a>
 									</li>
 									<li class="dropdown active">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-											<i class="fa fa-user"></i> &nbsp;{{ Auth::user()->name }} 
+											<i class="fa fa-user"></i> &nbsp;{{ Auth::user()->name }} &nbsp;
 											<i class="fa fa-caret-down"></i>
 										</a>
 										<ul class="dropdown-menu" role="menu">
-										<li  class="active">
+										<li class="active">
 											<a href="/areaCliente/agendamento">
-												<i class="fa fa-plus-square" aria-hidden="true"></i> Agendar
+												Agendar &nbsp;<i class="fa fa-plus" aria-hidden="true"></i>
 											</a>
 										</li>
 										<li>
 											<a href="/areaCliente/listaAgenda">
-												Minha Agenda
+												Minha Agenda &nbsp;<i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+											</a>
+										</li>
+										<li>
+											<a href="/areaCliente/meus_dados">
+												Meus Dados &nbsp; <i class="fa fa-user"></i>
+											</a>
+										</li>
+										<li>
+											<a href="/areaCliente/infor">
+												Informativo &nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i>
 											</a>
 										</li>
 										
@@ -112,7 +122,7 @@ $('.data_do_agendamento').append($("<option>").attr('value',value).text(value));
 										<li> <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Sair') }} <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                        {{ __('Sair') }} &nbsp; <i class="fa fa-sign-out" aria-hidden="true"></i>
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -171,34 +181,29 @@ $('.data_do_agendamento').append($("<option>").attr('value',value).text(value));
 			<legend>Dados da Consulta</legend>
 			<div class="row">
 			<div class="form-group col-sm-12 col-md-12 col-lg-6">
-				<label for="medico_id" class="control-label">Escolhar o Médico / Especialidade <span class="obr">*</span></label>
+				<label for="medico_id" class="control-label">ESCOLHA O MÉDICO &nbsp; / &nbsp; ESPECIALIDADE <span class="obr">*</span></label>
 					<div class="form-group">
 				<select name="medico_id" class="form-control medicos" required>
 					<option value="" disabled="disabled" selected>Selecione</option>
 						@foreach($especialidades as $especialidade)
-						<option value="{{ $especialidade->id }}"> {{ $especialidade->nome_medico }} / {{ $especialidade->campo}}
+						<option value="{{ $especialidade->id }}"> {{ $especialidade->nome_medico }} &nbsp;/&nbsp; {{ $especialidade->campo}}
 						</option>
 						@endforeach
 				</select>
+				<span class="crit"><b>Escolha seu Médico*</b></span>
 				</div>
 			</div> 
-			<div class="form-group col-sm-12 col-md-12 col-lg-4">
+			<div class="form-group col-sm-12 col-md-12 col-lg-6">
 				<label for="dia_da_semana" class="control-label"><span class="obr">Dia da Semana*</span></label>
 					<select name="dia_da_semana" class="form-control select_dia_semanal" required>
 					<option value="" disabled="disabled" selected>Selecione</option>
 					</select>
+					<span class="crit"><b>De Segunda a Sexta: 7:00h às 18:00h,  e aos Sábados: 07:00h às 12:00h*</b></span>
 				</div>
 			</div>
-			<div class="form-group col-sm-12 col-md-12 col-lg-4">
-				<label for="data_do_agendamento" class="control-label"><span class="obr">Data do Agendamento*</span></label>
-					<select name="data_do_agendamento" class="form-control data_do_agendamento" required> 
-					<option value="" disabled="disabled" selected>Selecione</option>
-					</select>
-				</div>
-			</div>
-			
-				<div class="form-group col-sm-12 col-md-12 col-lg-4">
-					<label for="tipo_agenda" class="control-label">Tipo de Atendimento <span class="obr">*</span></label>
+			<div class="row">
+				<div class="form-group col-sm-12 col-md-12 col-lg-6">
+					<label for="tipo_agenda" class="control-label">TIPO DE ATENDIMENTO <span class="obr">*</span></label>
 						<div class="form-group">
 					<select id="tipo_agenda" name="tipo_agenda" class="form-control" data-live-search="true" required>
 						<option value="" disabled="disabled">Selecione</option>
@@ -206,8 +211,19 @@ $('.data_do_agendamento').append($("<option>").attr('value',value).text(value));
 						<option value="Particular" selected="selected">Particular</option>
 						<option value="Retorno">Retorno</option>
 					</select>
+					<span class="crit"><b>Convênios sujeito a avaliação*</b></span>
 					</div>
 				</div>
+				<div class="form-group col-sm-12 col-md-12 col-lg-4">
+				<label for="data_do_agendamento" class="control-label"><span class="obr">Data do Agendamento*</span></label>
+					<select name="data_do_agendamento" class="form-control data_do_agendamento" required> 
+					<option value="" disabled="disabled" selected>Selecione</option>
+					</select>
+					<span class="crit"><b>Datas disponíveis *</b></span>
+				</div>
+			</div>
+			
+				
 				
 			<div class="row">
 			<br>

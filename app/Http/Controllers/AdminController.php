@@ -73,7 +73,6 @@ class AdminController extends Controller
         $medico = Medico::paginate(15);
         return view('admin.medico.medicos',['medicos' => $medico, 'bairros' => self::bairros(),'especialidades' => self::especialidade()]);
     }
-
     public function medicosalvar(Request $request)
     {
             $user = new User();
