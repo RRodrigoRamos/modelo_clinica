@@ -19,6 +19,15 @@ class UserTableSeeder extends Seeder
             'cpf' => '555.333.742-23',
             'role'=> 'atendente',
         ]);
+         
+         User::create([
+            'name' => 'Atendente2',
+            'email' => 'atendente2@gmail.com',
+            'password' => bcrypt('123456'),
+            'cpf' => '511.003.742-23',
+            'role'=> 'atendente',
+        ]);
+
          User::create([
             'name' => 'paciente1',
             'email' => 'paciente1@gmail.com',
