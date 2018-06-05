@@ -150,7 +150,7 @@ class AdminController extends Controller
     public function atendentesalvar(Request $request)
     {    
           $request->validate([
-        'email' => 'required|unique:medicos|max:255',
+        'email' => 'required|unique:atendentes|max:255',
         'cpf' => 'required|unique:users|max:255',
     ]);
             $user = new User();
