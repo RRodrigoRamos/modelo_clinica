@@ -1,11 +1,11 @@
 @extends('layout.templateAdmin')
-@section('title', 'Area Cliente')
+@section('title', 'Area Atendente')
 @section('topoInfor')
 			<!-- Informações do Topo site -->
 				<div class="top-bar hidden-sm hidden-xs">
 					<div class="row">
 						<div class="col-sm-6 col-xs-12">
-							  Bem vindo {{ Auth::user()->name }} a sua pagina de Area do Cliente.
+							  Bem vindo {{ Auth::user()->name }} a sua pagina do atendimentos ao Paciente.
 						</div>
 					</div>
 				</div>
@@ -27,7 +27,7 @@
 							</button>
 						<!-- Collapse Button Menu Mobile Fim -->
 							<!-- Logo  -->
-							<a href="/areaCliente" class="navbar-brand">
+							<a href="/areaAtendente" class="navbar-brand">
 								<img src="../images/fav/logo.png" alt="ACClinic - Agendamentos de Consultas Clinicas e Exames" class="imgLogo">
 							</a>
 						<!-- Logo Fim -->
@@ -39,45 +39,48 @@
 							<div class="navbar-collapse collapse">					
 								<ul class="nav navbar-nav navbar-right">
 									<li>
-										<a href="/areaCliente">Início</a>
+										<a href="/areaAtendente"> <i class="fa fa-home" aria-hidden="true"></i> INÍCIO</a>
 									</li>
+									<li class="active">
+											<a href="/areaAtendente/listaAgenda">
+												FLUXO DE AGENDAMENTOS
+											</a>
+										</li>
 									<li>
-										<a href="/areaCliente/pacienteContat"><i class="fa fa-comments"> </i> Fale Conosco</a>
-									</li>
-									<li class="dropdown active">
+											<a href="/areaAtendente/medicos_horario">
+												AGENDA DO MÉDICO
+											</a>
+										</li>
+
+										<!-- <li>
+											<a href="/areaAtendente/medicos">
+												Consultar Médicos
+											</a>
+										</li> -->
+										<li>
+											<a href="/areaAtendente/convenios">
+												NOSSOS CONVÊNIOS
+											</a>
+										</li>
+									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 											{{ Auth::user()->name }} 
 											<i class="fa fa-caret-down"></i>
 										</a>
 										<ul class="dropdown-menu" role="menu">
 										<li>
-											<a href="/areaCliente/agendamento">
-												<i class="fa fa-plus-square" aria-hidden="true"></i> Agendamento
-											</a>
-										</li>
-										<li class="active">
-											<a href="/areaCliente/listaAgenda">
-												Minha Agenda
+											<a href="/areaAtendente/agendamento">
+												 Agendamento &nbsp;<i class="fa fa-plus" aria-hidden="true"></i>
 											</a>
 										</li>
 										<li>
-											<a href="/areaCliente/pacienteConv">
-												Meus Convenios
+											<a href="/areaAtendente/meus_dados">
+												 Meus Dados &nbsp;<i class="fa fa-user" aria-hidden="true"></i>	
 											</a>
 										</li>
 										<li>
-											<a href="/areaCliente/meus_dados">
-												 Meus Dados <i class="fa fa-user" aria-hidden="true"></i>	
-											</a>
-										</li>
-										<li>
-											<a href="/areaCliente/altera_senha">
-												 Alterar Senha <i class="fa fa-cogs" aria-hidden="true"></i>
-											</a>
-										</li>
-										<li>
-											<a href="/areaCliente/infor">
-												 Informativo <i class="fa fa-info-circle" aria-hidden="true"></i>
+											<a href="/areaAtendente/infor">
+												 Informativo &nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i>
 											</a>
 										</li>
 										<li> <a class="dropdown-item" href="{{ route('logout') }}"
@@ -108,16 +111,16 @@
 <!-- Banner Cliente -->
 		<div class="main-banner clienteAgenda">
 			<div class="container">
-				<h2><span>Lista Agenda</span></h2>
+				<h2><span>Agendamentos</span></h2>
 			</div>
 		</div>
 		<div class="breadcrumb">
 			<div class="container">
 				<ul class="list-unstyled list-inline">
 					<li>
-						<a href="/areaCliente">Área Cliente</a>
+						<a href="/areaCliente">ÁREA DO ATENDENTE</a>
 					</li>
-					<li>Meus Agendamentos</li>
+					<li>Fluxo de Agendamentos</li>
 				</ul>
 			</div>
 		</div>
@@ -125,26 +128,20 @@
 <!-- Conteudo Agenda -->
 <div class="container main">
 <br>
-	<div class="col-md-12 col-sm-12 col-xs-12">
-		<div class="alert alert-success">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <div class="text"><i class="fa fa-info-circle fa-2x	"></i> &nbsp; Meus Agendamentos </div>
-        </div>
-	</div>
 <div class="row">
 <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xs-12">
     <fieldset>
-          <legend>Lista Agenda Programadas</legend>
+          <legend align="center"><center>AGENDAMENTOS</center></legend><BR>
 	            <table class="table table-striped table-bordered table-condensed table-hover table-responsive">
 						 <thead>
 						  <tr>
-						   <th>Tipo</th>
-						   <th>Especialidade</th>
-						   <th>Médico</th>
-						   <th>Unidade</th>
-						   <th>Data</th>
-						   <th>Status</th>
-						   <th>Ação</th>
+						   <th>TIPO</th>
+						   <th>ESPECIALIDADE</th>
+						   <th>	MÉDICO</th>
+						   <th>	UNIDADE </th>
+						   <th>	DATA / HORÁRIO</th>
+						   <th>	STATUS	</th>
+						   <th>AÇÃO</th>
 						  </tr>
 						 </thead>
 						 <tbody>
@@ -165,38 +162,53 @@
 						   <td>{{ $agendamentosPs->especialidade}}</td>
 						   <td>{{ $agendamentosPs->nome_medico}}</td>
 						   <td>{{ $agendamentosPs->clinica_medica}}</td>
-						   <td>{{ date( 'd/m/Y' , strtotime($agendamentosPs->data_do_agendamento))}} às {{ $agendamentosPs->horario_inicio}} até {{ $agendamentosPs->horario_termino}}</td>
+						   <td class="a"> <span class="dia"> Dia: </span> {{ date( 'd/m/Y' , strtotime($agendamentosPs->data_do_agendamento))}}<br><span class="hr"> Hora: </span>  {{ $agendamentosPs->horario_inicio}} <span class="ate"> até </span> {{ $agendamentosPs->horario_termino}}</td>
 						   <td>{{ $agendamentosPs->status_agenda}}</td>
 						   <td>
-						   <form action="{{ url('areaAtendente/acao') }}" method="post">
+						   
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle atendente" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <STRONG>SITUAÇÃO &nbsp;<i class="fa fa-caret-down"></i></STRONG> 
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+   						   <form action="{{ url('areaAtendente/acao') }}" method="post">
+   						   	<div class="a">
 						   @csrf
 						   <input type="hidden" name="id" value="{{$agendamentosPs->id}}">
 						   <input type="hidden" name="status_id" value="2}}">
-						   <button class="btn btn-primary">Confirmar</button>
+						   <button class="btn btn-primary">Consulta Confirmada</button>
+						   </div>
 						   </form>
 						   <form action="{{ url('areaAtendente/acao') }}" method="post">
 						   @csrf
 						   <input type="hidden" name="id" value="{{$agendamentosPs->id}}">
 						   <input type="hidden" name="status_id" value="4">
-						   <button class="btn btn-primary">Verificando Convenio</button>
+						   <button class="btn btn-primary">Verificando Convênio</button>
 						   </form>
 						   <form action="{{ url('areaAtendente/acao') }}" method="post">
 						   @csrf
 						   <input type="hidden" name="id" value="{{$agendamentosPs->id}}">
 						   <input type="hidden" name="status_id" value="5">
-						   <button class="btn btn-primary">Convenio Permitiu</button>
+						   <button class="btn btn-primary">Efetuou pagamento</button>
 						   </form>
 						   <form action="{{ url('areaAtendente/acao') }}" method="post">
 						   @csrf
 						   <input type="hidden" name="id" value="{{$agendamentosPs->id}}">
 						   <input type="hidden" name="status_id" value="3">
-						   <button class="btn btn-primary">Cancelar</button>
+						   <button class="btn btn-primary">Cancelar Consulta</button>
 						   </form>
 						   </td>
 						  </tr>
                     	@endforeach
 						 </tbody>
 						</table>
+  </div>
+</div>
+
+
+
+
 	</fieldset>
 <br>
 </div>

@@ -1,11 +1,11 @@
 @extends('layout.templateAdmin')
-@section('title', 'Area Cliente')
+@section('title', 'Area Atendente')
 @section('topoInfor')
 			<!-- Informações do Topo site -->
 				<div class="top-bar hidden-sm hidden-xs">
 					<div class="row">
 						<div class="col-sm-6 col-xs-12">
-							  Bem vindo {{ Auth::user()->name }} a sua pagina de Area do Cliente.
+							  Bem vindo {{ Auth::user()->name }} a sua pagina do atendimentos ao Paciente.
 						</div>
 					</div>
 				</div>
@@ -27,7 +27,7 @@
 							</button>
 						<!-- Collapse Button Menu Mobile Fim -->
 							<!-- Logo  -->
-							<a href="/areaCliente" class="navbar-brand">
+							<a href="/areaAtendente" class="navbar-brand">
 								<img src="../images/fav/logo.png" alt="ACClinic - Agendamentos de Consultas Clinicas e Exames" class="imgLogo">
 							</a>
 						<!-- Logo Fim -->
@@ -39,11 +39,29 @@
 							<div class="navbar-collapse collapse">					
 								<ul class="nav navbar-nav navbar-right">
 									<li>
-										<a href="/areaCliente">Início</a>
+										<a href="/areaAtendente"> <i class="fa fa-home" aria-hidden="true"></i> INÍCIO</a>
 									</li>
 									<li>
-										<a href="/areaCliente/pacienteContat"><i class="fa fa-comments"> </i> Fale Conosco</a>
-									</li>
+											<a href="/areaAtendente/listaAgenda">
+												FLUXO DE AGENDAMENTOS
+											</a>
+										</li>
+									<li>
+											<a href="/areaAtendente/medicos_horario">
+												AGENDA DO MÉDICO
+											</a>
+										</li>
+
+										<!-- <li>
+											<a href="/areaAtendente/medicos">
+												Consultar Médicos
+											</a>
+										</li> -->
+										<li>
+											<a href="/areaAtendente/convenios">
+												NOSSOS CONVÊNIOS
+											</a>
+										</li>
 									<li class="dropdown active">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 											{{ Auth::user()->name }} 
@@ -51,33 +69,18 @@
 										</a>
 										<ul class="dropdown-menu" role="menu">
 										<li>
-											<a href="/areaCliente/agendamento">
-												<i class="fa fa-plus-square" aria-hidden="true"></i> Agendamento
+											<a href="/areaAtendente/agendamento">
+												 Agendamento &nbsp;<i class="fa fa-plus" aria-hidden="true"></i>
 											</a>
 										</li>
 										<li>
-											<a href="/areaCliente/listaAgenda">
-												Minha Agenda
-											</a>
-										</li>
-										<li>
-											<a href="/areaCliente/pacienteConv">
-												Meus Convenios
-											</a>
-										</li>
-										<li>
-											<a href="/areaCliente/meus_dados">
-												 Meus Dados <i class="fa fa-user" aria-hidden="true"></i>	
-											</a>
-										</li>
-										<li>
-											<a href="/areaCliente/altera_senha">
-												 Alterar Senha <i class="fa fa-cogs" aria-hidden="true"></i>
+											<a href="/areaAtendente/meus_dados">
+												 Meus Dados &nbsp;<i class="fa fa-user" aria-hidden="true"></i>	
 											</a>
 										</li>
 										<li class="active">
-											<a href="/areaCliente/infor">
-												 Informativo <i class="fa fa-info-circle" aria-hidden="true"></i>
+											<a href="/areaAtendente/infor">
+												 Informativo &nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i>
 											</a>
 										</li>
 										<li> <a class="dropdown-item" href="{{ route('logout') }}"
@@ -115,19 +118,19 @@
 			<div class="container">
 				<ul class="list-unstyled list-inline">
 					<li>
-						<a href="/areaCliente">Area Cliente</a>
+						<a href="/areaCliente">Area Atendente</a>
 					</li>
 					<li class="active">Informativo</li>
 				</ul>
 			</div>
 		</div>
-<!-- Banner Cliente Fim-->
+<!-- Banner atendente Fim-->
 <!-- Main Container Starts -->
 		<div class="container main">
 			<br>
 			<h3 class="main-heading2 nomargin-top">Dúvidas Frequentas</h3>
 			<p>
-				Dúvidas sobre a usabilidade do sistema, questões relacioadas a agendamento, exames ou consultas online.
+				Dúvidas sobre a usabilidade do sistema, questões relacioadas a agendamento ou consultas online.
 			</p>
 		<!-- FAQ's Accordions Starts -->
 			<div class="panel-group" id="accordion-faqs">
@@ -175,35 +178,13 @@
 				<!-- Panel Body Ends -->						
 				</div>
 			<!-- Accordion #2 Ends -->
-			<!-- Accordion #3 Starts -->
-				<div class="panel">
-				<!-- Panel Heading Starts -->
-					<div class="panel-heading">
-						<h5 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion-faqs" href="#collapse3">
-								Preciso levar a Guia do convênio já preenchida?
-							</a>
-						</h5>
-					</div>
-				<!-- Panel Heading Ends -->
-				<!-- Panel Body Starts -->
-					<div id="collapse3" class="panel-collapse collapse">
-						<div class="panel-body">
-							<p>
-								Caso o procedimento agendado necessite que o paciente leve a Guia já preenchida, o sistema avisará ao paciente.
-							</p>
-						</div>
-					</div>
-				<!-- Panel Body Ends -->						
-				</div>
-			<!-- Accordion #3 Ends -->
 			<!-- Accordion #4 Starts -->
 				<div class="panel">
 				<!-- Panel Heading Starts -->
 					<div class="panel-heading">
 						<h5 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordion-faqs" href="#collapse4">
-								Preciso imprimir e levar os dados de meu exame para o dia do exame?
+								Preciso imprimir e levar os dados da minha consulta para o dia agendado?
 							</a>
 						</h5>
 					</div>
@@ -212,7 +193,7 @@
 					<div id="collapse4" class="panel-collapse collapse">
 						<div class="panel-body">
 							<p>
-								Não é necessário levar um documento com os dados para o dia do exame mas, recomendamos que o faça para ter todos os dados em mãos, como a data, horário e as instruções de preparo. (opção de imprimir na confirmação do agendamento).
+								Não é necessário levar um documento com os dados para o dia do exame mas, recomendamos que o faça para ter todos os dados em mãos, como a data, horário.
 							</p>
 						</div>
 					</div>
@@ -241,28 +222,6 @@
 				<!-- Panel Body Ends -->						
 				</div>
 			<!-- Accordion #5 Ends -->
-			<!-- Accordion #6 Starts -->
-				<div class="panel">
-				<!-- Panel Heading Starts -->
-					<div class="panel-heading">
-						<h5 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion-faqs" href="#collapse6">
-								 Onde altero meu(s) convênio(s) cadastrado(s)?
-							</a>
-						</h5>
-					</div>
-				<!-- Panel Heading Ends -->
-				<!-- Panel Body Starts -->
-					<div id="collapse6" class="panel-collapse collapse">
-						<div class="panel-body">
-							<p>
-								Você poderá alterar seu convênio em Minha área » Meus Convênios
-							</p>
-						</div>
-					</div>
-				<!-- Panel Body Ends -->						
-				</div>
-			<!-- Accordion #6 Ends -->
 			<!-- Accordion #7 Starts -->
 				<div class="panel">
 				<!-- Panel Heading Starts -->

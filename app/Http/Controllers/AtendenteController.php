@@ -106,45 +106,63 @@ class AtendenteController extends Controller
         return view('atendente.listaAgenda',compact('agendamentosP'));
     }
 
-    
-    
-    public function pacienteDados()
-    {
-    	// Painel do Cliente
-        return view('medico.pacienteDados');
+    public function bairros(){
+        $bairros = Bairro::all();
+        return $bairros;
     }
 
-	
-
-    public function pacienteConv()
-    {
-        // lista Convênio de Paciênte
-        return view('atendente.pacienteConv');
+    public function cidades(){
+        $cidades = Cidade::all();
+        return $cidades;
     }
 
-    public function pacienteConvCad()
+    public function estados(){
+        $estados = Estado::all();
+        return $estados;
+    }
+
+    public function atendenteForm()
     {
-        // Cadastro de Convenio
-        return view('atendente.pacienteConv');
+        // Form edita
+        return view('atendente.atendenteForm',['bairros' => self::bairros(),'cidades' => self::cidades(),'estados' => self::estados()]);
+    }
+
+    public function atendenteDados()
+    {
+    	// Dados Salvo do atendente
+        return view('atendente.painel');
+    }	
+
+    public function atendenteConvForm()
+    {
+        // Form Convênio
+        return view('atendente.atendenteConvForm');
+    }
+
+    public function atendenteConvCad()
+    {
+        // lista de convênios
+        return view('atendente.atendenteListConv');
     }
 
      public function deleteConven($id)
     {
-        User::destroy($id);
+        Convenio::destroy($id);
 
     return redirect('atendente.pacienteConvForm');
     }
 
-    public function pacienteInfor()
+    public function atendenteInfor()
     {
-        // informações ao Usuario/Paciente
-        return view('atendente.pacienteInfor');
+        // informações ao Usuario/Paciente/atendente
+        return view('atendente.atendenteInfor');
+    }
+
+    public function medicoHorario()
+    {
+        // informações ao Usuario/Paciente/atendente
+        return view('atendente.medicoHorario');
     }
     
-    public function pacienteContat()
-    {
-    	// informações contato com a Clinica.
-        return view('atendente.pacienteContat');
-    }
 
 }

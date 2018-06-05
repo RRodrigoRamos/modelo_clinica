@@ -39,21 +39,27 @@
 							<div class="navbar-collapse collapse">					
 								<ul class="nav navbar-nav navbar-right">
 									<li class="active">
-										<a href="/areaAtendente">Início</a>
+										<a href="/areaAtendente"> <i class="fa fa-home" aria-hidden="true"></i> INÍCIO</a>
 									</li>
 									<li>
-											<a href="/areaAtendente/medicos_horario">
-												Horários Médicos
+											<a href="/areaAtendente/listaAgenda">
+												FLUXO DE AGENDAMENTOS
 											</a>
 										</li>
-										<li>
+									<li>
+											<a href="/areaAtendente/medicos_horario">
+												AGENDA DO MÉDICO
+											</a>
+										</li>
+
+										<!-- <li>
 											<a href="/areaAtendente/medicos">
 												Consultar Médicos
 											</a>
-										</li>
+										</li> -->
 										<li>
 											<a href="/areaAtendente/convenios">
-												Convênios da Clinica
+												NOSSOS CONVÊNIOS
 											</a>
 										</li>
 									<li class="dropdown">
@@ -63,18 +69,18 @@
 										</a>
 										<ul class="dropdown-menu" role="menu">
 										<li>
-											<a href="/areaAtendente/meus_dados">
-												 Meus Dados <i class="fa fa-user" aria-hidden="true"></i>	
+											<a href="/areaAtendente/agendamento">
+												 Agendamento &nbsp;<i class="fa fa-plus" aria-hidden="true"></i>
 											</a>
 										</li>
 										<li>
-											<a href="/areaAtendente/altera_senha">
-												 Alterar Senha <i class="fa fa-cogs" aria-hidden="true"></i>
+											<a href="/areaAtendente/meus_dados">
+												 Meus Dados &nbsp;<i class="fa fa-user" aria-hidden="true"></i>	
 											</a>
 										</li>
 										<li>
 											<a href="/areaAtendente/infor">
-												 Informativo <i class="fa fa-info-circle" aria-hidden="true"></i>
+												 Informativo &nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i>
 											</a>
 										</li>
 										<li> <a class="dropdown-item" href="{{ route('logout') }}"
@@ -117,11 +123,11 @@
 				<div class="col-md-3 col-sm-6 col-xs-12">
 					<div class="box">
 						<i class="fa fa-calendar-plus-o"></i>
-						<h4> Horários Médicos </h4>
+						<h4> AGENDA DO MÉDICO </h4>
 						<p>
-							Horários disponivel a consultas
+							Consulte os horários disponiveis para cada Médico.
 						</p>
-						<a href="/areaAtendente/medicos_horario" class="btn btn-transparent">Vê registro...</a>
+						<a href="/areaAtendente/medicos_horario" class="btn btn-transparent">CONSULTAR</a>
 					</div>
 				</div>
 			<!-- Box #1 Ends -->
@@ -129,11 +135,11 @@
 				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 					<div class="box">
 						<i class="fa fa-calendar-check-o"></i>
-						<h4>Agendamentos</h4>
+						<h4>FLUXO DE AGENDAMENTOS</h4>
 						<p>
-							Lista de Consultas
+						 	Todos os agendamentos em processo ou confirmados.
 						</p>
-						<a href="/areaAtendente/listaAgenda" class="btn btn-transparent">Vê Registro...</a>
+						<a href="/areaAtendente/listaAgenda" class="btn btn-transparent">VER REGISTROS</a>
 					</div>
 				</div>
 			<!-- Box #2 Ends -->
@@ -141,11 +147,11 @@
 				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 					<div class="box">
 						<i class="fa fa-credit-card" aria-hidden="true"></i>
-						<h4>Convênios Clinica</h4>
+						<h4>CONVÊNIOS CADASTRADOS</h4>
 							<p>
-								Registros de Convênios
+								Consulte todos os convênios cadastrados no Sistema.
 							</p>
-						<a href="/areaAtendente/convenios" class="btn btn-transparent">Vê registro...</a>
+						<a href="/areaAtendente/convenios" class="btn btn-transparent">VER REGISTROS</a>
 					</div>
 				</div>
 			<!-- Box #3 Ends -->
@@ -153,11 +159,11 @@
 				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 					<div class="box">
 						<i class="fa fa-user" aria-hidden="true"></i>
-						<h4> Cliente / Cadastro </h4>
+						<h4>PACIENTES CADASTRADOS</h4>
 						<p>
-							Dados do cliente.
+							lista de todos os pacientes, edite e cadastre.
 						</p>
-						<a href="/areaAtendente/cliente" class="btn btn-transparent">Vê registro...</a>
+						<a href="/areaAtendente/cliente" class="btn btn-transparent">CONSULTAR</a>
 					</div>
 				</div>
 			<!-- Box #4 Ends -->

@@ -12,7 +12,7 @@ use acclinic\Agendamento;
 use acclinic\Medico;
 use acclinic\Especialidade;
 use Illuminate\Http\Request;
-use \Illuminate\Http\Response;
+use Illuminate\Http\Response;
 
 class AdminController extends Controller
 {
@@ -119,6 +119,7 @@ class AdminController extends Controller
             $user->password = bcrypt($request->password);
             $user->role = 'paciente';
             $user->save();
+
             $endereco = new Endereco();
             $endereco->user_id = $user->id;
             $endereco->cep = $request->cep;
@@ -129,7 +130,6 @@ class AdminController extends Controller
             $endereco->bairro_id = $request->bairro_id;
             $user->endereco()->save($endereco);
             
-            
             $paciente = new Paciente();
             $paciente->user_id = $user->id;
             $paciente->convenio_id = $request->convenio_id;
@@ -137,13 +137,14 @@ class AdminController extends Controller
             $paciente->data_nasc = $request->data_nasc;
             $paciente->telefone = $request->telefone;
             $user->paciente()->save($paciente);
+
             $triagen = new Triagen;
             $triagen->paciente_id = User::find($user->id)->paciente->id;
             $triagen->altura= $request->altura;
             $triagen->peso = $request->peso;
             $triagen->obs = $request->obs;
             $triagen->save();
-            return redirect('/admin');
+            return redirect('/admin/pacientes');
     }
     public function criarAtendentes()
     {
@@ -239,7 +240,5 @@ class AdminController extends Controller
     {   
         return view('admin.atendente.atendentesEdit');
     }
-
-    sas
 
 }

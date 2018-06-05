@@ -1,11 +1,11 @@
 @extends('layout.templateAdmin')
-@section('title', 'Area Cliente')
+@section('title', 'Area Atendente')
 @section('topoInfor')
 			<!-- Informações do Topo site -->
 				<div class="top-bar hidden-sm hidden-xs">
 					<div class="row">
 						<div class="col-sm-6 col-xs-12">
-							  Bem vindo {{ Auth::user()->name }} a sua pagina de Area do Cliente.
+							  Bem vindo {{ Auth::user()->name }} a sua pagina do atendimentos ao Paciente.
 						</div>
 					</div>
 				</div>
@@ -27,7 +27,7 @@
 							</button>
 						<!-- Collapse Button Menu Mobile Fim -->
 							<!-- Logo  -->
-							<a href="/areaCliente" class="navbar-brand">
+							<a href="/areaAtendente" class="navbar-brand">
 								<img src="../images/fav/logo.png" alt="ACClinic - Agendamentos de Consultas Clinicas e Exames" class="imgLogo">
 							</a>
 						<!-- Logo Fim -->
@@ -39,11 +39,29 @@
 							<div class="navbar-collapse collapse">					
 								<ul class="nav navbar-nav navbar-right">
 									<li>
-										<a href="/areaCliente">Início</a>
+										<a href="/areaAtendente"> <i class="fa fa-home" aria-hidden="true"></i> INÍCIO</a>
 									</li>
 									<li>
-										<a href="/areaCliente/pacienteContat"><i class="fa fa-comments"> </i> Fale Conosco</a>
-									</li>
+											<a href="/areaAtendente/listaAgenda">
+												FLUXO DE AGENDAMENTOS
+											</a>
+										</li>
+									<li>
+											<a href="/areaAtendente/medicos_horario">
+												AGENDA DO MÉDICO
+											</a>
+										</li>
+
+										<!-- <li>
+											<a href="/areaAtendente/medicos">
+												Consultar Médicos
+											</a>
+										</li> -->
+										<li>
+											<a href="/areaAtendente/convenios">
+												NOSSOS CONVÊNIOS
+											</a>
+										</li>
 									<li class="dropdown active">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 											{{ Auth::user()->name }} 
@@ -51,33 +69,18 @@
 										</a>
 										<ul class="dropdown-menu" role="menu">
 										<li class="active">
-											<a href="/areaCliente/agendamento">
-												<i class="fa fa-plus-square" aria-hidden="true"></i> Agendamento
+											<a href="/areaAtendente/agendamento">
+												 Agendamento &nbsp;<i class="fa fa-plus" aria-hidden="true"></i>
 											</a>
 										</li>
 										<li>
-											<a href="/areaCliente/listaAgenda">
-												Minha Agenda
+											<a href="/areaAtendente/meus_dados">
+												 Meus Dados &nbsp;<i class="fa fa-user" aria-hidden="true"></i>	
 											</a>
 										</li>
 										<li>
-											<a href="/areaCliente/pacienteConv">
-												Meus Convenios
-											</a>
-										</li>
-										<li>
-											<a href="/areaCliente/meus_dados">
-												 Meus Dados <i class="fa fa-user" aria-hidden="true"></i>	
-											</a>
-										</li>
-										<li>
-											<a href="/areaCliente/altera_senha">
-												 Alterar Senha <i class="fa fa-cogs" aria-hidden="true"></i>
-											</a>
-										</li>
-										<li>
-											<a href="/areaCliente/infor">
-												 Informativo <i class="fa fa-info-circle" aria-hidden="true"></i>
+											<a href="/areaAtendente/infor">
+												 Informativo &nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i>
 											</a>
 										</li>
 										<li> <a class="dropdown-item" href="{{ route('logout') }}"
@@ -102,21 +105,22 @@
 		<!-- Conteudo Inicial Fim -->
 		</header>
 	<!-- Topo Fim -->
+
 @endsection
 @section('ConteudoPrincipal')
 <!-- Banner Cliente -->
 		<div class="main-banner clienteAgenda">
 			<div class="container">
-				<h2><span>Agendamentos</span></h2>
+				<h2><span>Novo Agendamentos</span></h2>
 			</div>
 		</div>
 		<div class="breadcrumb">
 			<div class="container">
 				<ul class="list-unstyled list-inline">
 					<li>
-						<a href="/areaCliente">Área Cliente</a>
+						<a href="/areaCliente">Área Atendente</a>
 					</li>
-					<li>Agendamentos</li>
+					<li>Novo Agendamentos</li>
 				</ul>
 			</div>
 		</div>

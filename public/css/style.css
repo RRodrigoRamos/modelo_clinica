@@ -559,6 +559,9 @@ h6 { font-size: 16px; }
 	.main-banner.paginaLogin{
 		background: url(../images/banners/privacidade.jpg) center right;
 	}
+	.main-banner.atenderUser{
+		background: url(../images/banners/usr.jpg) center right;
+	}
 	.main-banner.admins{
 		background: url(../images/banners/admin_login.png) center top;
 	}	

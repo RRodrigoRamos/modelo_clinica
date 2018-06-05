@@ -2,7 +2,7 @@
 
 
 Auth::routes();
-
+#################################################################
 	Route::get('/areaCliente/horario/{id}','UserController@select_dia_semanal')->middleware('cors');
 	Route::get('/areaCliente/dias/{dia_da_semana}','UserController@data_do_da_semana')->middleware('cors');;
 Route::group(['middleware' => ['auth']], function () {
@@ -25,7 +25,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/areaCliente/pacienteContat','UserController@pacienteContat');
 	Route::post('/areaCliente/pacienteContat','UserController@pacienteContat');	
 
-	
+########################################################################
 	#medico
 	Route::get('/areaMedico','MedicoController@index');
 	#agenda_Médico
@@ -43,23 +43,36 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/areaMedico/meus_dados','MedicoController@medicoDadosForm');
 	Route::post('/areaMedico/meus_dados','MedicoController@medicoDados');	
 
-
+######################################################################
 	#atendente
 	Route::get('/areaAtendente','AtendenteController@index');
+
+	#novo_agendamento
 	Route::get('/areaAtendente/agendamento','AtendenteController@agendamentoForm');
-	Route::get('/areaAtendente/listaAgenda','AtendenteController@listaAgenda');
 	Route::post('/areaAtendente/agendaSalva','AtendenteController@agendaSalva');
 
+	#lista_de_agendamentos
+	Route::get('/areaAtendente/listaAgenda','AtendenteController@listaAgenda');
+
+	#mudar_status
 	Route::post('/areaAtendente/acao','AtendenteController@status');
 
+	#Editar_dados
 	Route::get('/areaAtendente/meus_dados','AtendenteController@atendenteForm');
-	Route::post('/areaAtendente/meus_dados','AtendenteController@atendenteForm');
-	Route::get('/areaAtendente/convenios','AtendenteController@atendenteConv');
-	Route::get('/areaAtendente/convenios','AtendenteController@atendenteConv');
+	Route::post('/areaAtendente/salvar_dados','AtendenteController@atendenteDados');
+
+	#convenios
+	Route::get('/areaAtendente/convenios','AtendenteController@atendenteConvForm');
+	Route::post('/areaAtendente/convenios','AtendenteController@atendenteConvCad');
+
+	#informativo
 	Route::get('/areaAtendente/infor','AtendenteController@atendenteInfor');
-	Route::get('/areaAtendente/atendenteContat','AtendenteController@atendenteContat');
-	Route::post('/areaAtendente/atendenteContat','AtendenteController@pacienteContat');	
+
+	#hora_medicos
+	Route::get('/areaAtendente/medicos_horario','AtendenteController@medicoHorario');
 });
+
+###################################################
 // Pagina Inicial
 Route::get('/inicio', function () {
     return view('home');
@@ -80,6 +93,7 @@ Route::prefix('servico')->group( function() {
 	});
 });
 
+######################################################
 
 // Evento caso ao acessar ERRO 404
 Event::listen('404', function()
@@ -87,6 +101,9 @@ Event::listen('404', function()
 	return view('erros.custom');
 });
 
+###########################################################
+
+#administração
 Route::get('/admin/login',['as' => 'admin.login','uses' => 'AdminAuth\LoginController@showLoginForm']);
 Route::post('/admin/login',['as' => 'admin.login','uses' => 'AdminAuth\LoginController@Login']);
 Route::post('/admin/logout',['as' => 'admin.logout','uses' => 'AdminAuth\LoginController@Logout']);
