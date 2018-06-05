@@ -41,7 +41,7 @@
 									<li>
 										<a href="/areaAdmin">Início</a>
 									</li>
-									<li class="active">
+									<li>
 											<a href="/admin/agendamentos">
 												Lista Agenda
 											</a>
@@ -51,7 +51,7 @@
 												Médicos <Cad class=""></Cad>
 											</a>
 									</li>
-									<li>
+									<li class="active">
 											<a href="/admin/convenios">
 												Convênios Cad.
 											</a>
@@ -100,73 +100,72 @@
 		<!-- Conteudo Inicial Fim -->
 		</header>
 	<!-- Topo Fim -->
-
-@endsection
-@section('ConteudoPrincipal')
-<!-- Banner Cliente -->
-		<div class="main-banner index_1">
-			<div class="container">
-				<h2><span>Lista Agenda	</span></h2>
-			</div>
-		</div>
-<!-- Banner Cliente Fim-->
-<div class="breadcrumb">
+	<!-- Banner Cliente -->
+    <div class="main-banner index_1">
+      <div class="container">
+        <h2><span>Convênios Clinica</span></h2>
+      </div>
+    </div>
+    <div class="breadcrumb">
       <div class="container">
         <ul class="list-unstyled list-inline">
           <li>
             <a href="/areaAdmin">Area Administrativa</a>
           </li>
           <li class="active">
-            Agendamentos
-          </li>
-        </ul>
-      </div>
-    </div>
-<div class="container main">
-<br>
-	<div class="col-md-12 col-sm-12 col-xs-12">
-		<div class="alert alert-success">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <div class="text"><i class="fa fa-info-circle fa-2x	"></i> &nbsp; Lista de Agendamentos da Clínica. </div>
-        </div>
-	</div>
-<br>
-<div class="row">
-<div class="col-lg-1">
-</div>
-<div class="form-group col-sm-12 col-md-12 col-lg-12 col-xs-12">
- <fieldset>
-          <legend>Lista Agenda - Clinica </legend>
-	            <table class="table table-striped table-bordered table-condensed table-hover table-responsive">
-						 <thead>
-						  <tr>
-						   <th>Tipo</th>
-						   <th>Especialidade</th>
-						   <th>Médico</th>
-						   <th>Unidade</th>
-						   <th>Paciente</th>
-						   <th>Data</th>
-						   <th>Status</th>
-						  </tr>
-						 </thead>
-						 <tbody>
-						@foreach($agendamentos as $agendamentosPs)
-						  <tr>
-     					   <td>{{ $agendamentosPs->tipo_agenda}}</td>
-						   <td>{{ $agendamentosPs->especialidade}}</td>
-						   <td>{{ $agendamentosPs->clinica_medicos_id}}</td>
-						   <td>{{ $agendamentosPs->clinica_medica}}</td>
-						   <td>{{ $agendamentosPs->users_id}}</td>
-						   <td> {{ date( 'd/m/Y' , strtotime($agendamentosPs->data_agenda))}} às {{ $agendamentosPs->hora_agenda}} </td>
-						   <td>{{ $agendamentosPs->status_agenda}}</td>
-						  </tr>
-                    	@endforeach
-						 </tbody>
-						</table>
-		</fieldset>
-				{{$agendamentos->links()}}
-		</div>
-	</div>
-</div>
+            <div class="form-group col-sm-12 col-md-12 col-lg-10 col-xs-12">
+         <legend>convenios</legend>
+              <table class="table table-striped table-bordered table-condensed table-hover table-responsive">
+             <thead>
+              <tr>
+               <th>Nome</th>
+               <th>Tipo de Plano</th>
+               <th>Ação</th>
+              </tr>
+             </thead>
+             <tbody>
+            @foreach($convenios as $convenios)
+              <tr>
+                <td>{{ $convenios->nome_convenio}}</td>
+                <td>{{ $convenios->tipo_plano}}</td>
+                <td><a href="{{url('admin/convenio/'.$convenios->id)}}"> <i class="fa fa-pencil" aria-hidden="true"></i> Editar</a></td>
+              </tr>
+             @endforeach
+             </tbody>
+            </table>
+					
+            {{$links}}
+  </div>
+@endsection
+@section('ConteudoPrincipal')
+@endsection
 
+	@section('ConteudoSecundario')
+<div class="col-lg-2">
+  </div>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Cadastrar Convenio</button>
+@component('admin.components.modal') 
+@slot('form')
+@component('admin.components.formulario')
+	@slot('url')
+	conveniosalvar
+	@endslot
+	@slot('formulario')
+	<fieldset>
+          <legend>Dados de Medico</legend>
+            <div class="row">
+              <div class="form-group col-sm-6 col-md-6 col-lg-6"	>
+                    <label for="nome_convenio" class="control-label">Nome de Convenio<span class="obr">*</span></label>
+                    <input type="txt" class="form-control" name="nome_convenio" id="nome_convenio" placeholder="Nome Convenio" required autofocus>
+              </div>
+							 <div class="form-group col-sm-6 col-md-6 col-lg-6"	>
+                    <label for="name" class="control-label">Tipo de Plano <span class="obr">*</span></label>
+                    <input type="txt" class="form-control" name="tipo_plano" id="tipo_plano" placeholder="Tipo de Plano" required autofocus>
+              </div>
+          </div>
+    </fieldset>
+	@endslot
+@endcomponent
+	@endslot
+@endcomponent
 @endsection

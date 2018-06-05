@@ -1,11 +1,11 @@
-@extends('layout.template')
-@section('title', 'Area Cliente')
+@extends('layout.templateAdmin')
+@section('title', 'Administração')
 @section('topoInfor')
 			<!-- Informações do Topo site -->
 				<div class="top-bar hidden-sm hidden-xs">
 					<div class="row">
 						<div class="col-sm-6 col-xs-12">
-							  Bem vindo {{ Auth::user()->name }} a sua pagina de Area do Cliente.
+							  Bem vindo a sua pagina de Administração !
 						</div>
 					</div>
 				</div>
@@ -13,7 +13,7 @@
 @endsection
 @section('Menu')
 			<!-- Navbar Menu -Inicio -->
-			<nav id="nav" class="navbar navbar-default" role="navigation">
+				<nav id="nav" class="navbar navbar-default" role="navigation">
 			<div class="container-fluid">
 				<!-- Navbar Header Starts -->
 					<div class="navbar-header">
@@ -27,7 +27,7 @@
 							</button>
 						<!-- Collapse Button Menu Mobile Fim -->
 							<!-- Logo  -->
-							<a href="/areaCliente" class="navbar-brand">
+							<a href="/areaAdmin" class="navbar-brand">
 								<img src="../images/fav/logo.png" alt="ACClinic - Agendamentos de Consultas Clinicas e Exames" class="imgLogo">
 							</a>
 						<!-- Logo Fim -->
@@ -39,45 +39,43 @@
 							<div class="navbar-collapse collapse">					
 								<ul class="nav navbar-nav navbar-right">
 									<li>
-										<a href="/areaCliente">Início</a>
+										<a href="/areaAdmin">Início</a>
 									</li>
 									<li>
-										<a href="/areaCliente/pacienteContat"><i class="fa fa-comments"> </i> Fale Conosco</a>
+											<a href="/admin/agendamentos">
+												Lista Agenda
+											</a>
 									</li>
-									<li class="dropdown active">
+									<li>
+											<a href="/admin/medicos">
+												Médicos <Cad class=""></Cad>
+											</a>
+									</li>
+									<li>
+											<a href="/admin/convenios">
+												Convênios Cad.
+											</a>
+									</li>
+									<li>
+											<a href="/admin/atendentes">
+												Atendentes Cad.
+											</a>
+									</li>
+									<li>
+											<a href="/admin/pacientes">
+												 Pacientes Cad. 	
+											</a>
+									</li>
+									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-											{{ Auth::user()->name }} 
+											{{ Auth::user() }} 
+											<i class="fa fa-user" aria-hidden="true"></i>
 											<i class="fa fa-caret-down"></i>
 										</a>
 										<ul class="dropdown-menu" role="menu">
-										<li>
-											<a href="/areaCliente/agendamento">
-												<i class="fa fa-plus-square" aria-hidden="true"></i> Agendamento
-											</a>
-										</li>
-										<li>
-											<a href="/areaCliente/listaAgenda">
-												Minha Agenda
-											</a>
-										</li>
-										<li>
-											<a href="/areaCliente/pacienteConv">
-												Meus Convenios
-											</a>
-										</li>
 										<li class="active">
-											<a href="/areaCliente/meus_dados">
+											<a href="/admin/meus_dados">
 												 Meus Dados <i class="fa fa-user" aria-hidden="true"></i>	
-											</a>
-										</li>
-										<li>
-											<a href="/areaCliente/altera_senha">
-												 Alterar Senha <i class="fa fa-cogs" aria-hidden="true"></i>
-											</a>
-										</li>
-										<li>
-											<a href="/areaCliente/infor">
-												 Informativo <i class="fa fa-info-circle" aria-hidden="true"></i>
 											</a>
 										</li>
 										<li> <a class="dropdown-item" href="{{ route('logout') }}"
@@ -102,14 +100,58 @@
 		<!-- Conteudo Inicial Fim -->
 		</header>
 	<!-- Topo Fim -->
-
 @endsection
 @section('ConteudoPrincipal')
 <!-- Banner Cliente -->
-		<div class="main-banner cliente">
-			<div class="container">
-				<h2><span>Área do Cliente</span></h2>
-			</div>
-		</div>
+    <div class="main-banner index_1">
+      <div class="container">
+        <h2><span>Meus Dados</span></h2>
+      </div>
+    </div>
+    <div class="breadcrumb">
+      <div class="container">
+        <ul class="list-unstyled list-inline">
+          <li>
+            <a href="/areaAdmin">Area Administrativa</a>
+          </li>
+          <li class="active">
+            Edição
+          </li>
+        </ul>
+      </div>
+    </div>
 <!-- Banner Cliente Fim-->
+<br>
+<fieldset>
+	<legend>Atendentes Clinica</legend>
+
+<form action="{{url('/admin/atendentes')}}" method="post">
+@csrf
+Nome:
+<input type="text" name="name" required>
+<br>
+Nome Social:
+<input type="text" name="name_social" required>
+<br>
+Email:
+<input type="email" name="email" required>
+<br>
+Sexo:
+<input type="text" name="sexo" required>
+<br>
+Data de Nascimento:
+<input type="date" name="data_nasc" required>
+<br>
+Telefone:
+<input type="text" name="telefone" required>
+<br>
+Senha:
+<input type="password" name="password" required>
+<br>
+
+<button type="submit" class="btn" value="Cadastrar"></button>
+</form>
+<br>
+</fieldset>
+<br>
 @endsection

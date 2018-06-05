@@ -78,16 +78,6 @@
 												 Meus Dados <i class="fa fa-user" aria-hidden="true"></i>	
 											</a>
 										</li>
-										<li>
-											<a href="/admin/altera_senha">
-												 Alterar Senha <i class="fa fa-cogs" aria-hidden="true"></i>
-											</a>
-										</li>
-										<li>
-											<a href="/admin/infor">
-												 Informativo <i class="fa fa-info-circle" aria-hidden="true"></i>
-											</a>
-										</li>
 										<li> <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

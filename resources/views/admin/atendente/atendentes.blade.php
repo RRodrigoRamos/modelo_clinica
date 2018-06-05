@@ -1,96 +1,107 @@
 @extends('layout.templateAdmin')
 @section('title', 'Administração')
 @section('topoInfor')
-      <!-- Informações do Topo site -->
-        <div class="top-bar hidden-sm hidden-xs">
-          <div class="row">
-            <div class="col-sm-6 col-xs-12">
-                Bem vindo a sua pagina de Administração !
-            </div>
-          </div>
-        </div>
-    <!-- Informações do Topo site Fim -->
+			<!-- Informações do Topo site -->
+				<div class="top-bar hidden-sm hidden-xs">
+					<div class="row">
+						<div class="col-sm-6 col-xs-12">
+							  Bem vindo a sua pagina de Administração !
+						</div>
+					</div>
+				</div>
+		<!-- Informações do Topo site Fim -->
 @endsection
 @section('Menu')
-      <!-- Navbar Menu -Inicio -->
-        <nav id="nav" class="navbar navbar-default" role="navigation">
-      <div class="container-fluid">
-        <!-- Navbar Header Starts -->
-          <div class="navbar-header">
-            <!-- Collapse Button Menu Mobile -->
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Navegação</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-            <!-- Collapse Button Menu Mobile Fim -->
-              <!-- Logo  -->
-              <a href="/areaAdmin" class="navbar-brand">
-                <img src="../images/fav/logo.png" alt="ACClinic - Agendamentos de Consultas Clinicas e Exames" class="imgLogo">
-              </a>
-            <!-- Logo Fim -->
-          </div>
-          
-          <!-- Menu Infor Fim -->
-            <!-- Navbar Header Ends -->
-            <!-- Navbar Collapse Starts -->
-              <div class="navbar-collapse collapse">          
-                <ul class="nav navbar-nav navbar-right">
-                  <li>
-                    <a href="/areaAdmin">Início</a>
-                  </li>
-                  <li>
-                      <a href="/admin/agendamentos">
-                        Lista Agendamentos
-                      </a>
-                  </li>
-                  <li class="active">
-                      <a href="/admin/medicos">
-                        Médicos Cad.
-                      </a>
-                  </li>
-                  <li>
-                      <a href="/admin/atendentes">
-                        Atendentes Cad.
-                      </a>
-                  </li>
-                  <li>
-                      <a href="/admin/pacientes">
-                         Pacientes Cad.   
-                      </a>
-                  </li>
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                    <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu" role="menu">
-                    <li> <a class="dropdown-item" href="{{ route('admin.logout') }}"
+			<!-- Navbar Menu -Inicio -->
+				<nav id="nav" class="navbar navbar-default" role="navigation">
+			<div class="container-fluid">
+				<!-- Navbar Header Starts -->
+					<div class="navbar-header">
+						<!-- Collapse Button Menu Mobile -->
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+								<span class="sr-only">Navegação</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						<!-- Collapse Button Menu Mobile Fim -->
+							<!-- Logo  -->
+							<a href="/areaAdmin" class="navbar-brand">
+								<img src="../images/fav/logo.png" alt="ACClinic - Agendamentos de Consultas Clinicas e Exames" class="imgLogo">
+							</a>
+						<!-- Logo Fim -->
+					</div>
+					
+					<!-- Menu Infor Fim -->
+						<!-- Navbar Header Ends -->
+						<!-- Navbar Collapse Starts -->
+							<div class="navbar-collapse collapse">					
+								<ul class="nav navbar-nav navbar-right">
+									<li>
+										<a href="/areaAdmin">Início</a>
+									</li>
+									<li>
+											<a href="/admin/agendamentos">
+												Lista Agenda
+											</a>
+									</li>
+									<li>
+											<a href="/admin/medicos">
+												Médicos <Cad class=""></Cad>
+											</a>
+									</li>
+									<li>
+											<a href="/admin/convenios">
+												Convênios Cad.
+											</a>
+									</li>
+									<li class="active">
+											<a href="/admin/atendentes">
+												Atendentes Cad.
+											</a>
+									</li>
+									<li>
+											<a href="/admin/pacientes">
+												 Pacientes Cad. 	
+											</a>
+									</li>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+											{{ Auth::user() }} 
+											<i class="fa fa-user" aria-hidden="true"></i>
+											<i class="fa fa-caret-down"></i>
+										</a>
+										<ul class="dropdown-menu" role="menu">
+										<li>
+											<a href="/admin/meus_dados">
+												 Meus Dados <i class="fa fa-user" aria-hidden="true"></i>	
+											</a>
+										</li>
+										<li> <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Sair') }} <i class="fa fa-sign-out" aria-hidden="true"></i>
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-            <!-- Navbar Collapse Ends -->
-        </div>
-    </nav>
-      <!-- Navbar Menu Fim -->
-      </div>
-    <!-- Conteudo Inicial Fim -->
-    </header>
-  <!-- Topo Fim -->
-
+                                		</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<!-- Navbar Collapse Ends -->
+				</div>
+		</nav>
+			<!-- Navbar Menu Fim -->
+			</div>
+		<!-- Conteudo Inicial Fim -->
+		</header>
+	<!-- Topo Fim -->
 @endsection
+
 @section('ConteudoPrincipal')
 <!-- Banner Cliente -->
     <div class="main-banner index_1">
@@ -118,8 +129,7 @@
              <thead>
               <tr>
                <th>Nome</th>
-               <th>Especialidade</th>
-               <th>CRM</th>
+               <th>Email</th>
                <th>Telefone</th>
                <th>::Ação::</th>
               </tr>
@@ -128,13 +138,13 @@
             @foreach($atendentes as $atendentes)
               <tr>
                 <td>{{ $atendentes->name}}</td>
+                <td>{{ $atendentes->email}}</td>
                 <td>{{ $atendentes->telefone}}</td>
-                <td><a href="{{url('admin/medicos/'.$atendentes->id)}}"> <i class="fa fa-pencil" aria-hidden="true"></i> Editar</a></td>
+                <td><a href="{{url('admin/atendente/'.$atendentes->id)}}"> <i class="fa fa-pencil" aria-hidden="true"></i> Editar</a></td>
               </tr>
              @endforeach
              </tbody>
             </table>
-            @if(empty($atendentes->links())){{$atendentes->links()}}@endif
     </fieldset>
     </div>
 </div>
@@ -143,12 +153,12 @@
 @section('ConteudoSecundario')
 <div class="col-lg-2">
   </div>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Cadastrar Medico</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Cadastrar Atendentes</button>
 @component('admin.components.modal') 
 @slot('form')
 @component('admin.components.formulario')
 	@slot('url')
-	medicosalvar
+	atendentesalvar
 	@endslot
 	@slot('formulario')
 
@@ -199,10 +209,7 @@
                 <label for="telefone" class="control-label">Telefone: <span class="obr">*</span></label><input type="tel" class="form-control" id="telefone" name="telefone" maxlength="15" placeholder="(96) 00000 - 0000">
           </div>
       </div>
-          <div class="form-group col-sm-12 col-md-12 col-lg-3">
-                <label for="crm" class="control-label">CRM: <span class="obr">*</span></label><input type="tel" class="form-control" id="crm" name="crm" maxlength="15" placeholder="00000 - AP">
-          </div>
-    </fieldset>
+        </fieldset>
     <br>
     
     <br>

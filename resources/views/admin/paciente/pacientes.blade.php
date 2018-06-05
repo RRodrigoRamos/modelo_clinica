@@ -43,12 +43,17 @@
                   </li>
                   <li>
                       <a href="/admin/agendamentos">
-                        Lista Agendamentos
+                        Lista Agenda
                       </a>
                   </li>
                   <li>
                       <a href="/admin/medicos">
-                        Médicos Cad.
+                        Médicos <Cad class=""></Cad>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="/admin/convenios">
+                        Convênios Cad.
                       </a>
                   </li>
                   <li>
@@ -63,17 +68,23 @@
                   </li>
                   <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                    <i class="fa fa-caret-down"></i>
+                      {{ Auth::user() }} 
+                      <i class="fa fa-user" aria-hidden="true"></i>
+                      <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu" role="menu">
-                    <li> <a class="dropdown-item" href="{{ route('admin.logout') }}"
+                    <li>
+                      <a href="/admin/meus_dados">
+                         Meus Dados <i class="fa fa-user" aria-hidden="true"></i> 
+                      </a>
+                    </li>
+                    <li> <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Sair') }} <i class="fa fa-sign-out" aria-hidden="true"></i>
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                     </li>
@@ -89,9 +100,28 @@
     <!-- Conteudo Inicial Fim -->
     </header>
   <!-- Topo Fim -->
-
 @endsection
 @section('ConteudoPrincipal')
+<!-- Banner Cliente -->
+    <div class="main-banner index_1">
+      <div class="container">
+        <h2><span>Pacientes Clinica</span></h2>
+      </div>
+    </div>
+    <div class="breadcrumb">
+      <div class="container">
+        <ul class="list-unstyled list-inline">
+          <li>
+            <a href="/areaAdmin">Area Administrativa</a>
+          </li>
+          <li class="active">
+            Pacientes
+          </li>
+        </ul>
+      </div>
+    </div>
+<!-- Banner Cliente Fim-->
+<br>
 <div class="container">
 
 <div class="row">
@@ -131,6 +161,7 @@
 </div>
 @endsection
 @section('ConteudoSecundario')
+<div class="col-lg-2"></div>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Cadastrar Paciente</button>
 
 @component('admin.components.modal')

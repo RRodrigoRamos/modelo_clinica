@@ -13,8 +13,4 @@ class Convenio extends Model
          'validade',
     ];
 
-    public function user()
-    {
-        return $this->hasOne(\acclinic\Paciente::class);
-    }
 }

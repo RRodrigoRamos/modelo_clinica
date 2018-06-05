@@ -45,12 +45,12 @@ class User extends Authenticatable
 
     public function paciente()
     {
-        return $this->belongsTo(\acclinic\Paciente::class);
+        return $this->hasOne(\acclinic\Paciente::class);
     }
     
     public function atendente()
     {
-        return $this->belongsTo(\acclinic\Atendente::class);
+        return $this->hasOne(\acclinic\Atendente::class);
     }
     
 }

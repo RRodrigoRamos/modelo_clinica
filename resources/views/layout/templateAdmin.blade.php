@@ -12,13 +12,13 @@
         <meta name="author" content="Rodrigo Ramos, Leandro lima, Anderson Sanches">
         <title>::ACClinic:: @yield('title') </title>
         <!-- Bootstrap -->
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ asset('../css/bootstrap.min.css')}}" rel="stylesheet">
         <!-- Template CSS Files  -->
-        <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <link href="../js/plugins/camera/css/camera.css" rel="stylesheet">
-        <link href="../css/style.css" rel="stylesheet">
-        <link href="../css/responsive.css" rel="stylesheet">
-        <link href="../css/jquery-ui.css" rel="stylesheet">
+        <link href="{{ asset('../font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+        <link href="{{ asset('../js/plugins/camera/css/camera.css')}}" rel="stylesheet">
+        <link href="{{ asset('../css/style.css')}}" rel="stylesheet">
+        <link href="{{ asset('../css/responsive.css')}}" rel="stylesheet">
+        <link href="{{ asset('../css/jquery-ui.css')}}" rel="stylesheet">
         
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -31,7 +31,7 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../images/fav/favIcon.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../images/fav/favIcon.png">
         <link rel="apple-touch-icon-precomposed" href="../images/fav/favIcon.png">
-        <link rel="shortcut icon" href="../images/fav/favIcon.png">
+        <link rel="shortcut icon" href="{{ asset('../images/fav/favIcon.png')}}">
     </head>
     <body>
     @section('principal')
@@ -53,7 +53,7 @@
                 <div class="container-fluid">
                     <!-- Informações Clinica -->
                         <div class="col-md-8 col-sm-8 col-lg-8 col-xs-8">
-                            <h4><img src="../images/fav/logo.png" alt="ACClinic - Agendamentos de Consultas Clinicas e Exames" class="imgRodape"> </h4>
+                            <h4><img src="{{ asset('../images/fav/logo.png')}}" alt="ACClinic - Agendamentos de Consultas Clinicas e Exames" class="imgRodape"> </h4>
                             <p>
                                 Sistema de Agendamentos de Consultas Clinicas, para clientes conveniados e atendimento particular.
                             </p>
@@ -135,17 +135,17 @@
     </footer>
     <!-- Footer Ends -->
     <!-- Template JS Files -->
-    <script src="../js/jquery-1.11.3.min.js"></script>
-    <script src="../js/jquery-migrate-1.2.1.min.js"></script>   
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/plugins/camera/js/jquery.mobile.customized.min.js"></script>
-    <script src="../js/plugins/camera/js/jquery.easing.1.3.js"></script>
-    <script src="../js/plugins/camera/js/camera.min.js"></script>   
-    <script src="../js/plugins/camera/js/shuffle/jquery.shuffle.modernizr.min.js"></script>
-    <script src="../js/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
-    <script src="../js/custom.js"></script>
-    <script src="../js/jquery-ui.js"></script>
-    <script src="../js/jquery.mask.min.js"></script>
+    <script src="{{ asset('../js/jquery-1.11.3.min.js')}}"></script>
+    <script src="{{ asset('../js/jquery-migrate-1.2.1.min.js')}}"></script>   
+    <script src="{{ asset('../js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('../js/plugins/camera/js/jquery.mobile.customized.min.js')}}"></script>
+    <script src="{{ asset('../js/plugins/camera/js/jquery.easing.1.3.js')}}"></script>
+    <script src="{{ asset('../js/plugins/camera/js/camera.min.js')}}"></script>   
+    <script src="{{ asset('../js/plugins/camera/js/shuffle/jquery.shuffle.modernizr.min.js')}}"></script>
+    <script src="{{ asset('../js/plugins/magnific-popup/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{ asset('../js/custom.js')}}"></script>
+    <script src="{{ asset('../js/jquery-ui.js')}}"></script>
+    <script src="{{ asset('../js/jquery.mask.min.js')}}"></script>
     @yield('script')
     </body>
 </html>

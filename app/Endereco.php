@@ -17,7 +17,7 @@ class Endereco extends Model
 
     public function user()
     {
-        return $this->belongsTo(\acclinic\User::class);
+        return $this->hasOne(\acclinic\User::class);
     }
     public function endereco()
     {

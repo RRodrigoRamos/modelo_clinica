@@ -9,10 +9,11 @@ use acclinic\Bairro;
 use acclinic\Endereco;
 use acclinic\User;
 use acclinic\Agendamento;
+use acclinic\Atendente;
 use acclinic\Medico;
 use acclinic\Especialidade;
 use Illuminate\Http\Request;
-use \Illuminate\Http\Response;
+use Illuminate\Http\Response;
 
 class AdminController extends Controller
 {
@@ -144,18 +145,23 @@ class AdminController extends Controller
 #############################################################################################################ATENDENTE##############################################################
     public function listaAtendentes()
     {
-        $atendentes = User::where('role','atendente')->paginate(15);
-        return view('admin.atendente.atendentes',['atendentes'=> $atendentes, 'bairros' => self::bairros(), 'convenios' => self::convenios()]);
+        $atendentes = Atendente::paginate(15);
+        return view('admin.atendente.atendentes',['atendentes'=> $atendentes, 'bairros' => self::bairros(), 'convenios' => self::convenios(),'links'=>$atendentes->links()]);
     }
     public function atendentesalvar(Request $request)
     {    
+          $request->validate([
+        'email' => 'required|unique:medicos|max:255',
+        'cpf' => 'required|unique:users|max:255',
+    ]);
             $user = new User();
             $user->name = $request->name;
             $user->email = $request->email;
             $user->cpf = $request->cpf;
             $user->password = bcrypt($request->password);
-            $user->role = 'paciente';
+            $user->role = 'atendente';
             $user->save();
+
             $endereco = new Endereco();
             $endereco->user_id = $user->id;
             $endereco->cep = $request->cep;
@@ -172,14 +178,14 @@ class AdminController extends Controller
             $atendente->sexo = $request->sexo;
             $atendente->data_nasc = $request->data_nasc;
             $atendente->telefone = $request->telefone;
-            $user->paciente()->save($atendente);
+            $user->atendente()->save($atendente);
             return redirect('/admin');
     }
     public function showatendente($id)
     {
-        $value=Atendente::select('*')->join('users','users.id', '=', 'pacientes.user_id')->join('triagens','triagens.paciente_id', '=', 'users.id')->join('enderecos','users.id', '=', 'enderecos.id')->where('pacientes.id', '=', $id)->get();
+        $value=Atendente::select('*')->join('users','users.id', '=', 'atendentes.user_id')->join('enderecos','users.id', '=', 'enderecos.user_id')->where('atendentes.id', '=', $id)->get();
         $value = $value[0];
-        return view('admin.paciente.editar',['value' => $value,'bairros' => self::bairros(),'especialidades' => self::especialidade(), 'id'=>$id,'convenios'=> self::convenios()]);
+        return view('admin.atendente.editar',['value' => $value,'bairros' => self::bairros(),'especialidades' => self::especialidade(), 'id'=>$id,'convenios'=> self::convenios()]);
     }
     public function editaratendente(Request $request)
     {   
@@ -300,6 +306,38 @@ class AdminController extends Controller
             
             return redirect('admin/pacientes');
         
+    }
+
+    public function listaConvenios()
+    {   
+        $convenios = Convenio::paginate(15);
+        return view('admin.convenios.convenios',['convenios'=>$convenios,'links'=>$convenios->links()]);
+    }
+        public function showconvenio($id)
+    {
+        $value=Convenio::findOrFail($id);
+        return view('admin.convenios.editar',['value' => $value,'bairros' => self::bairros(),'especialidades' => self::especialidade(), 'id'=>$id]);
+    }
+    public function editarconvenio(Request $request)
+    {   
+            $convenio = Convenio::find($request->id);
+            $convenio->nome_convenio = $request->nome_convenio;
+            $convenio->tipo_plano = $request->tipo_plano;
+            $convenio->update();
+            return redirect('/admin/convenios');
+        
+    }
+     public function conveniosalvar(Request $request)
+    {    
+            $convenio = new Convenio();
+            $convenio->nome_convenio = $request->nome_convenio;
+            $convenio->tipo_plano = $request->tipo_plano;
+            $convenio->save();
+            return redirect('/admin/convenios');
+    }
+    public function atendentesEdite()
+    {   
+        return view('admin.atendente.atendentesEdit');
     }
 
 }
