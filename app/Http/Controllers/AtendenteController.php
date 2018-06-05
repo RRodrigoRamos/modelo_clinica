@@ -79,13 +79,7 @@ class AtendenteController extends Controller
 
     public function listaAgenda()
     {
-            // recupera o usuario logado
-    
-            // busca o registro
-            // $medico = Medico::find(1);
-
-            // lista os campos da minha lista Agenda
-    $agendamentosP = Agendamento::select(['agendamentos.tipo_agenda',
+        $agendamentosP = Agendamento::select(['agendamentos.tipo_agenda',
         'agendamentos.dia_da_semana',
         'agendamentos.data_do_agendamento',
         'medicos.name as nome_medico',

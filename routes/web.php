@@ -115,5 +115,12 @@ Route::middleware(['admin'])->group (function() {
 	#editar
 	Route::get('/admin/pacientes/{id}', 'AdminController@showpaciente');
 	Route::put('/admin/pacientes/', 'AdminController@editarpaciente');
+	
+	Route::get('/admin/atendentes', 'AdminController@listaAtendentes');
+	Route::post('/admin/atendentesalvar', 'AdminController@atendentesalvar');
+
+	#editar
+	Route::get('/admin/atendentes/{id}', 'AdminController@showpaciente');
+	Route::put('/admin/atendentes/', 'AdminController@editaratendente');
 
 });

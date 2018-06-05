@@ -14,12 +14,12 @@ class MedicoMiddleware
      */
     public function handle($request, Closure $next)
     {
-          if (Auth::check() && Auth::user()->role == 'paciente') {
+        if (Auth::check() && Auth::user()->role == 'paciente') {
               return redirect('/areaCliente');   
         }elseif(Auth::check() && Auth::user()->role == 'medico'){
-            return $next($request);    
+              return $next($request);    
         }elseif (Auth::check() && Auth::user()->role == 'atendente') {
-            return redirect('/areaAtendente');
+              return redirect('/areaAtendente');
         }else{
         return $next($request);
         }

@@ -1,6 +1,4 @@
-
 <div class="container main">
-
     <br>
   <div class="col-lg-9">
 <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
@@ -17,11 +15,9 @@
     <div class="col-lg-4">
     </div>
   <div class="form-group col-sm-6 col-md-6 col-lg-6 col-lg-6">
-            <button type="submit" class="btn btn-primary form-control agendar"> 
-            Cadastrar</button>
-        
+            <button type="submit" class="btn btn-primary form-control agendar">Cadastrar</button>
       </div>
-  <br>
+    <br>
   </form>
 </div>
 </div>

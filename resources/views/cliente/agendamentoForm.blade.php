@@ -7,7 +7,6 @@ gerar_dia_da_semana();
 $('.select_dia_semanal').click(function(){
 gerar_data();
 })
-
 function gerar_dia_da_semana(){
 var data2;
 $('.select_dia_semanal').html('');
@@ -22,7 +21,6 @@ $.each(data2.dias_da_semana,function (index, value) {
 $('.select_dia_semanal').append($("<option>").attr('value',index).text(index+'/'+data2.horario_inicio+'-'+data2.horario_termino));
 });
 }
-
 });
 }
 function gerar_data(){
@@ -34,7 +32,7 @@ $.ajax({
   method : 'GET',
   data : data,
   dataType : 'JSON',
-   success : function (data) {
+  success : function (data) {
 
 $.each(data,function (index, value) { 
 $('.data_do_agendamento').append($("<option>").attr('value',value).text(value));
