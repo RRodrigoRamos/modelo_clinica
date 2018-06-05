@@ -99,33 +99,46 @@
 			<!-- Slide #1 Starts -->
 				<div data-src="../images/slider/slider-img1.jpg">
 					<div class="camera_caption fadeFromLeft hidden-sm hidden-xs">
-						<h3>Clinica Médica e Especializada</h3>
+						<h3>agendamento de consultas online</h3>
 						<p>
-							Por ser gerida por especialistas, ela se preocupa essencialmente com sua saúde e, principalmente, com seu bem-estar e qualidade de vida.
+							Tornou-se mais prático marcar sua consulta, com a comodidade e facilidade que a HEMODIAGNÓSTICO sempre quer oferecer.
 						</p>
-						<a href="/pagina/equipe" class="btn btn-secondary">Saiba Mais...</a>
+						<div class="alert alert-info" role="alert">
+						  <strong>Importante:</strong>  
+						   obrigatório cadastrar seus dados antes de agendar, para assim facilitar na coleta de seus dados  na hora do atendimento. 
+						</div>
+						<div class="row">
+							<div class="col-sm-8">
+								Você ainda não possui cadastro?
+								<a href="/register" class="btn btn-success btn-lg btn-block">Cadastrar</a>
+							</div>
+							<div class="col-sm-4">
+								Você já possui cadastro?
+								<a href="/areaCliente" class="btn btn-primary btn-lg btn-block">Agendar</a>
+							</div>
+						</div>
 					</div>
 				</div>
 			<!-- Slide #1 Ends -->
 			<!-- Slide #2 Starts -->
 				<div data-src="../images/slider/slider-img2.jpg">
 					<div class="camera_caption fadeIn hidden-sm hidden-xs">
-						<h3>Clinico Geral </h3>
+						<h3>Conheça nossos Especialistas</h3>
 						<p>
-							Clínica médica, no Brasil também conhecida como Medicina Interna, é a especialidade médica que trata de pacientes adultos, atuando principalmente em ambiente hospitalar.
+							Sua saúde em boas mãos! Dotada de um corpo clínico de qualidade, a HEMODIAGNÓSTICO possui renomados especialistas para cuidar da sua saúde.
 						</p>
-						<a href="/pagina/medicos" class="btn btn-secondary">Saiba Mais...</a>
+						<a href="/pagina/medicos" class="btn btn-primary btn-lg btn-block"> Corpo clínico </a>
 					</div>
 				</div>
 			<!-- Slide #2 Ends -->
             <!-- Slide #3 Starts -->
 				<div data-src="../images/slider/slider-img3.jpg">
 					<div class="camera_caption fadeIn hidden-sm hidden-xs">
-						<h3>Agendamento para Consultas Clinicas </h3>
-						<p>
-							Este é mais um serviço que disponibilizamos para você. Faça seu agendamento de consultas de uma maneira rápida, fácil e segura.
+						<h3>Mega promoção</h3>
+
+						<p>Temos ótimos preços para você que foi aprovado no concurso da Policia Civil AP, Corra para a HEMODIAGNÓSTICO.
 						</p>
-						<a href="/areaCliente" class="btn btn-secondary"> Agendamento </a>
+						<a href="#" class="btn btn-primary btn-lg btn-block">Saiba Mais...</a>
 					</div>
 				</div>
 			<!-- Slide #3 Ends -->
@@ -141,24 +154,24 @@
 			<!-- Box #1 Starts -->
 				<div class="col-md-3 col-sm-6 col-xs-12">
 					<div class="box">
-						<i class="fa fa-user-md"></i>
-						<h4> Doutores Qualificados </h4>
+						<i class="fa fa-plus-circle" ></i>
+						<h4> AGENDE SUA CONSULTA </h4>
 						<p>
-							 Corpo técnico qualificado, 
+							 Agende a qualquer hora, de qualquer lugar. Utilize quando e onde quiser, com total conforto e sem se preocupar com o horário de funcionamento do consultório ou clínica. 
 						</p>
-						<a href="/pagina/medicos" class="btn btn-transparent">Saiba Mais...</a>
+						<a href="/pagina/medicos" class="btn btn-transparent">AGENDAR</a>
 					</div>
 				</div>
 			<!-- Box #1 Ends -->
 			<!-- Box #2 Starts -->
 				<div class="col-md-3 col-sm-6 col-xs-12">
 					<div class="box">
-						<i class="fa fa-stethoscope"></i>
-						<h4>Institucional Quem somos</h4>
+						<i class="fa fa-user-md"></i>
+						<h4>NOSSOS ESPECIALISTAS</h4>
 						<p>
-							Um pouco sobre nós... 
+						Sua saúde em boas mãos! Dotada de um corpo clínico de qualidade, a HEMODIAGNÓSTICO possui renomados especialistas para cuidar da sua saúde. 
 						</p>
-						<a href="/pagina/noticias" class="btn btn-transparent">Saiba Mais...</a>
+						<a href="/pagina/noticias" class="btn btn-transparent">CORPO CLÍNICO</a>
 					</div>
 				</div>
 			<!-- Box #2 Ends -->
@@ -166,11 +179,12 @@
 				<div class="col-md-3 col-sm-6 col-xs-12">
 					<div class="box">
 						<i class="fa fa-hospital-o"></i>
-						<h4>Nossas Unidades Matriz e Filias </h4>
+						<h4>NOSSAS UNIDADES</h4>
 						<p>
-							Unidades no Estado...
+							<strong>Matriz: </strong>Av. Coaracy Nunes, 892 - Centro Contato: 3217 - 0700 / 9 8801 - 3805.
+							<strong>São Lázaro:</strong> Rua Adilson José Pinto Pereira 1209 - São Lázaro Contato: 3117 - 0704.
 						</p>
-						<a href="/pagina/unidades" class="btn btn-transparent">Saiba Mais...</a>
+						<a href="/pagina/unidades" class="btn btn-transparent">SAIBA MAIS...</a>
 					</div>
 				</div>
 			<!-- Box #3 Ends -->
@@ -178,11 +192,25 @@
 				<div class="col-md-3 col-sm-6 col-xs-12">
 					<div class="box">
 						<i class="fa fa-credit-card" aria-hidden="true"></i>
-						<h4>Nossos Convênios </h4>
+						<h4>NOSSOS CONVÊNIOS </h4>
 						<p>
-							Confira nossa lista de Convênios com a Clinica.
+							ASPEB - Seguros.
+							AMIL.
+							Fundação ASSEFAZ.
+							Bradesco Saúde.
+							CAPESESP.
+							AMPREV.
+							DOMESTILAR.
+							CASF.
+							SulAmérica.
+							CASSI.
+							BrasilVida.
+							GEAP.
+							CENTRALMED...
+
+
 						</p>
-						<a href="/pagina/convenios" class="btn btn-transparent">Saiba Mais...</a>
+						<a href="/pagina/convenios" class="btn btn-transparent">SAIBA MAIS...</a>
 					</div>
 				</div>
 			<!-- Box #4 Ends -->
@@ -191,13 +219,14 @@
 		<!-- Conteudo Section -->
 			<section class="welcome-area">
 				<div class="row">
+					<div class="col-md-12 col-xs-12">
+						<img src="../images/apoio.png" alt="image" class="img-responsive img-style1">
+					</div>
+				</div>
+				<br>
+				<div class="row">
 					<div class="col-md-6 col-xs-12">
-						<h2 class="main-heading1 lite">A Densitometria de Corpo</h2>
-						<h2 class="main-heading2">Percentual de Gordura</h2>
-						<p>A densitometria óssea é considerada atualmente como sendo o único método para um diagnóstico seguro da avaliação da massa óssea e consequentemente predição do índice de fratura óssea.</p>
-						<p>Novidade para VOCÊ que busca resultado, venha fazer sua Densitometria de Corpo Inteiro e descubra o teor de gordura no seu Corpo, resultado imediato. 
-						</p>
-						<p>O Importante é Estarmos Juntos!</p>
+						<img src="../images/a.jpg" alt="image" class="img-responsive img-style1">
 					</div>
 					<div class="col-md-6 col-xs-12">
 						<img src="../images/promo.jpg" alt="image" class="img-responsive img-style1">
