@@ -144,8 +144,8 @@ class AdminController extends Controller
 #############################################################################################################ATENDENTE##############################################################
     public function listaAtendentes()
     {
-        $atendentes = Atendente::paginate(15);
-        return view('admin.atendente.atendentes',['atendentes'=> $atendentes, 'bairros' => self::bairros(), 'convenios' => self::convenios(),'links'=>$atendentes->links()]);
+         $atendentes=Atendente::select('*')->join('users','users.id', '=', 'atendentes.user_id')->join('enderecos','users.id', '=', 'enderecos.user_id')->paginate(15);
+         return view('admin.atendente.atendentes',['atendentes'=> $atendentes, 'bairros' => self::bairros(), 'convenios' => self::convenios(),'links'=>$atendentes->links()]);
     }
     public function atendentesalvar(Request $request)
     {    
@@ -178,7 +178,7 @@ class AdminController extends Controller
             $atendente->data_nasc = $request->data_nasc;
             $atendente->telefone = $request->telefone;
             $user->atendente()->save($atendente);
-            return redirect('/admin');
+            return redirect('/admin/atendentes');
     }
     public function showatendente($id)
     {
